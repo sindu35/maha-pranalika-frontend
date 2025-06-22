@@ -1,0 +1,25 @@
+.footer {
+    background-color: #00549e;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer-address {
+    font-size: 15px;
+    padding: 10px 0;
+    line-height: 1.5;
+  }
+  
+  .footer-map {
+    margin: 10px auto;
+    max-width: 10000px;
+  }
+  
+  .footer-contact {
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
