@@ -1,0 +1,32 @@
+{
+    "nav-english": {
+      "home": "Home",
+      "services": "Services",
+      "signup": "Sign Up",
+      "privacy": "Privacy Policy",
+      "faq": "FAQ",
+      "terms": "Terms & Conditions",
+      "servicesList": {
+        "firm": "Firm Registration",
+        "cibilRepair": "CIBIL Score & Repair",
+        "cibilTraining": "CIBIL Training",
+        "visa": "Visa & Overseas"
+      }
+    },
+  
+    "nav-telugu": {
+      "home": "హోమ్",
+      "services": "సేవలు",
+      "signup": "చేరడం",
+      "privacy": "గోప్యతా విధానం",
+      "faq": "తరచుగా అడిగే ప్రశ్నలు",
+      "terms": "నియమాలు మరియు షరతులు",
+      "servicesList": {
+        "firm": "ఫర్మ్ నమోదు",
+        "cibilRepair": "సిబిల్ స్కోర్ మరియు మరమ్మత్తు",
+        "cibilTraining": "సిబిల్ శిక్షణ",
+        "visa": "వీసా & విదేశీ సేవలు"
+      }
+    }
+  }
+  

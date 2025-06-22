@@ -1,11 +1,20 @@
 import React from 'react'
 import './Footer.css';
+import { useLanguage } from './LanguageContext';
 export default function Footer() {
+  const { lang } = useLanguage();
   return (
     <footer className="footer">
     <div className="footer-address">
-      flat no 101, MIG 416, Road No. 4, Kukatpally Housing Board Colony,<br />
-      Kukatpally, Hyderabad, Telangana 500072
+    {lang === 'telugu' ? (
+  
+    <p>ఫ్లాట్ నెం. 101, ఎంఐజి 416, రోడ్ నెం. 4, కుకట్‌పల్లి హౌసింగ్ బోర్డు కాలనీ,<br />
+    కుకట్‌పల్లి, హైదరాబాద్, తెలంగాణ 500072</p>
+    ) : (
+  
+    <p>Flat No. 101, MIG 416, Road No. 4, Kukatpally Housing Board Colony,<br />
+    Kukatpally, Hyderabad, Telangana 500072</p>
+    )}
     </div>
 
     <div className="footer-map">
@@ -18,7 +27,17 @@ export default function Footer() {
     </div>
 
     <div className="footer-contact">
-      📞 +91 789-388-1269 &nbsp; | &nbsp; 📧 info@mahapranalika.com
+    {lang === 'telugu' ? (
+        <>
+          <p>సంప్రదించండి: +91 789-388-1269</p>
+          <p>ఈమెయిల్: info@mahapranalika.com</p>
+        </>
+      ) : (
+        <>
+          <p>Contact: +91 789-388-1269</p>
+          <p>Email: info@mahapranalika.com</p>
+        </>
+      )}
     </div>
   </footer>
   )
