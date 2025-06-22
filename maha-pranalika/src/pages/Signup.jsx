@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/signup.css";
+import axios from "axios";
 
 export default function Signup() {
   const [form, setForm] = useState({
@@ -86,7 +87,24 @@ export default function Signup() {
 
     const hasErrors = Object.values(newErrors).some((msg) => msg);
     if (!hasErrors) {
-      alert("Form submitted!");
+      axios
+        .post("http://localhost:5000/api/auth/signup", form)
+        .then((response) => {
+            if (response.status === 201) {
+                alert("Signup successful! Redirecting to login...");
+                console.log("Signup response:", response.data);
+                localStorage.setItem("token", response.data.token);
+                window.location.href = "/login"; 
+            } else {
+                alert("Signup failed. Please try again.");
+            }
+        })
+        .catch((error) => {
+          console.error("Signup error:", error.response.data);
+          alert(
+            error.response.data.message || "Signup failed. Please try again."
+          );
+        });
     }
   };
 
