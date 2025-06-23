@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import "../styles/signup.css";
 import axios from "axios";
+import { useLanguage } from "../components/LanguageContext";
+import LanguageSwitcher from "../components/LanguageSwitcher"; // ✅ Import switcher
 
 export default function Signup() {
+  const { translations } = useLanguage();
+
   const [form, setForm] = useState({
     email: "",
     name: "",
@@ -23,25 +27,25 @@ export default function Signup() {
     let newErrors = { ...errors };
 
     if (!value.trim()) {
-      newErrors[field] = "This field is required";
+      newErrors[field] = translations?.required || "This field is required";
     } else {
       switch (field) {
         case "email":
-          newErrors.email = /\S+@\S+\.\S+/.test(value) ? "" : "Invalid email";
-          break;
-        case "name":
-          newErrors.name = value.trim().length > 2 ? "" : "Name is too short";
+          newErrors.email = /\S+@\S+\.\S+/.test(value)
+            ? ""
+            : translations?.invalidEmail || "Invalid email";
           break;
         case "password":
-          const passwordRegex =
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-          newErrors.password = passwordRegex.test(value)
-            ? ""
-            : "Password must be 8+ chars, include uppercase, lowercase, number & special char";
+          newErrors.password =
+            value.length >= 6
+              ? ""
+              : translations?.passwordLength || "Password must be at least 6 characters";
           break;
         case "confirmPassword":
           newErrors.confirmPassword =
-            value === fullForm.password ? "" : "Passwords do not match";
+            value === fullForm.password
+              ? ""
+              : translations?.confirmMismatch || "Passwords do not match";
           break;
         default:
           break;
@@ -57,27 +61,26 @@ export default function Signup() {
     const newErrors = {};
     Object.keys(form).forEach((field) => {
       const value = form[field];
-
       if (!value.trim()) {
-        newErrors[field] = "This field is required";
+        newErrors[field] = translations?.required || "This field is required";
       } else {
         switch (field) {
           case "email":
-            newErrors.email = /\S+@\S+\.\S+/.test(value) ? "" : "Invalid email";
-            break;
-          case "name":
-            newErrors.name = value.trim().length > 2 ? "" : "Name is too short";
+            newErrors.email = /\S+@\S+\.\S+/.test(value)
+              ? ""
+              : translations?.invalidEmail || "Invalid email";
             break;
           case "password":
-            const passwordRegex =
-              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-            newErrors.password = passwordRegex.test(value)
-              ? ""
-              : "Password must be 8+ chars, include uppercase, lowercase, number & special char";
+            newErrors.password =
+              value.length >= 6
+                ? ""
+                : translations?.passwordLength || "Password must be at least 6 characters";
             break;
           case "confirmPassword":
             newErrors.confirmPassword =
-              value === form.password ? "" : "Passwords do not match";
+              value === form.password
+                ? ""
+                : translations?.confirmMismatch || "Passwords do not match";
             break;
         }
       }
@@ -90,40 +93,32 @@ export default function Signup() {
       axios
         .post("http://localhost:5000/api/auth/signup", form)
         .then((response) => {
-            if (response.status === 201) {
-                alert("Signup successful! Redirecting to login...");
-                console.log("Signup response:", response.data);
-                localStorage.setItem("token", response.data.token);
-                window.location.href = "/login"; 
-            } else {
-                alert("Signup failed. Please try again.");
-            }
+          console.log("Signup successful:", response.data);
+          window.location.href = "/login";
         })
         .catch((error) => {
-          console.error("Signup error:", error.response.data);
-          alert(
-            error.response.data.message || "Signup failed. Please try again."
+          console.error(
+            "Signup error:",
+            error.response ? error.response.data : error.message
           );
+          setErrors({
+            ...errors,
+            server:
+              translations?.signupFailed || "Signup failed. Please try again later.",
+          });
         });
     }
   };
 
   return (
     <div className="signup-container">
+      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "10px" }}>
+        <LanguageSwitcher /> {/* ✅ Language switcher added */}
+      </div>
+
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Your Email</label>
-          <input
-            type="email"
-            id="email"
-            value={form.email}
-            onChange={handleChange}
-          />
-          <span className="error">{errors.email || " "}</span>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="name">Your Name</label>
+          <label htmlFor="name">{translations?.name || "Name"}</label>
           <input
             type="text"
             id="name"
@@ -134,7 +129,18 @@ export default function Signup() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="email">{translations?.email || "Email"}</label>
+          <input
+            type="email"
+            id="email"
+            value={form.email}
+            onChange={handleChange}
+          />
+          <span className="error">{errors.email || " "}</span>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password">{translations?.password || "Password"}</label>
           <input
             type="password"
             id="password"
@@ -145,7 +151,9 @@ export default function Signup() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="confirmPassword">Confirm Password</label>
+          <label htmlFor="confirmPassword">
+            {translations?.confirmPassword || "Confirm Password"}
+          </label>
           <input
             type="password"
             id="confirmPassword"
@@ -155,14 +163,17 @@ export default function Signup() {
           <span className="error">{errors.confirmPassword || " "}</span>
         </div>
 
-        <button type="submit">SIGN UP</button>
+        <button type="submit">{translations?.signup || "SIGN UP"}</button>
+
         <p
           className="login-text"
           style={{ cursor: "pointer", textAlign: "center" }}
           onClick={() => (window.location.href = "/login")}
         >
-          Already have an account?
+          {translations?.haveAccount || "Already have an account?"}
         </p>
+
+        {errors.server && <p className="error">{errors.server}</p>}
       </form>
     </div>
   );

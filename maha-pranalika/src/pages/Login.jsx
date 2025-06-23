@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import "../styles/login.css";
 import axios from "axios";
+import { useLanguage } from "../components/LanguageContext";
+import LanguageSwitcher from "../components/LanguageSwitcher"; // ✅ Import this
 
 export default function Login() {
+  const { translations } = useLanguage();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -19,23 +23,25 @@ export default function Login() {
 
   const validateField = (field, value) => {
     let newErrors = { ...errors };
-
     if (!value.trim()) {
-      newErrors[field] = "This field is required";
+      newErrors[field] = translations?.required || "This field is required";
     } else {
       switch (field) {
         case "email":
-          newErrors.email = /\S+@\S+\.\S+/.test(value) ? "" : "Invalid email";
+          newErrors.email = /\S+@\S+\.\S+/.test(value)
+            ? ""
+            : translations?.invalidEmail || "Invalid email";
           break;
         case "password":
           newErrors.password =
-            value.length >= 6 ? "" : "Password must be at least 6 characters";
+            value.length >= 6
+              ? ""
+              : translations?.passwordLength || "Password must be at least 6 characters";
           break;
         default:
           break;
       }
     }
-
     setErrors(newErrors);
   };
 
@@ -46,15 +52,21 @@ export default function Login() {
     Object.keys(form).forEach((field) => {
       const value = form[field];
       if (!value.trim()) {
-        newErrors[field] = "This field is required";
+        newErrors[field] = translations?.required || "This field is required";
       } else {
         switch (field) {
           case "email":
-            newErrors.email = /\S+@\S+\.\S+/.test(value) ? "" : "Invalid email";
+            newErrors.email = /\S+@\S+\.\S+/.test(value)
+              ? ""
+              : translations?.invalidEmail || "Invalid email";
             break;
           case "password":
             newErrors.password =
-              value.length >= 6 ? "" : "Password must be at least 6 characters";
+              value.length >= 6
+                ? ""
+                : translations?.passwordLength || "Password must be at least 6 characters";
+            break;
+          default:
             break;
         }
       }
@@ -68,15 +80,12 @@ export default function Login() {
         .post("http://localhost:5000/api/auth/login", form)
         .then((response) => {
           console.log("Login successful:", response.data);
-            if (response.status === 200) {
-                localStorage.setItem("token", response.data.token);
-                window.location.href = "/";
-            }
-            else {
-                console.error("Login failed:", response.data.message);
-
-            }
-            
+          if (response.status === 200) {
+            localStorage.setItem("token", response.data.token);
+            window.location.href = "/";
+          } else {
+            console.error("Login failed:", response.data.message);
+          }
         })
         .catch((error) => {
           console.error(
@@ -85,7 +94,8 @@ export default function Login() {
           );
           setErrors({
             ...errors,
-            server: "Login failed. Please check your credentials.",
+            server:
+              translations?.loginFailed || "Login failed. Please check your credentials.",
           });
         });
     }
@@ -93,9 +103,13 @@ export default function Login() {
 
   return (
     <div className="signup-container">
+      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "10px" }}>
+        <LanguageSwitcher /> {/* ✅ Add the switcher here */}
+      </div>
+
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Your Email</label>
+          <label htmlFor="email">{translations?.email || "Your Email"}</label>
           <input
             type="email"
             id="email"
@@ -106,7 +120,7 @@ export default function Login() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{translations?.password || "Password"}</label>
           <input
             type="password"
             id="password"
@@ -116,14 +130,17 @@ export default function Login() {
           <span className="error">{errors.password || " "}</span>
         </div>
 
-        <button type="submit">LOGIN</button>
+        <button type="submit">{translations?.login || "LOGIN"}</button>
+
         <p
           className="login-text"
           style={{ cursor: "pointer", textAlign: "center" }}
           onClick={() => (window.location.href = "/signup")}
         >
-          Don't have an account?
+          {translations?.dontHaveAccount || "Don't have an account?"}
         </p>
+
+        {errors.server && <p className="error">{errors.server}</p>}
       </form>
     </div>
   );
