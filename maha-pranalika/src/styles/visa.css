@@ -1,0 +1,232 @@
+.cibil-form {
+    width: 95%;
+    max-width: 850px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .cibil-form h2
+  {
+    text-align: center;
+    
+    color: #1e3a5f;
+    font-weight: 600;
+    margin-bottom: 1rem;
+   
+  
+  }
+  .cibil-form h3 {
+    text-align: left;
+    margin-top: 1.5rem;
+    color: #1e3a5f;
+    font-weight: 600;
+    
+  
+  }
+  
+  .cibil-form label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+  }
+  .cibil-form input, .cibil-form textarea, .cibil-form select{
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    background: #f9f9f9;
+  }
+  
+  .cibil-form textarea {
+    min-height: 80px;
+  }
+  
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 0.75rem;
+  }
+  
+  .checkbox-group label {
+    flex: 1 1 48%;
+    font-weight: normal;
+    font-size: 0.95rem;
+    color: #333;
+  }
+  
+  .checkbox {
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+    color: #333;
+  }
+  
+  .cibil-form button {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 12px 24px;
+    background-color: #1a5db0;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cibil-form button:hover {
+    background-color: #144a8c;
+  }
+  .grey-line {
+    border: none;
+    border-top: 2px solid rgb(243, 233, 233); 
+    margin: 5px;
+  }
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 1rem;        
+    align-items: center;
+  }
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;      
+  }
+
+  .gender-group {
+    display: flex;
+    gap: 1.5rem; /* space between options */
+    align-items: center;
+  }
+  .gender-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }  
+ .visa-options-wrapper {
+  padding: 20px;
+}
+
+.visa-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.visa-checkbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.visa-checkbox input[type="checkbox"] {
+  margin-bottom: 5px;
+}
+
+.other-option {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.other-input {
+  width: 180px;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+}
+.education-form-box {
+  border: 1px solid #aaa;
+  padding: 20px;
+  width: fit-content;
+}
+
+.education-header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.education-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.education-row input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 250px;
+}
+.language-form-container {
+  border: 1px solid #888;
+  padding: 20px;
+  width: fit-content;
+}
+
+.language-form-header {
+  display: grid;
+  grid-template-columns: 150px 60px 60px 60px 300px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.language-form-row {
+  display: grid;
+  grid-template-columns: 150px 60px 60px 60px 300px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.language-form-row input[type="text"] {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.document-checklist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 20px 0;
+}
+
+.doc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 500;
+  width: 180px;
+}
+
+.doc-item span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+}
+
+.visa-container {
+  background: #f2f2f2;
+  padding: 20px;
+  border-radius: 8px;
+}

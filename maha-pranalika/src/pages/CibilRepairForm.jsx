@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from "react";
 import '../styles/cibilrepair.css';
+import YesNo from "../components/YesNo";
 export default function CibilRepairForm() {
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -107,11 +108,8 @@ export default function CibilRepairForm() {
       <input name="cibilScore" onChange={handleChange} />
 
       <label>Do you have existing loan or credit card?</label>
-      <select name="hasLoan" onChange={handleChange}>
-        <option value="">Select</option>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
+     
+        <YesNo onChange={handleChange}/>
 
       <label>Loan Type</label>
       <input name="loanType" onChange={handleChange} />
