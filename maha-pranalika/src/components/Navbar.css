@@ -14,6 +14,71 @@
   border-bottom: 2px solid #ccc;
 }
 
+  .nav {
+    background-color: var(--color-accent);
+    font-family: Arial, sans-serif;
+    padding-left: 50px;
+    padding-top:10px;
+    display: flex;
+    width: 100%;
+    margin-left: 20px;
+    margin-top: 15px;
+  }
+  .navbar-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    gap:50px;
+    padding: 0px 10px;
+  }
+  
+  .navbar-menu > li {
+    position: relative;
+    
+  }
+  
+  .navbar-menu a, .navbar-menu span {
+    display: block;
+    color: white;
+    font-weight: bold;
+    padding: 16px 12px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .navbar-menu a:hover, .navbar-menu span:hover {
+    background-color: #d8561f;
+  }
+  
+ 
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    color: black;
+    min-width: 200px;
+    background-color: var(--color-accent);
+    top: 100%;
+    left: 0;
+    z-index: 1;
+  }
+  
+.dropdown-content li::marker {
+  color: #fff;
+}
+
+  .dropdown-content li span {
+    color: white;
+    padding: 12px 16px;
+    font-weight: 500;
+    display: block;
+  }
+  
+ 
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
 .nav-bar > div:first-child {
   display: flex;
   align-items: center;
