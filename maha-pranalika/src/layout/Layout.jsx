@@ -6,25 +6,33 @@ import LanguageSwitcher from "../components/LanguageSwitcher";
 
 import { useLocation } from "react-router-dom";
 
-
 const Layout = ({ children }) => {
   const location = useLocation();
-  const isRootPath = location.pathname === "/signup" || location.pathname === "/login";
+  const isRootPath =
+    location.pathname === "/signup" || location.pathname === "/login";
   if (isRootPath) {
     return <main>{children}</main>;
   }
 
   return (
     <>
-     <LanguageProvider> 
-      <LanguageSwitcher />
-      <Navbar />
-      
-    
-      
+      <LanguageProvider>
+        {/* 🔵 Top Blue Bar with only LanguageSwitcher */}
+        <div
+          style={{
+            backgroundColor: "#2d2a8e",
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            fontFamily: "Arial, sans-serif",
+          }}
+        >
+          <LanguageSwitcher />
+        </div>
 
-      <main>{children}</main>
-      <Footer />
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
       </LanguageProvider>
     </>
   );
