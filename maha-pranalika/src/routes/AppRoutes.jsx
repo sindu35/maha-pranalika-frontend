@@ -5,6 +5,7 @@ import Signup from '../pages/Signup'
 import Login from '../pages/Login'
 import FAQ from '../pages/FAQ'
 import Firmregistration from '../components/Firmregistration'
+import CibilRepairForm from '../pages/CibilRepairForm'
 const AppRoutes = () => {
   return (
       <Routes>
@@ -14,7 +15,7 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/faq"  element={<FAQ/>}/>
         <Route path="/services/firm-registration" element={<Firmregistration/>} />
-
+        <Route path="/services/cibil-repair" element={<CibilRepairForm/>} />
         {/* Add more routes as needed */}
       </Routes>
   )
