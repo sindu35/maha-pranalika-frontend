@@ -10,9 +10,9 @@ const Layout = ({ children }) => {
   const location = useLocation();
   const isRootPath =
     location.pathname === "/signup" || location.pathname === "/login";
-  if (isRootPath) {
-    return <main>{children}</main>;
-  }
+  // if (isRootPath) {
+  //   return <main>{children}</main>;
+  // }
 
   return (
     <>
