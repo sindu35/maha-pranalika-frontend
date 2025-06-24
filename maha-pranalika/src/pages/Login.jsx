@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/login.css";
 import axios from "axios";
 import { useLanguage } from "../components/LanguageContext";
@@ -11,6 +11,14 @@ export default function Login() {
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      localStorage.removeItem("token");
+      window.location.href = "/";
+    }
+  }, []);
 
   const [errors, setErrors] = useState({});
 
@@ -103,9 +111,7 @@ export default function Login() {
 
   return (
     <div className="signup-container">
-      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "10px" }}>
-        <LanguageSwitcher /> {/* ✅ Add the switcher here */}
-      </div>
+    
 
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="form-group">

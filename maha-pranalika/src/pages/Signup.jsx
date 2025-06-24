@@ -112,9 +112,6 @@ export default function Signup() {
 
   return (
     <div className="signup-container">
-      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "10px" }}>
-        <LanguageSwitcher /> {/* ✅ Language switcher added */}
-      </div>
 
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="form-group">

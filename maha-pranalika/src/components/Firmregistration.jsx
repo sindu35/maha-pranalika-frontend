@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/firmform.css";
 
 export default function Firmregistration() {
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "/";
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
     basic_details: {
       fullName: "",
@@ -204,10 +211,8 @@ export default function Firmregistration() {
     if (!formData.documents.noc)
       newErrors.noc = "NOC from property owner is required";
 
-
     if (!formData.declaration.signature)
       newErrors.signature = "Signature is required";
-
 
     if (formData.declaration.name) {
       if (!/^[a-zA-Z\s]+$/.test(formData.declaration.name)) {
@@ -569,30 +574,24 @@ export default function Firmregistration() {
             />
             {errors.date && <span className="error">{errors.date}</span>}
           </label>
-          
-            <div
-              style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}
-            >
-              <input
-                type="checkbox"
-                checked={formData.declaration.declared}
-                onChange={(e) =>
-                  handleChange("declaration", "declared", e.target.checked)
-                }
-                style={{ marginTop: "3px" }}
-              />
-              <span style={{ fontSize: "14px", lineHeight: "1.5" }}>
-                I declare that the information provided is true and correct.
-              </span>
-            </div>
 
-            {errors.declared && (
-              <span
-                className="error"
-              >
-                {errors.declared}
-              </span>
-            )}
+          <div
+            style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}
+          >
+            <input
+              type="checkbox"
+              checked={formData.declaration.declared}
+              onChange={(e) =>
+                handleChange("declaration", "declared", e.target.checked)
+              }
+              style={{ marginTop: "3px" }}
+            />
+            <span style={{ fontSize: "14px", lineHeight: "1.5" }}>
+              I declare that the information provided is true and correct.
+            </span>
+          </div>
+
+          {errors.declared && <span className="error">{errors.declared}</span>}
         </section>
 
         <button type="submit">Submit</button>

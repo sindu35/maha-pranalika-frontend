@@ -11,8 +11,7 @@ export const LanguageProvider = ({ children }) => {
   useEffect(() => {
     const newTranslations = languageData[`nav-${lang}`] || {};
     setTranslations(newTranslations);
-    console.log("🔁 Language changed to:", lang);
-    console.log("🌐 Translations:", newTranslations);
+
   }, [lang]);
 
   return (
