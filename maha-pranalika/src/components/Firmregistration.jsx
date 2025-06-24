@@ -3,8 +3,10 @@ import "../styles/firmform.css";
 
 export default function Firmregistration() {
   useEffect(() => {
+    
     const token = localStorage.getItem("token");
     if (!token) {
+        alert("login to access this service");
       window.location.href = "/";
     }
   }, []);
