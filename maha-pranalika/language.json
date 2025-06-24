@@ -101,5 +101,48 @@
       "answer": "అవును, మేము MSME క్లస్టర్ ఏర్పాటులో మరియు ఆమోద ప్రక్రియలలో ప్రత్యేకత కలిగి ఉన్నాము. మేము డాక్యుమెంటేషన్, ప్రభుత్వ ఫైలింగ్‌లు మరియు ఫాలో-అప్స్‌ను సమర్థవంతంగా నిర్వహిస్తాము."
     }
   ],
-  "logotext": "మహా ప్రణాలిక"
-}
+  "logotext": "మహా ప్రణాలిక",
+  
+    "cibilrepair-english": {
+      "title": "CIBIL Score Repair Registration",
+      "clientDetails": "Client Details",
+      "fullName": "Full Name",
+      "dob": "Date of Birth",
+      "mobile": "Mobile Number",
+      "email": "Email Address",
+      "address": "Current Address",
+      "identificationTitle": "Identification & Financial Info",
+      "pan": "PAN Card Number",
+      "aadhaar": "Aadhaar Number (Optional)",
+      "occupation": "Occupation",
+      "occupationOptions": ["Select", "Employed", "Self-employed", "Student"],
+      "income": "Monthly Income (₹)",
+      "cibilScore": "Current CIBIL Score (if known)",
+      "hasLoan": "Do you have existing loan or credit card?",
+      "hasLoanOptions": ["Select", "Yes", "No"],
+      "loanType": "Loan Type",
+      "bank": "Bank/Institutions",
+      "emi": "EMI Amount (₹)",
+      "issuesTitle": "Credit Issues Faced",
+      "creditIssues": [
+        "Loan Default / Delayed Payments",
+        "Credit Card Overdues",
+        "Written off Accounts",
+        "High Credit Utilization",
+        "Loan Rejections",
+        "Unknown CIBIL Drop",
+        "Disputed Accounts"
+      ],
+      "otherIssue": "Other (specify)",
+      "uploadTitle": "Upload Required Documents",
+      "uploadPan": "PAN Card",
+      "uploadAadhaar": "Aadhaar Card",
+      "uploadCibil": "Latest CIBIL Report (if available)",
+      "uploadBank": "Bank Statement (last 3 months)",
+      "uploadSalary": "Salary Slip (if applicable)",
+      "declaration": "I hereby authorize MaahaPranalika Pvt Ltd to review my credit details and suggest improvement steps.",
+      "date": "Date",
+      "submit": "Submit Application"
+    }
+  }
+  
