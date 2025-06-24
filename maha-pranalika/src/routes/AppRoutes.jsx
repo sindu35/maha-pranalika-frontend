@@ -4,6 +4,7 @@ import About from '../pages/About'
 import Signup from '../pages/Signup'
 import Login from '../pages/Login'
 import FAQ from '../pages/FAQ'
+import Firmregistration from '../components/Firmregistration'
 const AppRoutes = () => {
   return (
       <Routes>
@@ -12,6 +13,8 @@ const AppRoutes = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/faq"  element={<FAQ/>}/>
+        <Route path="/services/firm-registration" element={<Firmregistration/>} />
+
         {/* Add more routes as needed */}
       </Routes>
   )

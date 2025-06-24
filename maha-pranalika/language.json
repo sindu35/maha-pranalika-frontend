@@ -24,7 +24,8 @@
     "confirmMismatch": "Passwords do not match",
     "loginFailed": "Login failed. Please check your credentials.",
     "signupFailed": "Signup failed. Please try again later.",
-    "invalidName": "Name must be at least 2 characters"
+    "invalidName": "Name must be at least 2 characters",
+    "logotext": "Maha Pranalika"
   },
 
   "nav-telugu": {
@@ -99,5 +100,6 @@
       "question": "మీరు MSME క్లస్టర్ ఆమోదాల్లో సహాయం చేస్తారా?",
       "answer": "అవును, మేము MSME క్లస్టర్ ఏర్పాటులో మరియు ఆమోద ప్రక్రియలలో ప్రత్యేకత కలిగి ఉన్నాము. మేము డాక్యుమెంటేషన్, ప్రభుత్వ ఫైలింగ్‌లు మరియు ఫాలో-అప్స్‌ను సమర్థవంతంగా నిర్వహిస్తాము."
     }
-  ]
+  ],
+  "logotext": "మహా ప్రణాలిక"
 }
