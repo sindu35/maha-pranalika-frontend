@@ -14,7 +14,12 @@ export default function Navbar() {
 
   return (
     <div className="nav-bar">
-      <img src={logo} alt="logo" style={{ width: '4%' }} />
+      <div>
+        <img src={logo} alt="logo" style={{ width: '4%' }} />
+        <span className="logo-text" onClick={() => goTo("/")}>
+          {translations.logotext}
+        </span>
+      </div>
       <div className="nav">
         <ul className="navbar-menu">
           <li><span onClick={() => goTo("/")}>{translations.home}</span></li>

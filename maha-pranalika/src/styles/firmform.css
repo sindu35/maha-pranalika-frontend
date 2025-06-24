@@ -46,11 +46,7 @@ input[type="file"] {
   padding: 5px;
 }
 
-.checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+
 
 .error {
   color: red;
