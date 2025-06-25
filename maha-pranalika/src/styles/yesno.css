@@ -1,0 +1,13 @@
+.yes-no-group {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-weight: bold;
+  }
+  
+  .yes-no-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
