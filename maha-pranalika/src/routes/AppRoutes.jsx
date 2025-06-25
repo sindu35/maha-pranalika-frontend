@@ -7,6 +7,7 @@ import FAQ from '../pages/FAQ'
 import Firmregistration from '../components/Firmregistration'
 import Cibiltraining from '../components/Cibiltraining'
 import CibilRepairForm from '../pages/CibilRepairForm'
+import VisaOverseas from '../pages/VisaOverseas'
 const AppRoutes = () => {
   return (
       <Routes>
@@ -19,6 +20,7 @@ const AppRoutes = () => {
         <Route path="/services/cibil-repair" element={<CibilRepairForm/>} />
         <Route path="/services/cibil-training" element={<Cibiltraining/>} />
 
+        <Route path="/services/visa" element={<VisaOverseas/>} />
         {/* Add more routes as needed */}
       </Routes>
   )
