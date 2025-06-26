@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "./Navbar.css";
@@ -15,11 +15,10 @@ export default function Navbar() {
 
   useEffect(() => {
     console.log(isLogin);
-    const token=localStorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (!token) {
       setIsLogin(false);
-    }
-    else {
+    } else {
       setIsLogin(true);
     }
   }, []);
@@ -48,7 +47,18 @@ export default function Navbar() {
             <span>{translations.services} ▾</span>
             <ul className="dropdown-content">
               <li>
-                <span onClick={() => goTo("/services/firm-registration")}>
+                <span
+                  onClick={() => {
+                    if (!isLogin) {
+                      alert(
+                        "Please login to access this service. Redirecting to login page."
+                      );
+                      goTo("/login");
+                    } else {
+                      goTo("/services/firm-registration");
+                    }
+                  }}
+                >
                   {translations.servicesList?.firm}
                 </span>
               </li>
@@ -58,7 +68,16 @@ export default function Navbar() {
                 </span>
               </li>
               <li>
-                <span onClick={() => goTo("/services/cibil-training")}>
+                <span onClick={() => {
+                    if (!isLogin) {
+                      alert(
+                        "Please login to access this service. Redirecting to login page."
+                      );
+                      goTo("/login");
+                    } else {
+                      goTo("/services/cibil-training");
+                    }
+                }}>
                   {translations.servicesList?.cibilTraining}
                 </span>
               </li>
@@ -72,13 +91,13 @@ export default function Navbar() {
 
           {!isLogin && (
             <li>
-            <span onClick={() => goTo("/signup")}>{translations.signup}</span>
-          </li>
+              <span onClick={() => goTo("/signup")}>{translations.signup}</span>
+            </li>
           )}
           {!isLogin && (
             <li>
-            <span onClick={() => goTo("/login")}>{translations.login}</span>
-          </li>
+              <span onClick={() => goTo("/login")}>{translations.login}</span>
+            </li>
           )}
 
           {isLogin && (
