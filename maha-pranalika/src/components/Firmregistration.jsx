@@ -1,13 +1,33 @@
 import React, { useState, useEffect } from "react";
 import "../styles/firmform.css";
+import axios from "axios";
 
 export default function Firmregistration() {
+  const [userId, setUserId] = useState("");
   useEffect(() => {
-    
     const token = localStorage.getItem("token");
     if (!token) {
-        alert("login to access this service");
+      alert("login to access this service");
       window.location.href = "/";
+    } else {
+      axios
+        .get("http://localhost:5000/api/auth/verify", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            setUserId(response.data.user.id);
+          } else {
+            alert("Session expired. Please login again.");
+            localStorage.removeItem("token");
+            window.location.href = "/";
+          }
+        })
+        .catch((error) => {
+          alert("Error fetching user data. Please try again.");
+        });
     }
   }, []);
 
@@ -47,7 +67,7 @@ export default function Firmregistration() {
       name: "",
       date: "",
       declared: false,
-    },
+    }
   });
 
   const [errors, setErrors] = useState({});
@@ -63,6 +83,15 @@ export default function Firmregistration() {
   };
 
   const handleFileChange = (field, file) => {
+  if (field === "signature") {
+    setFormData((prev) => ({
+      ...prev,
+      declaration: {
+        ...prev.declaration,
+        signature: file,
+      },
+    }));
+  } else {
     setFormData((prev) => ({
       ...prev,
       documents: {
@@ -70,7 +99,9 @@ export default function Firmregistration() {
         [field]: file,
       },
     }));
-  };
+  }
+};
+
 
   const validate = () => {
     const newErrors = {};
@@ -242,13 +273,43 @@ export default function Firmregistration() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) {
-      console.log(formData);
-      alert("Form submitted!");
-    }
-  };
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  if (!validate()) return;
+
+  const fd = new FormData();
+  fd.append("basic_details", JSON.stringify(formData.basic_details));
+  fd.append("firm_details", JSON.stringify(formData.firm_details));
+  fd.append("partner_details", JSON.stringify(formData.partner_details));
+  fd.append("declaration.name", formData.declaration.name);
+  fd.append("declaration.date", formData.declaration.date);
+  fd.append("declaration.declared", formData.declaration.declared);
+  fd.append("userId", userId);
+
+  // Append documents
+  Object.entries(formData.documents).forEach(([key, file]) => {
+    if (file) fd.append(key, file);
+  });
+
+  // Append signature separately (it's in declaration)
+  if (formData.declaration.signature) {
+    fd.append("signature", formData.declaration.signature);
+  }
+
+  axios
+    .post("http://localhost:5000/api/firm/register-firm", fd, {
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+    .then((response) => {
+      console.log("Firm registration response:", response.data);
+      alert("Firm registered successfully!");
+    })
+    .catch((error) => {
+      console.error("Error registering firm:", error);
+      alert("Error registering firm. Please try again.");
+    });
+};
+
 
   return (
     <div className="firm-registration">
