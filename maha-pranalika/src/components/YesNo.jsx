@@ -1,19 +1,31 @@
 import React from 'react';
-import '../styles/yesno.css';
+import '../styles/yesno.css'; // optional: your custom styles
 
-const YesNo = ({handleChange}) => {
+const YesNo = ({ name = "hasLoan", value = "", onChange }) => {
   return (
     <div className="yes-no-group">
-    <label>
-      <input type="radio" name="answer" value="yes" onChange={handleChange} />
-      Yes
-    </label>
-    <label>
-      <input type="radio" name="answer" value="no" onChange={handleChange} />
-      No
-    </label>
-  </div>
-  
+      <label>
+        <input
+          type="radio"
+          name={name}
+          value="yes"
+          checked={value === "yes"}
+          onChange={onChange}
+        />
+        Yes
+      </label>
+
+      <label>
+        <input
+          type="radio"
+          name={name}
+          value="no"
+          checked={value === "no"}
+          onChange={onChange}
+        />
+        No
+      </label>
+    </div>
   );
 };
 
