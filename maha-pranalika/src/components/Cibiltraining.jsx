@@ -13,7 +13,7 @@ export default function Cibiltraining() {
     experience: "",
     remarks: "",
   });
-
+  const [userId, setUserId]=useState("");
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false); 
@@ -24,6 +24,28 @@ export default function Cibiltraining() {
       alert("Please login to access this service. Redirecting to login page.");
       window.location.href = "/login";
     }
+    else {
+      axios
+      .get("http://localhost:5000/api/auth/verify" ,  {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+    })
+    .then((response) =>{
+      if(response.status === 200){
+        setUserId(response.data.user.id);
+        
+      }
+      else {
+        alert("Session expired. Please login again.");
+        localStorage.removeItem("token");
+        window.location.href = "/login";
+      }
+    } )
+    .catch((error) => {
+      alert("Error fetching user data. Please try again.");
+    });
+  }
   }, []);
 
   const validateField = (field, value) => {
@@ -68,7 +90,8 @@ export default function Cibiltraining() {
     setSubmitted(true);
     setIsSubmitting(true);
     let allValid = true;
-
+    
+  
     Object.entries(cibilData).forEach(([field, value]) => {
       const valid = validateField(field, value);
       if (!valid) allValid = false;
@@ -87,12 +110,17 @@ export default function Cibiltraining() {
         setIsSubmitting(false);
         return;
       }
-
-      const response = await axios.post("http://localhost:5000/api/cibil/register", cibilData);
+      const payload = {
+        ...cibilData,    
+        userId: userId    
+      };
+      const response = await axios.post("http://localhost:5000/api/cibil/register", payload);
       const data = response.data;
+      console.log(data);
       console.log("Registration response:", data);
+      console.log(payload);
       
-      
+
 
       const options = {
         key: data.key, // Replace with your Razorpay key ID
