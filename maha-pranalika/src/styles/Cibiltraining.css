@@ -36,10 +36,14 @@ span {
 }
 
 .error-space {
-  min-height: 16px;
-  font-size: 13px;
-  color: red;
-  font-weight: normal;
+   color: #c62828;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  background-color: #ffeaea;
+  padding: 0.4rem 0.6rem;
+  border-left: 4px solid #c62828;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
 }
 
 .cibil-container button {

@@ -44,7 +44,8 @@ export default function Login() {
           newErrors.password =
             value.length >= 6
               ? ""
-              : translations?.passwordLength || "Password must be at least 6 characters";
+              : translations?.passwordLength ||
+                "Password must be at least 6 characters";
           break;
         default:
           break;
@@ -72,7 +73,8 @@ export default function Login() {
             newErrors.password =
               value.length >= 6
                 ? ""
-                : translations?.passwordLength || "Password must be at least 6 characters";
+                : translations?.passwordLength ||
+                  "Password must be at least 6 characters";
             break;
           default:
             break;
@@ -103,7 +105,8 @@ export default function Login() {
           setErrors({
             ...errors,
             server:
-              translations?.loginFailed || "Login failed. Please check your credentials.",
+              translations?.loginFailed ||
+              "Login failed. Please check your credentials.",
           });
         });
     }
@@ -111,8 +114,6 @@ export default function Login() {
 
   return (
     <div className="signup-container">
-    
-
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="email">{translations?.email || "Your Email"}</label>
@@ -122,18 +123,22 @@ export default function Login() {
             value={form.email}
             onChange={handleChange}
           />
-          <span className="error">{errors.email || " "}</span>
+          {errors.email && <span className="error">{errors.email || " "}</span>}
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">{translations?.password || "Password"}</label>
+          <label htmlFor="password">
+            {translations?.password || "Password"}
+          </label>
           <input
             type="password"
             id="password"
             value={form.password}
             onChange={handleChange}
           />
-          <span className="error">{errors.password || " "}</span>
+          {errors.password && (
+            <span className="error">{errors.password || " "}</span>
+          )}
         </div>
 
         <button type="submit">{translations?.login || "LOGIN"}</button>

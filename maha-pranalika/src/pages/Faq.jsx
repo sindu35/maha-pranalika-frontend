@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { useLanguage } from '../components/LanguageContext'; // Import the hook
+import { useLanguage } from '../components/LanguageContext';
 
 export default function FAQ() {
   const [activeIndex, setActiveIndex] = useState(null);
-  const { lang, translations } = useLanguage(); // Get selected language context
+  const { lang, translations } = useLanguage();
 
   const toggleAnswer = (index) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
-  // Access the correct FAQ list based on selected language
   const faqList = translations[`faq-${lang}`] || [];
 
   return (
