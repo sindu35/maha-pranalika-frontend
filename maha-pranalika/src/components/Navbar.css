@@ -1,25 +1,18 @@
+
 .nav-bar {
   display: flex;
   flex-direction: column;
   width: 100%;
   font-family: 'Arial', sans-serif;
-}
-
-.nav-bar:first-child {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
   background-color: white;
   border-bottom: 2px solid #ccc;
 }
+
 
 .nav-bar > div:first-child {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  background-color: white;
-  border-bottom: 2px solid #ccc;
 }
 
 .nav-bar img {
@@ -35,20 +28,39 @@
   cursor: pointer;
 }
 
+
+.nav-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+}
+
+
+.menu-button {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+
 .nav {
-  background-color: #f26522;
-  padding: 0 20px;
   display: flex;
   justify-content: center;
+  background-color: #f26522;
 }
+
 
 .navbar-menu {
   display: flex;
   list-style: none;
   margin: 0;
+  padding: 10px 0;
   gap: 25px;
-  padding: 0;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .navbar-menu > li {
@@ -70,6 +82,7 @@
   background-color: #d8561f;
 }
 
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -80,8 +93,8 @@
   z-index: 10;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
+
 .dropdown-content li {
-  list-style: none;
   border-bottom: 1px solid #ccc;
 }
 
@@ -100,4 +113,55 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    background-color: #f26522;
+    width: 100%;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+    gap: 15px;
+  }
+  .nav-header {
+    display: flex;
+    justify-content: flex-start; /* Align children (menu button) to left */
+    padding: 10px 20px;
+  }
+  
+
+  .menu-button {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: black; 
+  }
+}
+
+
+@media (min-width: 769px) {
+  .nav {
+    display: flex !important;
+  }
+
+  .menu-button {
+    display: none;
+  }
+
+  .navbar-menu {
+    flex-direction: row;
+  }
 }

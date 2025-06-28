@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "./Navbar.css";
@@ -8,7 +8,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const { translations } = useLanguage();
   const [isLogin, setIsLogin] = React.useState(false);
-
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const goTo = (path) => {
     navigate(path);
   };
@@ -23,6 +23,10 @@ export default function Navbar() {
     }
   }, []);
 
+  
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLogin(false);
@@ -37,7 +41,14 @@ export default function Navbar() {
           {translations.logotext}
         </span>
       </div>
-      <div className="nav">
+      <div className="nav-header">
+        
+        <button className="menu-button" onClick={toggleMobileMenu}>
+          ☰
+        </button>
+      </div>
+    
+      <div className={`nav ${isMobileMenuOpen ? "open" : ""}`}>
         <ul className="navbar-menu">
           <li>
             <span onClick={() => goTo("/")}>{translations.home}</span>
@@ -120,6 +131,8 @@ export default function Navbar() {
           </li>
         </ul>
       </div>
-    </div>
+      </div>
+   
+    
   );
 }

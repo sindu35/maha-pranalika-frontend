@@ -11,15 +11,22 @@ export default function VisaOverseas() {
       }, []);
 
   const [formData, setFormData] = useState({
+    personal_information: {
     fullName: "",
     dob: "",
-    mobile: "",
+    gender:"",
+    nationality:"",
+    passport:"",
+    passportExpirydate:"",
+    phone: "",
     email: "",
-    address: "",
-    pan: "",
-    aadhaar: "",
-    occupation: "",
-    income: "",
+    address: ""
+    },
+    purpose_consultation:{
+    issues:[],
+    preffered_country:"",
+    refferal:"",
+    },
     cibilScore: "",
     hasLoan: "",
     loanType: "",
