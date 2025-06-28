@@ -25,9 +25,30 @@
     "loginFailed": "Login failed. Please check your credentials.",
     "signupFailed": "Signup failed. Please try again later.",
     "invalidName": "Name must be at least 2 characters",
-    "logotext": "Maha Pranalika"
+    "logotext": "Maha Pranalika",
+    "faq-english": [
+      {
+        "question": "How long does CIBIL score repair take?",
+        "answer": "The duration of CIBIL score repair depends on the nature of your credit history and the corrections needed. Typically, it takes 30 to 60 days."
+      },
+      {
+        "question": "What documents are required for firm registration?",
+        "answer": "We usually require your PAN card, proof of address, identity documents, and business name preferences. A complete checklist will be shared during onboarding."
+      },
+      {
+        "question": "Can you help with both business and personal visas?",
+        "answer": "Yes, we provide consultation for multiple visa categories including business, student, employment, and travel. Our experts guide you through the documentation and application process."
+      },
+      {
+        "question": "How do I track my application status?",
+        "answer": "We provide a user-friendly tracking system and regular updates via email or WhatsApp. You can also use our website portal to check your status in real time."
+      },
+      {
+        "question": "Do you assist with MSME Cluster approvals?",
+        "answer": "Yes, we specialize in MSME cluster formation and approval processes, ensuring documentation, government filings, and follow-ups are handled seamlessly."
+      }
+    ]
   },
-
   "nav-telugu": {
     "home": "హోమ్",
     "services": "సేవలు",
@@ -53,96 +74,79 @@
     "confirmMismatch": "పాస్‌వర్డ్లు సరిపోలడంలేదు",
     "loginFailed": "లాగిన్ విఫలమైంది. దయచేసి వివరాలు తనిఖీ చేయండి.",
     "signupFailed": "సైన్ అప్ విఫలమైంది. దయచేసి మరల ప్రయత్నించండి.",
-    "invalidName": "పేరు కనీసం 2 అక్షరాలది కావాలి"
+    "invalidName": "పేరు కనీసం 2 అక్షరాలది కావాలి",
+    "faq-telugu": [
+      {
+        "question": "సిబిల్ స్కోర్ రిపేర్‌కు ఎంత సమయం పడుతుంది?",
+        "answer": "సిబిల్ స్కోర్ రిపేర్‌కు అవసరమైన సమయం మీ క్రెడిట్ చరిత్ర మరియు దిద్దుబాట్లపై ఆధారపడి ఉంటుంది. సాధారణంగా, ఇది 30 నుండి 60 రోజులు పడుతుంది."
+      },
+      {
+        "question": "ఫిర్మ్ రిజిస్ట్రేషన్‌కు ఏ డాక్యుమెంట్లు అవసరం?",
+        "answer": "మేము సాధారణంగా మీ పాన్ కార్డు, చిరునామా ప్రూఫ్, గుర్తింపు డాక్యుమెంట్లు మరియు వ్యాపార పేరు ఎంపికలను కోరుతాము. పూర్తి డాక్యుమెంట్ జాబితా ఆన్బోర్డింగ్ సమయంలో అందించబడుతుంది."
+      },
+      {
+        "question": "మీరు బిజినెస్ మరియు పర్సనల్ వీసాల కోసం సహాయం చేస్తారా?",
+        "answer": "అవును, మేము బిజినెస్, స్టూడెంట్, ఉద్యోగ మరియు ప్రయాణ వీసాల కోసం సంపూర్ణ కన్సల్టేషన్ సేవలను అందిస్తున్నాము. మా నిపుణులు డాక్యుమెంటేషన్ మరియు అప్లికేషన్ ప్రక్రియలో మీకు సహాయపడతారు."
+      },
+      {
+        "question": "నా అప్లికేషన్ స్టేటస్‌ను నేను ఎలా ట్రాక్ చేయగలను?",
+        "answer": "మేము వినియోగదారులకు అనుకూలమైన ట్రాకింగ్ సిస్టమ్‌ను మరియు ఇమెయిల్ లేదా వాట్సాప్ ద్వారా రెగ్యులర్ అప్‌డేట్లను అందిస్తున్నాము. మీరు మా వెబ్‌సైట్ పోర్టల్ ద్వారా కూడా మీ స్టేటస్‌ను తెలుసుకోవచ్చు."
+      },
+      {
+        "question": "మీరు MSME క్లస్టర్ ఆమోదాల్లో సహాయం చేస్తారా?",
+        "answer": "అవును, మేము MSME క్లస్టర్ ఏర్పాటులో మరియు ఆమోద ప్రక్రియలలో ప్రత్యేకత కలిగి ఉన్నాము. మేము డాక్యుమెంటేషన్, ప్రభుత్వ ఫైలింగ్‌లు మరియు ఫాలో-అప్స్‌ను సమర్థవంతంగా నిర్వహిస్తాము."
+      }
+    ]
   },
-
-  "faq-english": [
-    {
-      "question": "How long does CIBIL score repair take?",
-      "answer": "The duration of CIBIL score repair depends on the nature of your credit history and the corrections needed. Typically, it takes 30 to 60 days."
-    },
-    {
-      "question": "What documents are required for firm registration?",
-      "answer": "We usually require your PAN card, proof of address, identity documents, and business name preferences. A complete checklist will be shared during onboarding."
-    },
-    {
-      "question": "Can you help with both business and personal visas?",
-      "answer": "Yes, we provide consultation for multiple visa categories including business, student, employment, and travel. Our experts guide you through the documentation and application process."
-    },
-    {
-      "question": "How do I track my application status?",
-      "answer": "We provide a user-friendly tracking system and regular updates via email or WhatsApp. You can also use our website portal to check your status in real time."
-    },
-    {
-      "question": "Do you assist with MSME Cluster approvals?",
-      "answer": "Yes, we specialize in MSME cluster formation and approval processes, ensuring documentation, government filings, and follow-ups are handled seamlessly."
-    }
-  ],
-
-  "faq-telugu": [
-    {
-      "question": "సిబిల్ స్కోర్ రిపేర్‌కు ఎంత సమయం పడుతుంది?",
-      "answer": "సిబిల్ స్కోర్ రిపేర్‌కు అవసరమైన సమయం మీ క్రెడిట్ చరిత్ర మరియు దిద్దుబాట్లపై ఆధారపడి ఉంటుంది. సాధారణంగా, ఇది 30 నుండి 60 రోజులు పడుతుంది."
-    },
-    {
-      "question": "ఫిర్మ్ రిజిస్ట్రేషన్‌కు ఏ డాక్యుమెంట్లు అవసరం?",
-      "answer": "మేము సాధారణంగా మీ పాన్ కార్డు, చిరునామా ప్రూఫ్, గుర్తింపు డాక్యుమెంట్లు మరియు వ్యాపార పేరు ఎంపికలను కోరుతాము. పూర్తి డాక్యుమెంట్ జాబితా ఆన్బోర్డింగ్ సమయంలో అందించబడుతుంది."
-    },
-    {
-      "question": "మీరు బిజినెస్ మరియు పర్సనల్ వీసాల కోసం సహాయం చేస్తారా?",
-      "answer": "అవును, మేము బిజినెస్, స్టూడెంట్, ఉద్యోగ మరియు ప్రయాణ వీసాల కోసం సంపూర్ణ కన్సల్టేషన్ సేవలను అందిస్తున్నాము. మా నిపుణులు డాక్యుమెంటేషన్ మరియు అప్లికేషన్ ప్రక్రియలో మీకు సహాయపడతారు."
-    },
-    {
-      "question": "నా అప్లికేషన్ స్టేటస్‌ను నేను ఎలా ట్రాక్ చేయగలను?",
-      "answer": "మేము వినియోగదారులకు అనుకూలమైన ట్రాకింగ్ సిస్టమ్‌ను మరియు ఇమెయిల్ లేదా వాట్సాప్ ద్వారా రెగ్యులర్ అప్‌డేట్లను అందిస్తున్నాము. మీరు మా వెబ్‌సైట్ పోర్టల్ ద్వారా కూడా మీ స్టేటస్‌ను తెలుసుకోవచ్చు."
-    },
-    {
-      "question": "మీరు MSME క్లస్టర్ ఆమోదాల్లో సహాయం చేస్తారా?",
-      "answer": "అవును, మేము MSME క్లస్టర్ ఏర్పాటులో మరియు ఆమోద ప్రక్రియలలో ప్రత్యేకత కలిగి ఉన్నాము. మేము డాక్యుమెంటేషన్, ప్రభుత్వ ఫైలింగ్‌లు మరియు ఫాలో-అప్స్‌ను సమర్థవంతంగా నిర్వహిస్తాము."
-    }
-  ],
   "logotext": "మహా ప్రణాలిక",
-  
-    "cibilrepair-english": {
-      "title": "CIBIL Score Repair Registration",
-      "clientDetails": "Client Details",
-      "fullName": "Full Name",
-      "dob": "Date of Birth",
-      "mobile": "Mobile Number",
-      "email": "Email Address",
-      "address": "Current Address",
-      "identificationTitle": "Identification & Financial Info",
-      "pan": "PAN Card Number",
-      "aadhaar": "Aadhaar Number (Optional)",
-      "occupation": "Occupation",
-      "occupationOptions": ["Select", "Employed", "Self-employed", "Student"],
-      "income": "Monthly Income (₹)",
-      "cibilScore": "Current CIBIL Score (if known)",
-      "hasLoan": "Do you have existing loan or credit card?",
-      "hasLoanOptions": ["Select", "Yes", "No"],
-      "loanType": "Loan Type",
-      "bank": "Bank/Institutions",
-      "emi": "EMI Amount (₹)",
-      "issuesTitle": "Credit Issues Faced",
-      "creditIssues": [
-        "Loan Default / Delayed Payments",
-        "Credit Card Overdues",
-        "Written off Accounts",
-        "High Credit Utilization",
-        "Loan Rejections",
-        "Unknown CIBIL Drop",
-        "Disputed Accounts"
-      ],
-      "otherIssue": "Other (specify)",
-      "uploadTitle": "Upload Required Documents",
-      "uploadPan": "PAN Card",
-      "uploadAadhaar": "Aadhaar Card",
-      "uploadCibil": "Latest CIBIL Report (if available)",
-      "uploadBank": "Bank Statement (last 3 months)",
-      "uploadSalary": "Salary Slip (if applicable)",
-      "declaration": "I hereby authorize MaahaPranalika Pvt Ltd to review my credit details and suggest improvement steps.",
-      "date": "Date",
-      "submit": "Submit Application"
-    }
+  "cibilrepair-english": {
+    "title": "CIBIL Score Repair Registration",
+    "clientDetails": "Client Details",
+    "fullName": "Full Name",
+    "dob": "Date of Birth",
+    "mobile": "Mobile Number",
+    "email": "Email Address",
+    "address": "Current Address",
+    "identificationTitle": "Identification & Financial Info",
+    "pan": "PAN Card Number",
+    "aadhaar": "Aadhaar Number (Optional)",
+    "occupation": "Occupation",
+    "occupationOptions": [
+      "Select",
+      "Employed",
+      "Self-employed",
+      "Student"
+    ],
+    "income": "Monthly Income (₹)",
+    "cibilScore": "Current CIBIL Score (if known)",
+    "hasLoan": "Do you have existing loan or credit card?",
+    "hasLoanOptions": [
+      "Select",
+      "Yes",
+      "No"
+    ],
+    "loanType": "Loan Type",
+    "bank": "Bank/Institutions",
+    "emi": "EMI Amount (₹)",
+    "issuesTitle": "Credit Issues Faced",
+    "creditIssues": [
+      "Loan Default / Delayed Payments",
+      "Credit Card Overdues",
+      "Written off Accounts",
+      "High Credit Utilization",
+      "Loan Rejections",
+      "Unknown CIBIL Drop",
+      "Disputed Accounts"
+    ],
+    "otherIssue": "Other (specify)",
+    "uploadTitle": "Upload Required Documents",
+    "uploadPan": "PAN Card",
+    "uploadAadhaar": "Aadhaar Card",
+    "uploadCibil": "Latest CIBIL Report (if available)",
+    "uploadBank": "Bank Statement (last 3 months)",
+    "uploadSalary": "Salary Slip (if applicable)",
+    "declaration": "I hereby authorize MaahaPranalika Pvt Ltd to review my credit details and suggest improvement steps.",
+    "date": "Date",
+    "submit": "Submit Application"
   }
-  
+}

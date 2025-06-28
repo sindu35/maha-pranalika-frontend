@@ -122,7 +122,7 @@ export default function Signup() {
             value={form.name}
             onChange={handleChange}
           />
-          <span className="error">{errors.name || " "}</span>
+          {errors.name && (<span className="error">{errors.name || " "}</span>)}
         </div>
 
         <div className="form-group">
@@ -133,7 +133,7 @@ export default function Signup() {
             value={form.email}
             onChange={handleChange}
           />
-          <span className="error">{errors.email || " "}</span>
+          {errors.email && (<span className="error">{errors.email || " "}</span>)}
         </div>
 
         <div className="form-group">
@@ -144,7 +144,7 @@ export default function Signup() {
             value={form.password}
             onChange={handleChange}
           />
-          <span className="error">{errors.password || " "}</span>
+          {errors.password && (<span className="error">{errors.password || " "}</span>)}
         </div>
 
         <div className="form-group">
@@ -157,7 +157,7 @@ export default function Signup() {
             value={form.confirmPassword}
             onChange={handleChange}
           />
-          <span className="error">{errors.confirmPassword || " "}</span>
+          {errors.confirmPassword && (<span className="error">{errors.confirmPassword || " "}</span>)}
         </div>
 
         <button type="submit">{translations?.signup || "SIGN UP"}</button>
