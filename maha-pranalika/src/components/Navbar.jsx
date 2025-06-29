@@ -6,7 +6,8 @@ import { useLanguage } from "./LanguageContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const { translations } = useLanguage();
+  const { lang,translations } = useLanguage();
+  const navLabels = translations[`nav-${lang}`];   
   const [isLogin, setIsLogin] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const goTo = (path) => {
@@ -38,7 +39,7 @@ export default function Navbar() {
       <div>
         <img src={logo} alt="logo" style={{ width: "4%" }} />
         <span className="logo-text" onClick={() => goTo("/")}>
-          {translations.logotext}
+          {navLabels.logotext}
         </span>
       </div>
       <div className="nav-header">
@@ -51,11 +52,11 @@ export default function Navbar() {
       <div className={`nav ${isMobileMenuOpen ? "open" : ""}`}>
         <ul className="navbar-menu">
           <li>
-            <span onClick={() => goTo("/")}>{translations.home}</span>
+            <span onClick={() => goTo("/")}>{navLabels.home}</span>
           </li>
 
           <li className="dropdown">
-            <span>{translations.services} ▾</span>
+            <span>{navLabels.services} ▾</span>
             <ul className="dropdown-content">
               <li>
                 <span
@@ -70,12 +71,12 @@ export default function Navbar() {
                     }
                   }}
                 >
-                  {translations.servicesList?.firm}
+                  {navLabels.servicesList?.firm}
                 </span>
               </li>
               <li>
                 <span onClick={() => goTo("/services/cibil-repair")}>
-                  {translations.servicesList?.cibilRepair}
+                  {navLabels.servicesList?.cibilRepair}
                 </span>
               </li>
               <li>
@@ -89,12 +90,12 @@ export default function Navbar() {
                       goTo("/services/cibil-training");
                     }
                 }}>
-                  {translations.servicesList?.cibilTraining}
+                  {navLabels.servicesList?.cibilTraining}
                 </span>
               </li>
               <li>
                 <span onClick={() => goTo("/services/visa")}>
-                  {translations.servicesList?.visa}
+                  {navLabels.servicesList?.visa}
                 </span>
               </li>
             </ul>
@@ -102,12 +103,12 @@ export default function Navbar() {
 
           {!isLogin && (
             <li>
-              <span onClick={() => goTo("/signup")}>{translations.signup}</span>
+              <span onClick={() => goTo("/signup")}>{navLabels.signup}</span>
             </li>
           )}
           {!isLogin && (
             <li>
-              <span onClick={() => goTo("/login")}>{translations.login}</span>
+              <span onClick={() => goTo("/login")}>{navLabels.login}</span>
             </li>
           )}
 
@@ -118,15 +119,15 @@ export default function Navbar() {
           )}
           <li>
             <span onClick={() => goTo("/privacy-policy")}>
-              {translations.privacy}
+              {navLabels.privacy}
             </span>
           </li>
           <li>
-            <span onClick={() => goTo("/faq")}>{translations.faq}</span>
+            <span onClick={() => goTo("/faq")}>{navLabels.faq}</span>
           </li>
           <li>
             <span onClick={() => goTo("/terms&conditions")}>
-              {translations.terms}
+              {navLabels.terms}
             </span>
           </li>
         </ul>

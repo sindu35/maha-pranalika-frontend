@@ -1,0 +1,169 @@
+.terms-wrapper {
+    background: url('../assets/privacy.jpg'); 
+    background-size: cover;
+    background-position: center;
+    padding: 30px 15px;
+    min-height: 100vh;
+  }
+  
+  .terms-header {
+    text-align: center;
+    background-color: #003366;
+    color: white;
+    padding: 20px 10px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+  }
+  
+  .terms-content {
+    max-width: 850px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .term-section {
+    margin-bottom: 25px;
+  }
+  
+  .term-section h2 {
+    color: #0a2f5a;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .term-section p {
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  .term-section ul {
+    padding-left: 20px;
+  }
+  
+  .term-section ul li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  
+  .guidelines-section {
+   
+    padding-top: 30px;
+    margin-top: 40px;
+  }
+  
+  .guidelines-section h2 {
+    font-size: 24px;
+    color: #0a2f5a;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  .guidelines-section h3 {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #0a2f5a;
+    text-align: left;
+  }
+  
+  .guidelines-section .note {
+    background: #f8f9fa;
+    padding: 10px;
+    border-left: 4px solid #007bff;
+    margin-bottom: 15px;
+  }
+  /* Medium screens - tablets and small desktops */
+@media (max-width: 1024px) {
+    .terms-content {
+      padding: 25px;
+    }
+  
+    .guidelines-section h2 {
+      font-size: 22px;
+    }
+  
+    .guidelines-section h3 {
+      font-size: 16px;
+    }
+  
+    .term-section h2 {
+      font-size: 18px;
+    }
+  
+    .term-section p,
+    .term-section ul li {
+      font-size: 15px;
+    }
+  }
+  
+  /* Small screens - tablets and large phones */
+  @media (max-width: 768px) {
+    .terms-wrapper {
+      padding: 20px 10px;
+      background-position: top;
+    }
+  
+    .terms-header {
+      font-size: 1.2rem;
+      padding: 15px;
+    }
+  
+    .terms-content {
+      padding: 20px;
+    }
+  
+    .term-section h2,
+    .guidelines-section h2 {
+      font-size: 18px;
+    }
+  
+    .guidelines-section h3 {
+      font-size: 15px;
+    }
+  
+    .term-section p,
+    .term-section ul li {
+      font-size: 14px;
+    }
+  
+    .guidelines-section .note {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+  
+  /* Extra small screens - phones */
+  @media (max-width: 480px) {
+    .terms-content {
+      padding: 15px;
+      border-radius: 8px;
+    }
+  
+    .terms-header {
+      font-size: 1rem;
+      padding: 10px;
+    }
+  
+    .term-section h2,
+    .guidelines-section h2 {
+      font-size: 16px;
+    }
+  
+    .guidelines-section h3 {
+      font-size: 14px;
+    }
+  
+    .term-section p,
+    .term-section ul li {
+      font-size: 13px;
+    }
+  
+    .guidelines-section .note {
+      font-size: 13px;
+      padding: 6px;
+    }
+  }
+  

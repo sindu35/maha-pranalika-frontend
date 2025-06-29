@@ -10,11 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "axios": "^1.10.0",
     "i18next": "^25.2.1",
     "react": "^19.1.0",
+    "react-curved-arrow": "^0.1.0",
     "react-dom": "^19.1.0",
     "react-i18next": "^15.5.3",
+    "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.2"
   },
   "devDependencies": {

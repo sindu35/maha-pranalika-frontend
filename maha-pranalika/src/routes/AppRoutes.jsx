@@ -8,6 +8,8 @@ import Firmregistration from '../components/Firmregistration'
 import Cibiltraining from '../components/Cibiltraining'
 import CibilRepairForm from '../pages/CibilRepairForm'
 import VisaOverseas from '../pages/VisaOverseas'
+import Privacy from '../pages/Privacy'
+import TermsAndGuidelines from '../pages/TermsAndGuidelines'
 const AppRoutes = () => {
   return (
       <Routes>
@@ -21,6 +23,8 @@ const AppRoutes = () => {
         <Route path="/services/cibil-training" element={<Cibiltraining/>} />
 
         <Route path="/services/visa" element={<VisaOverseas/>} />
+        <Route path="/privacy-policy" element={<Privacy/>}/>
+        <Route path="/terms&conditions" element ={<TermsAndGuidelines/>}/>
         {/* Add more routes as needed */}
       </Routes>
   )
