@@ -6,11 +6,14 @@ import { useLanguage } from "./LanguageContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const { translations } = useLanguage();
-  const [isLogin, setIsLogin] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [showMobileDropdown, setShowMobileDropdown] = useState(false);
+  const { lang,translations } = useLanguage();
+  const navLabels = translations[`nav-${lang}`];   
+  const [isLogin, setIsLogin] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const goTo = (path) => {
+    navigate(path);
+  };
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -105,37 +108,43 @@ export default function Navbar() {
   // DESKTOP NAVBAR
   return (
     <div className="nav-bar">
-      <div className="nav-header-container">
-        <div className="logo-container" onClick={() => goTo("/")}>
-          <img src={logo} alt="logo" />
-          <span className="logo-text">{translations.logotext}</span>
-        </div>
+      <div>
+        <img src={logo} alt="logo" style={{ width: "4%" }} />
+        <span className="logo-text" onClick={() => goTo("/")}>
+          {navLabels.logotext}
+        </span>
+
       </div>
 
       <div className="nav">
         <ul className="navbar-menu">
           <li>
-            <span onClick={() => goTo("/")}>{translations.home}</span>
+            <span onClick={() => goTo("/")}>{navLabels.home}</span>
           </li>
 
           <li className="dropdown">
-            <span>{translations.services} ▾</span>
+            <span>{navLabels.services} ▾</span>
             <ul className="dropdown-content">
               <li>
-                <span onClick={() => {
-                  if (!isLogin) {
-                    alert("Please login to access this service.");
-                    goTo("/login");
-                  } else {
-                    goTo("/services/firm-registration");
-                  }
-                }}>
-                  {translations.servicesList?.firm}
+                <span
+                  onClick={() => {
+                    if (!isLogin) {
+                      alert(
+                        "Please login to access this service. Redirecting to login page."
+                      );
+                      goTo("/login");
+                    } else {
+                      goTo("/services/firm-registration");
+                    }
+                  }}
+                >
+                  {navLabels.servicesList?.firm}
+
                 </span>
               </li>
               <li>
                 <span onClick={() => goTo("/services/cibil-repair")}>
-                  {translations.servicesList?.cibilRepair}
+                  {navLabels.servicesList?.cibilRepair}
                 </span>
               </li>
               <li>
@@ -147,12 +156,12 @@ export default function Navbar() {
                     goTo("/services/cibil-training");
                   }
                 }}>
-                  {translations.servicesList?.cibilTraining}
+                  {navLabels.servicesList?.cibilTraining}
                 </span>
               </li>
               <li>
                 <span onClick={() => goTo("/services/visa")}>
-                  {translations.servicesList?.visa}
+                  {navLabels.servicesList?.visa}
                 </span>
               </li>
             </ul>
@@ -164,15 +173,34 @@ export default function Navbar() {
           <li><span onClick={() => goTo("/faq")}>{translations.faq}</span></li>
           <li><span onClick={() => goTo("/terms&conditions")}>{translations.terms}</span></li>
           {!isLogin && (
-            <>
-              <li><span onClick={() => goTo("/signup")}>{translations.signup}</span></li>
-              <li><span onClick={() => goTo("/login")}>{translations.login}</span></li>
-            </>
+            <li>
+              <span onClick={() => goTo("/signup")}>{navLabels.signup}</span>
+            </li>
+          )}
+          {!isLogin && (
+            <li>
+              <span onClick={() => goTo("/login")}>{navLabels.login}</span>
+            </li>
+
           )}
 
           {isLogin && (
             <li><span onClick={handleLogout}>Logout</span></li>
           )}
+          <li>
+            <span onClick={() => goTo("/privacy-policy")}>
+              {navLabels.privacy}
+            </span>
+          </li>
+          <li>
+            <span onClick={() => goTo("/faq")}>{navLabels.faq}</span>
+          </li>
+          <li>
+            <span onClick={() => goTo("/terms&conditions")}>
+              {navLabels.terms}
+            </span>
+          </li>
+
         </ul>
       </div>
     </div>
