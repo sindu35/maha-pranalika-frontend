@@ -17,6 +17,7 @@ export default function Firmregistration() {
           },
         })
         .then((response) => {
+          console.log("User verification response:", response.data);
           if (response.status === 200) {
             setUserId(response.data.user.id);
           } else {
@@ -27,6 +28,8 @@ export default function Firmregistration() {
         })
         .catch((error) => {
           alert("Error fetching user data. Please try again.");
+          localStorage.removeItem("token");
+          window.location.href = "/";
         });
     }
   }, []);

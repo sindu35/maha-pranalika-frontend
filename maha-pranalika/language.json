@@ -27,7 +27,7 @@
     "invalidName": "Name must be at least 2 characters",
     "logotext": "Maha Pranalika"
   },
-
+    
   "nav-telugu": {
     "home": "హోమ్",
     "services": "సేవలు",
@@ -104,47 +104,7 @@
   ],
   
   
-    "cibilrepair-english": {
-      "title": "CIBIL Score Repair Registration",
-      "clientDetails": "Client Details",
-      "fullName": "Full Name",
-      "dob": "Date of Birth",
-      "mobile": "Mobile Number",
-      "email": "Email Address",
-      "address": "Current Address",
-      "identificationTitle": "Identification & Financial Info",
-      "pan": "PAN Card Number",
-      "aadhaar": "Aadhaar Number (Optional)",
-      "occupation": "Occupation",
-      "occupationOptions": ["Select", "Employed", "Self-employed", "Student"],
-      "income": "Monthly Income (₹)",
-      "cibilScore": "Current CIBIL Score (if known)",
-      "hasLoan": "Do you have existing loan or credit card?",
-      "hasLoanOptions": ["Select", "Yes", "No"],
-      "loanType": "Loan Type",
-      "bank": "Bank/Institutions",
-      "emi": "EMI Amount (₹)",
-      "issuesTitle": "Credit Issues Faced",
-      "creditIssues": [
-        "Loan Default / Delayed Payments",
-        "Credit Card Overdues",
-        "Written off Accounts",
-        "High Credit Utilization",
-        "Loan Rejections",
-        "Unknown CIBIL Drop",
-        "Disputed Accounts"
-      ],
-      "otherIssue": "Other (specify)",
-      "uploadTitle": "Upload Required Documents",
-      "uploadPan": "PAN Card",
-      "uploadAadhaar": "Aadhaar Card",
-      "uploadCibil": "Latest CIBIL Report (if available)",
-      "uploadBank": "Bank Statement (last 3 months)",
-      "uploadSalary": "Salary Slip (if applicable)",
-      "declaration": "I hereby authorize MaahaPranalika Pvt Ltd to review my credit details and suggest improvement steps.",
-      "date": "Date",
-      "submit": "Submit Application"
-    },
+   
     "privacy-english": {
       "title": "Privacy Policy",
       "intro": "At Maha Pranalika Pvt Ltd, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you use our website and services.",
@@ -591,11 +551,6 @@
             "ఫీడ్‌బ్యాక్ & ముగింపు"
           ]
         }
-      
-      
-    }
-    
-    
     
   
-  
+}
