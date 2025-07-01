@@ -14,26 +14,98 @@ export default function Navbar() {
     navigate(path);
   };
 
+
   useEffect(() => {
-    console.log(isLogin);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
     const token = localStorage.getItem("token");
-    if (!token) {
-      setIsLogin(false);
-    } else {
-      setIsLogin(true);
-    }
+    setIsLogin(!!token);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+  const goTo = (path) => {
+    setShowMobileMenu(false);
+    setShowMobileDropdown(false);
+    navigate(path);
   };
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLogin(false);
     goTo("/");
   };
 
+  if (isMobile) {
+    // MOBILE NAVBAR
+    return (
+      <div className="mobile-nav">
+        <div className="nav-header-container">
+          <div className="logo-container" onClick={() => goTo("/")}>
+            <img src={logo} alt="logo" />
+            <span className="logo-text">{translations.logotext}</span>
+          </div>
+          <button className="menu-button" onClick={() => setShowMobileMenu(!showMobileMenu)}>
+            ☰
+          </button>
+        </div>
+
+        {showMobileMenu &&  (
+          <div className="mobile-menu">
+            <ul>
+              <li onClick={() => goTo("/")}>{translations.home}</li>
+
+              <li onClick={() => setShowMobileDropdown((prev) => !prev)}>
+                {translations.services} ▾
+              </li>
+              {showMobileDropdown && (
+                <ul className="mobile-dropdown">
+                  <li onClick={() => {
+                    if (!isLogin) {
+                      alert("Please login to access this service.");
+                      goTo("/login");
+                    } else {
+                      goTo("/services/firm-registration");
+                    }
+                  }}>
+                    {translations.servicesList?.firm}
+                  </li>
+                  <li onClick={() => goTo("/services/cibil-repair")}>
+                    {translations.servicesList?.cibilRepair}
+                  </li>
+                  <li onClick={() => {
+                    if (!isLogin) {
+                      alert("Please login to access this service.");
+                      goTo("/login");
+                    } else {
+                      goTo("/services/cibil-training");
+                    }
+                  }}>
+                    {translations.servicesList?.cibilTraining}
+                  </li>
+                  <li onClick={() => goTo("/services/visa")}>
+                    {translations.servicesList?.visa}
+                  </li>
+                </ul>
+              )}
+
+              
+
+              <li onClick={() => goTo("/privacy-policy")}>{translations.privacy}</li>
+              <li onClick={() => goTo("/faq")}>{translations.faq}</li>
+              <li onClick={() => goTo("/terms&conditions")}>{translations.terms}</li>
+              {!isLogin && <li onClick={() => goTo("/signup")}>{translations.signup}</li>}
+              {!isLogin && <li onClick={() => goTo("/login")}>{translations.login}</li>}
+              {isLogin && <li onClick={handleLogout}>Logout</li>}
+            </ul>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // DESKTOP NAVBAR
   return (
     <div className="nav-bar">
       <div>
@@ -41,15 +113,10 @@ export default function Navbar() {
         <span className="logo-text" onClick={() => goTo("/")}>
           {navLabels.logotext}
         </span>
+
       </div>
-      <div className="nav-header">
-        
-        <button className="menu-button" onClick={toggleMobileMenu}>
-          ☰
-        </button>
-      </div>
-    
-      <div className={`nav ${isMobileMenuOpen ? "open" : ""}`}>
+
+      <div className="nav">
         <ul className="navbar-menu">
           <li>
             <span onClick={() => goTo("/")}>{navLabels.home}</span>
@@ -72,6 +139,7 @@ export default function Navbar() {
                   }}
                 >
                   {navLabels.servicesList?.firm}
+
                 </span>
               </li>
               <li>
@@ -81,14 +149,12 @@ export default function Navbar() {
               </li>
               <li>
                 <span onClick={() => {
-                    if (!isLogin) {
-                      alert(
-                        "Please login to access this service. Redirecting to login page."
-                      );
-                      goTo("/login");
-                    } else {
-                      goTo("/services/cibil-training");
-                    }
+                  if (!isLogin) {
+                    alert("Please login to access this service.");
+                    goTo("/login");
+                  } else {
+                    goTo("/services/cibil-training");
+                  }
                 }}>
                   {navLabels.servicesList?.cibilTraining}
                 </span>
@@ -101,6 +167,11 @@ export default function Navbar() {
             </ul>
           </li>
 
+          
+
+          <li><span onClick={() => goTo("/privacy-policy")}>{translations.privacy}</span></li>
+          <li><span onClick={() => goTo("/faq")}>{translations.faq}</span></li>
+          <li><span onClick={() => goTo("/terms&conditions")}>{translations.terms}</span></li>
           {!isLogin && (
             <li>
               <span onClick={() => goTo("/signup")}>{navLabels.signup}</span>
@@ -110,12 +181,11 @@ export default function Navbar() {
             <li>
               <span onClick={() => goTo("/login")}>{navLabels.login}</span>
             </li>
+
           )}
 
           {isLogin && (
-            <li>
-              <span onClick={handleLogout}>Logout</span>
-            </li>
+            <li><span onClick={handleLogout}>Logout</span></li>
           )}
           <li>
             <span onClick={() => goTo("/privacy-policy")}>
@@ -130,10 +200,9 @@ export default function Navbar() {
               {navLabels.terms}
             </span>
           </li>
+
         </ul>
       </div>
-      </div>
-   
-    
+    </div>
   );
 }

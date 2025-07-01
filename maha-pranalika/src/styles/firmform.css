@@ -5,10 +5,11 @@
   padding: 30px;
   border-radius: 8px;
   font-family: Arial, sans-serif;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h2, h3 {
+h2,
+h3 {
   text-align: center;
   color: #333;
 }
@@ -46,13 +47,15 @@ input[type="file"] {
   padding: 5px;
 }
 
-
-
 .error {
-  color: red;
-  font-size: 13px;
-  margin-top: 5px;
-  display: block;
+  color: #c62828;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  background-color: #ffeaea;
+  padding: 0.4rem 0.6rem;
+  border-left: 4px solid #c62828;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
 }
 
 button[type="submit"] {

@@ -10,6 +10,7 @@ import CibilRepairForm from '../pages/CibilRepairForm'
 import VisaOverseas from '../pages/VisaOverseas'
 import Privacy from '../pages/Privacy'
 import TermsAndGuidelines from '../pages/TermsAndGuidelines'
+import Admin from '../components/Admin'
 const AppRoutes = () => {
   return (
       <Routes>
@@ -26,6 +27,7 @@ const AppRoutes = () => {
         <Route path="/privacy-policy" element={<Privacy/>}/>
         <Route path="/terms&conditions" element ={<TermsAndGuidelines/>}/>
         {/* Add more routes as needed */}
+        <Route path="/admin" element={<Admin />} />
       </Routes>
   )
 }

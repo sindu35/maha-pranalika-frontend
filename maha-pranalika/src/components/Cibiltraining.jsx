@@ -213,10 +213,11 @@ export default function Cibiltraining() {
             }
             value={cibilData[field]}
             onChange={(e) => handleChange(field, e.target.value)}
-            onBlur={(e) => validateField(field, e.target.value)}
             disabled={isSubmitting}
           />
-          <span className="error-space">{errors[field]}</span>
+          {errors.field && (
+            <span className="error-space">{errors[field]}</span>
+          )}
         </label>
       ))}
 
@@ -225,10 +226,9 @@ export default function Cibiltraining() {
         <textarea
           value={cibilData.remarks}
           onChange={(e) => handleChange("remarks", e.target.value)}
-          onBlur={(e) => validateField("remarks", e.target.value)}
           disabled={isSubmitting}
         />
-        <span className="error-space">{errors.remarks}</span>
+        {errors.remarks && (<span className="error-space">{errors.remarks}</span>)}
       </label>
 
       <button 
