@@ -12,10 +12,12 @@ export default function Navbar() {
   const [isLogin, setIsLogin] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+
   const [ showMobileMenu, setShowMobileMenu] =useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   
   const [showMobileDropdown, setShowMobileDropdown] = useState(false);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -95,9 +97,6 @@ export default function Navbar() {
                   </li>
                 </ul>
               )}
-
-              
-
               <li onClick={() => goTo("/privacy-policy")}>{navLabels.privacy}</li>
               <li onClick={() => goTo("/faq")}>{navLabels.faq}</li>
               <li onClick={() => goTo("/terms&conditions")}>{navLabels.terms}</li>
@@ -121,7 +120,6 @@ export default function Navbar() {
         <span className="logo-text" onClick={() => goTo("/")} style={{marginTop:"10px"}}>
           {navLabels.logotext}
         </span>
-        </div>
       <div className="nav">
         <ul className="navbar-menu">
           <li>
@@ -145,9 +143,9 @@ export default function Navbar() {
                   }}
                 >
                   {navLabels.servicesList?.firm}
-        </span>
-               
+                  </span>
               </li>
+
               <li>
                 <span onClick={() => goTo("/services/cibil-repair")}>
                   {navLabels.servicesList?.cibilRepair}
@@ -189,13 +187,8 @@ export default function Navbar() {
             <li>
               <span onClick={() => goTo("/login")}>{navLabels.login}</span>
             </li>
-
-
           )}
 
-          {isLogin && (
-            <li><span onClick={handleLogout}>{navLabels.logout}</span></li>
-          )}
           <li>
             <span onClick={() => goTo("/privacy-policy")}>
               {navLabels.privacy}
@@ -212,6 +205,7 @@ export default function Navbar() {
 
         </ul>
       </div>
+    </div>
     </div>
     </div>
   );
