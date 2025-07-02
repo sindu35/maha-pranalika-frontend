@@ -70,7 +70,7 @@ export default function Firmregistration() {
       name: "",
       date: "",
       declared: false,
-    }
+    },
   });
 
   const [errors, setErrors] = useState({});
@@ -86,25 +86,24 @@ export default function Firmregistration() {
   };
 
   const handleFileChange = (field, file) => {
-  if (field === "signature") {
-    setFormData((prev) => ({
-      ...prev,
-      declaration: {
-        ...prev.declaration,
-        signature: file,
-      },
-    }));
-  } else {
-    setFormData((prev) => ({
-      ...prev,
-      documents: {
-        ...prev.documents,
-        [field]: file,
-      },
-    }));
-  }
-};
-
+    if (field === "signature") {
+      setFormData((prev) => ({
+        ...prev,
+        declaration: {
+          ...prev.declaration,
+          signature: file,
+        },
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        documents: {
+          ...prev.documents,
+          [field]: file,
+        },
+      }));
+    }
+  };
 
   const validate = () => {
     const newErrors = {};
@@ -276,43 +275,137 @@ export default function Firmregistration() {
     return Object.keys(newErrors).length === 0;
   };
 
- const handleSubmit = (e) => {
-  e.preventDefault();
-  if (!validate()) return;
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      if (window.Razorpay) {
+        resolve(true);
+        return;
+      }
 
-  const fd = new FormData();
-  fd.append("basic_details", JSON.stringify(formData.basic_details));
-  fd.append("firm_details", JSON.stringify(formData.firm_details));
-  fd.append("partner_details", JSON.stringify(formData.partner_details));
-  fd.append("declaration.name", formData.declaration.name);
-  fd.append("declaration.date", formData.declaration.date);
-  fd.append("declaration.declared", formData.declaration.declared);
-  fd.append("userId", userId);
-
-  // Append documents
-  Object.entries(formData.documents).forEach(([key, file]) => {
-    if (file) fd.append(key, file);
-  });
-
-  // Append signature separately (it's in declaration)
-  if (formData.declaration.signature) {
-    fd.append("signature", formData.declaration.signature);
-  }
-
-  axios
-    .post("http://localhost:5000/api/firm/register-firm", fd, {
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-    .then((response) => {
-      console.log("Firm registration response:", response.data);
-      alert("Firm registered successfully!");
-    })
-    .catch((error) => {
-      console.error("Error registering firm:", error);
-      alert("Error registering firm. Please try again.");
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
     });
-};
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    const fd = new FormData();
+    fd.append("basic_details", JSON.stringify(formData.basic_details));
+    fd.append("firm_details", JSON.stringify(formData.firm_details));
+    fd.append("partner_details", JSON.stringify(formData.partner_details));
+    fd.append("declaration.name", formData.declaration.name);
+    fd.append("declaration.date", formData.declaration.date);
+    fd.append("declaration.declared", formData.declaration.declared);
+    fd.append("userId", userId);
+
+    // Append documents
+    Object.entries(formData.documents).forEach(([key, file]) => {
+      if (file) fd.append(key, file);
+    });
+
+    // Append signature separately (it's in declaration)
+    if (formData.declaration.signature) {
+      fd.append("signature", formData.declaration.signature);
+    }
+
+    try {
+      const isScriptLoaded = await loadRazorpayScript();
+      if (!isScriptLoaded) {
+        alert("Razorpay SDK failed to load. Please try again.");
+        setIsSubmitting(false);
+        return;
+      }
+      axios
+        .post("http://localhost:5000/api/firm/register-firm", fd, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((response) => {
+          const data = response.data;
+
+          const options = {
+            key: data.key, // Replace with your Razorpay key ID
+            amount: 499900,
+            currency: "INR",
+            name: "CIBIL Training",
+            description: "Training Fee Payment",
+            order_id: data.orderId,
+            handler: async function (response) {
+              try {
+                const verify = await axios.post(
+                  "http://localhost:5000/api/firm/verify-payment",
+                  {
+                    orderId: data.orderId,
+                    paymentId: response.razorpay_payment_id,
+                    signature: response.razorpay_signature,
+                  }
+                );
+
+                if (verify.data.success) {
+                  alert(
+                    " Payment successful! You are registered for CIBIL training."
+                  );
+                } else {
+                  alert(
+                    " Payment verification failed. Please contact support."
+                  );
+                }
+              } catch (verifyError) {
+                console.error("Verification error:", verifyError);
+                alert(
+                  "Server error during payment verification. Please contact support."
+                );
+              } finally {
+                setIsSubmitting(false);
+              }
+            },
+            modal: {
+              ondismiss: function () {
+                console.log("Payment modal closed by user");
+                setIsSubmitting(false);
+              },
+            },
+            prefill: {
+              name: formData.basic_details.fullName,
+              email: formData.basic_details.email,
+              contact: formData.basic_details.mobile,
+            },
+            theme: {
+              color: "#3399cc",
+            },
+          };
+
+          const paymentObject = new window.Razorpay(options);
+          paymentObject.open();
+
+          paymentObject.on("payment.failed", function (response) {
+            console.error("Payment failed:", response.error);
+            alert(`Payment failed: ${response.error.description}`);
+            setIsSubmitting(false);
+          });
+        })
+        .catch((error) => {
+          console.error("Error registering firm:", error);
+          alert("Error registering firm. Please try again.");
+        });
+    } catch (error) {
+      console.error("Error during registration:", error);
+      if (error.response) {
+        const errorMessage =
+          error.response.data?.message || "Registration failed";
+        alert(`Error: ${errorMessage}`);
+      } else if (error.request) {
+        alert("Network error. Please check your connection and try again.");
+      } else {
+        alert("Registration failed. Please try again later.");
+      }
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="firm-registration">

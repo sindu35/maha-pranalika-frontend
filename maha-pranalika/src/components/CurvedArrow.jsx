@@ -24,7 +24,7 @@ export default function CurvedArrow({ direction = 'up' }) {
 
       <path
         d={pathD}
-        stroke="blue"         // ✅ Make the curve blue
+        stroke="blue"  
         strokeWidth="2"
         fill="none"
         markerEnd="url(#arrowhead)"
