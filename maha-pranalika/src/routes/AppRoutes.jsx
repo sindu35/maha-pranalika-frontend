@@ -8,9 +8,13 @@ import Firmregistration from '../components/Firmregistration'
 import Cibiltraining from '../components/Cibiltraining'
 import CibilRepairForm from '../pages/CibilRepairForm'
 import VisaOverseas from '../pages/VisaOverseas'
+
 import Privacy from '../pages/Privacy'
 import TermsAndGuidelines from '../pages/TermsAndGuidelines'
+import MSME from '../pages/MSME'
 import Admin from '../components/Admin'
+
+
 const AppRoutes = () => {
   return (
       <Routes>
@@ -22,10 +26,11 @@ const AppRoutes = () => {
         <Route path="/services/firm-registration" element={<Firmregistration/>} />
         <Route path="/services/cibil-repair" element={<CibilRepairForm/>} />
         <Route path="/services/cibil-training" element={<Cibiltraining/>} />
-
+        <Route path="services/msme" element ={<MSME/>}/>
         <Route path="/services/visa" element={<VisaOverseas/>} />
         <Route path="/privacy-policy" element={<Privacy/>}/>
         <Route path="/terms&conditions" element ={<TermsAndGuidelines/>}/>
+        <Route path="/msme" element ={<MSME/>}/>
         {/* Add more routes as needed */}
         <Route path="/admin" element={<Admin />} />
       </Routes>

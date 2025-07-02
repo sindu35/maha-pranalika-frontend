@@ -6,13 +6,17 @@ import { useLanguage } from "./LanguageContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
+
   const { lang,translations } = useLanguage();
   const navLabels = translations[`nav-${lang}`];   
   const [isLogin, setIsLogin] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const goTo = (path) => {
-    navigate(path);
-  };
+
+
+  const [ showMobileMenu, setShowMobileMenu] =useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  
+  const [showMobileDropdown, setShowMobileDropdown] = useState(false);
 
 
   useEffect(() => {
@@ -44,7 +48,7 @@ export default function Navbar() {
         <div className="nav-header-container">
           <div className="logo-container" onClick={() => goTo("/")}>
             <img src={logo} alt="logo" />
-            <span className="logo-text">{translations.logotext}</span>
+            <span className="logo-text">{navLabels.logotext}</span>
           </div>
           <button className="menu-button" onClick={() => setShowMobileMenu(!showMobileMenu)}>
             ☰
@@ -54,10 +58,10 @@ export default function Navbar() {
         {showMobileMenu &&  (
           <div className="mobile-menu">
             <ul>
-              <li onClick={() => goTo("/")}>{translations.home}</li>
+              <li onClick={() => goTo("/")}>{navLabels.home}</li>
 
               <li onClick={() => setShowMobileDropdown((prev) => !prev)}>
-                {translations.services} ▾
+                {navLabels.services} ▾
               </li>
               {showMobileDropdown && (
                 <ul className="mobile-dropdown">
@@ -69,10 +73,10 @@ export default function Navbar() {
                       goTo("/services/firm-registration");
                     }
                   }}>
-                    {translations.servicesList?.firm}
+                    {navLabels.servicesList?.firm}
                   </li>
                   <li onClick={() => goTo("/services/cibil-repair")}>
-                    {translations.servicesList?.cibilRepair}
+                    {navLabels.servicesList?.cibilRepair}
                   </li>
                   <li onClick={() => {
                     if (!isLogin) {
@@ -82,22 +86,24 @@ export default function Navbar() {
                       goTo("/services/cibil-training");
                     }
                   }}>
-                    {translations.servicesList?.cibilTraining}
+                    {navLabels.servicesList?.cibilTraining}
                   </li>
                   <li onClick={() => goTo("/services/visa")}>
-                    {translations.servicesList?.visa}
+                    {navLabels.servicesList?.visa}
+                  </li>
+                  
+                  <li onClick={() => goTo("/services/msme")}>
+                   MSME
                   </li>
                 </ul>
               )}
-
-              
-
-              <li onClick={() => goTo("/privacy-policy")}>{translations.privacy}</li>
-              <li onClick={() => goTo("/faq")}>{translations.faq}</li>
-              <li onClick={() => goTo("/terms&conditions")}>{translations.terms}</li>
-              {!isLogin && <li onClick={() => goTo("/signup")}>{translations.signup}</li>}
-              {!isLogin && <li onClick={() => goTo("/login")}>{translations.login}</li>}
+              <li onClick={() => goTo("/privacy-policy")}>{navLabels.privacy}</li>
+              <li onClick={() => goTo("/faq")}>{navLabels.faq}</li>
+              <li onClick={() => goTo("/terms&conditions")}>{navLabels.terms}</li>
+              {!isLogin && <li onClick={() => goTo("/signup")}>{navLabels.signup}</li>}
+              {!isLogin && <li onClick={() => goTo("/login")}>{navLabels.login}</li>}
               {isLogin && <li onClick={handleLogout}>Logout</li>}
+
             </ul>
           </div>
         )}
@@ -109,13 +115,11 @@ export default function Navbar() {
   return (
     <div className="nav-bar">
       <div>
+      <div style={{ display: "flex"}}>
         <img src={logo} alt="logo" style={{ width: "4%" }} />
-        <span className="logo-text" onClick={() => goTo("/")}>
+        <span className="logo-text" onClick={() => goTo("/")} style={{marginTop:"10px"}}>
           {navLabels.logotext}
         </span>
-
-      </div>
-
       <div className="nav">
         <ul className="navbar-menu">
           <li>
@@ -139,9 +143,9 @@ export default function Navbar() {
                   }}
                 >
                   {navLabels.servicesList?.firm}
-
-                </span>
+                  </span>
               </li>
+
               <li>
                 <span onClick={() => goTo("/services/cibil-repair")}>
                   {navLabels.servicesList?.cibilRepair}
@@ -164,15 +168,17 @@ export default function Navbar() {
                   {navLabels.servicesList?.visa}
                 </span>
               </li>
+              <li>
+              <span onClick={() => goTo("/services/msme")}>
+                   MSME
+                   </span>
+                  </li>
             </ul>
           </li>
 
-          
-
-          <li><span onClick={() => goTo("/privacy-policy")}>{translations.privacy}</span></li>
-          <li><span onClick={() => goTo("/faq")}>{translations.faq}</span></li>
-          <li><span onClick={() => goTo("/terms&conditions")}>{translations.terms}</span></li>
+        
           {!isLogin && (
+
             <li>
               <span onClick={() => goTo("/signup")}>{navLabels.signup}</span>
             </li>
@@ -181,12 +187,8 @@ export default function Navbar() {
             <li>
               <span onClick={() => goTo("/login")}>{navLabels.login}</span>
             </li>
-
           )}
 
-          {isLogin && (
-            <li><span onClick={handleLogout}>Logout</span></li>
-          )}
           <li>
             <span onClick={() => goTo("/privacy-policy")}>
               {navLabels.privacy}
@@ -203,6 +205,8 @@ export default function Navbar() {
 
         </ul>
       </div>
+    </div>
+    </div>
     </div>
   );
 }
