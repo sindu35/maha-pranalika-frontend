@@ -1,0 +1,121 @@
+.msme-form {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #fff;
+  }
+  .msme-form h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: black;
+    font-weight: 400;
+  }
+  
+  .msme-form section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .msme-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #005a9c;
+   
+  }
+  
+  .msme-form label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: black;
+  }
+  
+  .msme-form input[type="text"],
+  .msme-form input[type="email"],
+  .msme-form input[type="date"],
+  .msme-form textarea,
+  .msme-form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+  }
+  
+  .msme-form textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  .input1{
+    width: 50%;
+  }
+  
+  .msme-form button[type="submit"],
+  .msme-form button[type="button"] {
+    background-color: #005a9c;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .msme-form button[type="submit"]:hover,
+  .msme-form button[type="button"]:hover {
+    background-color: #004080;
+  }
+  
+  .msme-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .msme-form .checkbox-group,
+  .msme-form .radio-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .msme-form .checkbox-group label,
+  .msme-form .radio-group label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .error-message {
+    color: #c62828;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    background-color: #ffeaea;
+    padding: 0.4rem 0.6rem;
+    border-left: 4px solid #c62828;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+  
+  @media (max-width: 768px) {
+    .msme-form {
+      padding: 1rem;
+    }
+    .msme-form h1 {
+      font-size: 1.5rem;
+    }
+    .msme-form h2 {
+      font-size: 1.2rem;
+    }
+  }
+  

@@ -1,40 +1,68 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
 import { LanguageProvider } from "../components/LanguageContext";
 import LanguageSwitcher from "../components/LanguageSwitcher";
-
 import { useLocation } from "react-router-dom";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faInstagram,
+  faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Layout = ({ children }) => {
   const location = useLocation();
   const isRootPath =
     location.pathname === "/signup" || location.pathname === "/login";
-  // if (isRootPath) {
-  //   return <main>{children}</main>;
-  // }
 
   return (
-    <>
-      <LanguageProvider>
-        {/* 🔵 Top Blue Bar with only LanguageSwitcher */}
-        <div
-          style={{
-            backgroundColor: "#2d2a8e",
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
-            fontFamily: "Arial, sans-serif",
-          }}
-        >
-          <LanguageSwitcher />
+    <LanguageProvider>
+      <div
+        style={{
+          backgroundColor: "#2d2a8e",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "8px 20px",
+          fontFamily: "Arial, sans-serif",
+          color: "#fff",
+        }}
+      >
+        <div className="social-icons" style={{ display: "flex", gap: "15px" }}>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "white", fontSize: "18px" }}
+          >
+            <FontAwesomeIcon icon={faFacebookF} />
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "white", fontSize: "18px" }}
+          >
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+          <a
+            href="https://whatsapp.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "white", fontSize: "18px" }}
+          >
+            <FontAwesomeIcon icon={faWhatsapp} />
+          </a>
         </div>
 
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </LanguageProvider>
-    </>
+        <LanguageSwitcher />
+      </div>
+
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
+    </LanguageProvider>
   );
 };
 
