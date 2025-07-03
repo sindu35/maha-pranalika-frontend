@@ -7,17 +7,15 @@ import { useLanguage } from "./LanguageContext";
 export default function Navbar() {
   const navigate = useNavigate();
 
-  const { lang,translations } = useLanguage();
-  const navLabels = translations[`nav-${lang}`];   
+  const { lang: currentLang, translations } = useLanguage();
+  const navLabels = translations[`nav-${currentLang}`];
   const [isLogin, setIsLogin] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-
-  const [ showMobileMenu, setShowMobileMenu] =useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  
-  const [showMobileDropdown, setShowMobileDropdown] = useState(false);
 
+  const [showMobileDropdown, setShowMobileDropdown] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -50,12 +48,15 @@ export default function Navbar() {
             <img src={logo} alt="logo" />
             <span className="logo-text">{navLabels.logotext}</span>
           </div>
-          <button className="menu-button" onClick={() => setShowMobileMenu(!showMobileMenu)}>
+          <button
+            className="menu-button"
+            onClick={() => setShowMobileMenu(!showMobileMenu)}
+          >
             ☰
           </button>
         </div>
 
-        {showMobileMenu &&  (
+        {showMobileMenu && (
           <div className="mobile-menu">
             <ul>
               <li onClick={() => goTo("/")}>{navLabels.home}</li>
@@ -65,45 +66,72 @@ export default function Navbar() {
               </li>
               {showMobileDropdown && (
                 <ul className="mobile-dropdown">
-                  <li onClick={() => {
-                    if (!isLogin) {
-                      alert("Please login to access this service.");
-                      goTo("/login");
-                    } else {
-                      goTo("/services/firm-registration");
-                    }
-                  }}>
+                  <li
+                    onClick={() => {
+                      if (!isLogin) {
+                        alert("Please login to access this service.");
+                        goTo("/login");
+                      } else {
+                        goTo("/services/firm-registration");
+                      }
+                    }}
+                  >
                     {navLabels.servicesList?.firm}
                   </li>
-                  <li onClick={() => goTo("/services/cibil-repair")}>
+                  <li
+                    onClick={() => {
+                      if (!isLogin) {
+                        alert("Please login to access this service.");
+                        goTo("/login");
+                      } else {
+                        goTo("/services/cibil-repair");
+                      }
+                    }}
+                  >
                     {navLabels.servicesList?.cibilRepair}
                   </li>
-                  <li onClick={() => {
-                    if (!isLogin) {
-                      alert("Please login to access this service.");
-                      goTo("/login");
-                    } else {
-                      goTo("/services/cibil-training");
-                    }
-                  }}>
+                  <li
+                    onClick={() => {
+                      if (!isLogin) {
+                        alert("Please login to access this service.");
+                        goTo("/login");
+                      } else {
+                        goTo("/services/cibil-training");
+                      }
+                    }}
+                  >
                     {navLabels.servicesList?.cibilTraining}
                   </li>
-                  <li onClick={() => goTo("/services/visa")}>
+                  <li
+                    onClick={() => {
+                      if (!isLogin) {
+                        alert("Please login to access this service.");
+                        goTo("/login");
+                      } else {
+                        goTo("/services/visa");
+                      }
+                    }}
+                  >
                     {navLabels.servicesList?.visa}
                   </li>
-                  
-                  <li onClick={() => goTo("/services/msme")}>
-                   MSME
-                  </li>
+
+                  <li onClick={() => goTo("/services/msme")}>MSME</li>
                 </ul>
               )}
-              <li onClick={() => goTo("/privacy-policy")}>{navLabels.privacy}</li>
+              <li onClick={() => goTo("/privacy-policy")}>
+                {navLabels.privacy}
+              </li>
               <li onClick={() => goTo("/faq")}>{navLabels.faq}</li>
-              <li onClick={() => goTo("/terms&conditions")}>{navLabels.terms}</li>
-              {!isLogin && <li onClick={() => goTo("/signup")}>{navLabels.signup}</li>}
-              {!isLogin && <li onClick={() => goTo("/login")}>{navLabels.login}</li>}
+              <li onClick={() => goTo("/terms&conditions")}>
+                {navLabels.terms}
+              </li>
+              {!isLogin && (
+                <li onClick={() => goTo("/signup")}>{navLabels.signup}</li>
+              )}
+              {!isLogin && (
+                <li onClick={() => goTo("/login")}>{navLabels.login}</li>
+              )}
               {isLogin && <li onClick={handleLogout}>Logout</li>}
-
             </ul>
           </div>
         )}
@@ -113,100 +141,137 @@ export default function Navbar() {
 
   // DESKTOP NAVBAR
   return (
-    <div className="nav-bar">
-      <div>
-      <div style={{ display: "flex"}}>
-        <img src={logo} alt="logo" style={{ width: "4%" }} />
-        <span className="logo-text" onClick={() => goTo("/")} style={{marginTop:"10px"}}>
-          {navLabels.logotext}
-        </span>
-      <div className="nav">
-        <ul className="navbar-menu">
-          <li>
-            <span onClick={() => goTo("/")}>{navLabels.home}</span>
-          </li>
-
-          <li className="dropdown">
-            <span>{navLabels.services} ▾</span>
-            <ul className="dropdown-content">
+    <div className="nav">
+      <div className="nav-header">
+        <div className="logo-container">
+          <img src={logo} alt="logo" />
+          <span className="logo-text" onClick={() => goTo("/")}>
+            {navLabels.logotext}
+          </span>
+          <div></div>
+          <div className="nav-bar">
+            <ul className="navbar-menu">
               <li>
-                <span
-                  onClick={() => {
-                    if (!isLogin) {
-                      alert(
-                        "Please login to access this service. Redirecting to login page."
-                      );
-                      goTo("/login");
-                    } else {
-                      goTo("/services/firm-registration");
-                    }
-                  }}
-                >
-                  {navLabels.servicesList?.firm}
-                  </span>
+                <span onClick={() => goTo("/")}>{navLabels.home}</span>
               </li>
 
-              <li>
-                <span onClick={() => goTo("/services/cibil-repair")}>
-                  {navLabels.servicesList?.cibilRepair}
-                </span>
-              </li>
-              <li>
-                <span onClick={() => {
-                  if (!isLogin) {
-                    alert("Please login to access this service.");
-                    goTo("/login");
-                  } else {
-                    goTo("/services/cibil-training");
-                  }
-                }}>
-                  {navLabels.servicesList?.cibilTraining}
-                </span>
-              </li>
-              <li>
-                <span onClick={() => goTo("/services/visa")}>
-                  {navLabels.servicesList?.visa}
-                </span>
-              </li>
-              <li>
-              <span onClick={() => goTo("/services/msme")}>
-                   MSME
-                   </span>
+              <li className="dropdown">
+                <span>{navLabels.services} ▾</span>
+                <ul className="dropdown-content">
+                  <li>
+                    <span
+                      onClick={() => {
+                        if (!isLogin) {
+                          alert(
+                            "Please login to access this service. Redirecting to login page."
+                          );
+                          goTo("/login");
+                        } else {
+                          goTo("/services/firm-registration");
+                        }
+                      }}
+                    >
+                      {navLabels.servicesList?.firm}
+                    </span>
                   </li>
+
+                  <li>
+                    <span
+                      onClick={() => {
+                        if (!isLogin) {
+                          alert("Please login to access this service.");
+                          goTo("/login");
+                        } else {
+                          goTo("/services/cibil-repair");
+                        }
+                      }}
+                    >
+                      {navLabels.servicesList?.cibilRepair}
+                    </span>
+                  </li>
+                  <li>
+                    <span
+                      onClick={() => {
+                        if (!isLogin) {
+                          alert("Please login to access this service.");
+                          goTo("/login");
+                        } else {
+                          goTo("/services/cibil-training");
+                        }
+                      }}
+                    >
+                      {navLabels.servicesList?.cibilTraining}
+                    </span>
+                  </li>
+                  <li>
+                    <span
+                      onClick={() => {
+                        if (!isLogin) {
+                          alert("Please login to access this service.");
+                          goTo("/login");
+                        } else {
+                          goTo("/services/visa");
+                        }
+                      }}
+                    >
+                      {navLabels.servicesList?.visa}
+                    </span>
+                  </li>
+                  <li>
+                    <span
+                      onClick={() => {
+                        if (!isLogin) {
+                          alert("Please login to access this service.");
+                          goTo("/login");
+                        } else {
+                          goTo("/services/msme");
+                        }
+                      }}
+                    >
+                      MSME
+                    </span>
+                  </li>
+                </ul>
+              </li>
+
+              
+
+              <li>
+                <span onClick={() => goTo("/privacy-policy")}>
+                  {navLabels.privacy}
+                </span>
+              </li>
+              <li>
+                <span onClick={() => goTo("/faq")}>{navLabels.faq}</span>
+              </li>
+              <li>
+                <span onClick={() => goTo("/terms&conditions")}>
+                  {navLabels.terms}
+                </span>
+              </li>
+              {!isLogin && (
+                <li>
+                  <span onClick={() => goTo("/signup")}>
+                    {navLabels.signup}
+                  </span>
+                </li>
+              )}
+              {!isLogin && (
+                <li>
+                  <span onClick={() => goTo("/login")}>{navLabels.login}</span>
+                </li>
+              )}
+
+              {/* ADD LOGOUT OPTION FOR DESKTOP */}
+              {isLogin && (
+                <li>
+                  <span onClick={handleLogout}>Logout</span>
+                </li>
+              )}
             </ul>
-          </li>
-
-        
-          {!isLogin && (
-
-            <li>
-              <span onClick={() => goTo("/signup")}>{navLabels.signup}</span>
-            </li>
-          )}
-          {!isLogin && (
-            <li>
-              <span onClick={() => goTo("/login")}>{navLabels.login}</span>
-            </li>
-          )}
-
-          <li>
-            <span onClick={() => goTo("/privacy-policy")}>
-              {navLabels.privacy}
-            </span>
-          </li>
-          <li>
-            <span onClick={() => goTo("/faq")}>{navLabels.faq}</span>
-          </li>
-          <li>
-            <span onClick={() => goTo("/terms&conditions")}>
-              {navLabels.terms}
-            </span>
-          </li>
-
-        </ul>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
     </div>
   );
 }

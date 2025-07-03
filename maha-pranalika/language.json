@@ -27,7 +27,6 @@
     "invalidName": "Name must be at least 2 characters",
     "logotext": "Maha Pranalika"
   },
-    
   "nav-telugu": {
     "home": "హోమ్",
     "services": "సేవలు",
@@ -56,7 +55,6 @@
     "invalidName": "పేరు కనీసం 2 అక్షరాలది కావాలి",
     "logotext": "మహా ప్రణాలిక"
   },
-
   "faq-english": [
     {
       "question": "How long does CIBIL score repair take?",
@@ -79,7 +77,6 @@
       "answer": "Yes, we specialize in MSME cluster formation and approval processes, ensuring documentation, government filings, and follow-ups are handled seamlessly."
     }
   ],
-
   "faq-telugu": [
     {
       "question": "సిబిల్ స్కోర్ రిపేర్‌కు ఎంత సమయం పడుతుంది?",
@@ -102,455 +99,458 @@
       "answer": "అవును, మేము MSME క్లస్టర్ ఏర్పాటులో మరియు ఆమోద ప్రక్రియలలో ప్రత్యేకత కలిగి ఉన్నాము. మేము డాక్యుమెంటేషన్, ప్రభుత్వ ఫైలింగ్‌లు మరియు ఫాలో-అప్స్‌ను సమర్థవంతంగా నిర్వహిస్తాము."
     }
   ],
-  
-  
-   
-    "privacy-english": {
-      "title": "Privacy Policy",
-      "intro": "At Maha Pranalika Pvt Ltd, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you use our website and services.",
-      
-      "section1Title": "1. Information We Collect",
-      "section1": [
-        "Full name and contact information (email, phone number, address)",
-        "Business details for firm registration or MSME approvals",
-        "Identification documents for CIBIL score repair or visa consultation",
-        "Usage data and browsing behavior on our website"
-      ],
-    
-      "section2Title": "2. How We Use Your Information",
-      "section2": [
-        "Provide and manage consultancy services such as CIBIL repair, firm registration, MSME cluster assistance, and visa consultation",
-        "Communicate with you regarding your application or service status",
-        "Improve our services and customer support experience",
-        "Comply with legal and regulatory requirements"
-      ],
-    
-      "section3Title": "3. Sharing of Information",
-      "section3": "We do not sell or rent your personal information to third parties. We may share your data only with trusted partners or government agencies required to fulfill our services (e.g., MCA, MSME authorities, immigration departments).",
-    
-      "section4Title": "4. Data Security",
-      "section4": "We implement appropriate technical and organizational measures to secure your data against unauthorized access, loss, misuse, or alteration. Access to sensitive data is limited to authorized personnel only.",
-    
-      "section5Title": "5. Cookies and Tracking",
-      "section5": "Our website may use cookies to enhance your browsing experience and track website performance. You may choose to disable cookies via your browser settings.",
-    
-      "section6Title": "6. Your Rights",
-      "section6": [
-        "Access the personal data we hold about you",
-        "Request correction or deletion of your data",
-        "Withdraw consent to our use of your data"
-      ],
-    
-      "section7Title": "7. Updates to This Policy",
-      "section7": "We may update this Privacy Policy from time to time to reflect legal or operational changes. Updates will be posted on this page with a revised effective date.",
-    
-      "section8Title": "8. Contact Us",
-      "section8": {
-        "emailLabel":"Email",
-        "email": "info@mahapranalika.com",
-        "phoneLabel":"Phone",
-        "phone": "+91-789-388-1269",
-        "addressLabel":"Address",
-        "address": "MIG 416, KPHB, Kukatpally"
-      }
-    },
-    "privacy-telugu": {
-      "title": "ప్రైవసీ పాలసీ",
-      "intro": "మహా ప్రణాలిక ప్రైవేట్ లిమిటెడ్ వద్ద, మేము మీ గోప్యతను విలువగా భావిస్తాము మరియు మీ వ్యక్తిగత సమాచారం రక్షించబడేలా కట్టుబడి ఉన్నాము. ఈ ప్రైవసీ పాలసీలో మేము మీ డేటాను ఎలా సేకరిస్తాము, ఉపయోగిస్తాము మరియు రక్షిస్తామో వివరించబడింది.",
-    
-      "section1Title": "1. మేము సేకరించే సమాచారం",
-      "section1": [
-        "పూర్తి పేరు మరియు సంప్రదింపు వివరాలు (ఇమెయిల్, ఫోన్ నంబర్, చిరునామా)",
-        "ఫిర్మ్ రిజిస్ట్రేషన్ లేదా MSME ఆమోదాల కోసం వ్యాపార సమాచారం",
-        "సిబిల్ స్కోర్ రిపేర్ లేదా వీసా కన్సల్టేషన్ కోసం గుర్తింపు డాక్యుమెంట్లు",
-        "మా వెబ్‌సైట్‌పై వినియోగ డేటా మరియు బ్రౌజింగ్ ప్రవర్తన"
-      ],
-    
-      "section2Title": "2. మేము మీ సమాచారాన్ని ఎలా ఉపయోగిస్తాము",
-      "section2": [
-        "సిబిల్ రిపేర్, ఫిర్మ్ రిజిస్ట్రేషన్, MSME క్లస్టర్ సహాయం మరియు వీసా కన్సల్టేషన్ వంటి కన్సల్టెన్సీ సేవలను అందించడానికి మరియు నిర్వహించడానికి",
-        "మీ అప్లికేషన్ లేదా సేవా స్థితి గురించి మీతో కమ్యూనికేట్ చేయడానికి",
-        "మా సేవలు మరియు కస్టమర్ సపోర్ట్ అనుభవాన్ని మెరుగుపరచడానికి",
-        "చట్టపరమైన మరియు రెగ్యులేటరీ అవసరాలను పాటించడానికి"
-      ],
-    
-      "section3Title": "3. సమాచారం భాగస్వామ్యం",
-      "section3": "మేము మీ వ్యక్తిగత సమాచారాన్ని మూడవ పక్షాలకు అమ్మము లేదా అద్దెకు ఇవ్వము. మా సేవలను అమలు చేయడానికి అవసరమైన విశ్వసనీయ భాగస్వాములతో లేదా ప్రభుత్వ సంస్థలతో మాత్రమే మీ డేటాను భాగస్వామ్యం చేస్తాము (ఉదాహరణకు: MCA, MSME అధికారులు, ఇమ్మిగ్రేషన్ విభాగాలు).",
-    
-      "section4Title": "4. డేటా భద్రత",
-      "section4": "అనధికార ప్రాప్తి, డేటా నష్టం, దుర్వినియోగం లేదా మార్పును నివారించడానికి మేము తగిన సాంకేతిక మరియు సంస్థాగత చర్యలను అమలు చేస్తాము. సున్నితమైన డేటాకు ప్రాప్యత కేవలం అధీకృత సిబ్బందికే పరిమితం ఉంటుంది.",
-    
-      "section5Title": "5. కుకీలు మరియు ట్రాకింగ్",
-      "section5": "మా వెబ్‌సైట్ మీ బ్రౌజింగ్ అనుభవాన్ని మెరుగుపరచడానికి మరియు వెబ్‌సైట్ పనితీరును ట్రాక్ చేయడానికి కుకీలను ఉపయోగించవచ్చు. మీరు మీ బ్రౌజర్ సెట్టింగ్‌లలో కుకీలను నిలిపివేయవచ్చు.",
-    
-      "section6Title": "6. మీ హక్కులు",
-      "section6": [
-        "మేము మీ గురించి కలిగి ఉన్న వ్యక్తిగత డేటాను యాక్సెస్ చేసుకునే హక్కు",
-        "మీ డేటాలో సవరణ లేదా తొలగింపును అభ్యర్థించే హక్కు",
-        "మేము మీ డేటాను ఉపయోగించే విషయంలో మీ సమ్మతిని వెనక్కి తీసుకునే హక్కు"
-      ],
-    
-      "section7Title": "7. ఈ పాలసీలో నవీకరణలు",
-      "section7": "చట్టపరమైన లేదా ఆపరేషన్ మార్పులను ప్రతిబింబించేందుకు మేము ఈ ప్రైవసీ పాలసీని కాలానుగుణంగా నవీకరించవచ్చు. నవీకరణల వివరాలు ఈ పేజీలో తాజా తేదీతో పోస్ట్ చేయబడతాయి.",
-    
-      "section8Title": "8. మమ్మల్ని సంప్రదించండి",
-      "section8": {
-       
-        "emailLabel": "ఇమెయిల్",
-        "email": "info@mahapranalika.com",
-        "phoneLabel": "ఫోన్",
-        "phone": "+91-789-388-1269",
-        "addressLabel": "చిరునామా",
-        "address": "ఎంఐజి 416, కేఫ్‌పీహెచ్‌బీ, కూకట్‌పల్లి"
-      }
-    },
-    "terms-english": {
-      "title": "Terms of Use",
-      "subtitle": "Applicable to Firm Registration Services provided by Maha Pranalika Private Limited",
-      "terms": [
-        {
-          "heading": "1. Acceptance of Terms",
-          "description": "By using our firm registration services, you agree to be legally bound by these terms and conditions. Please read them carefully before proceeding."
-        },
-        {
-          "heading": "2. Eligibility",
-          "description": "You must be at least 18 years old and legally capable of forming a binding contract to use our services."
-        },
-        {
-          "heading": "3. Scope of Services",
-          "description": "We assist clients in preparing and submitting applications for various types of business registrations, including Proprietorship, Partnership, and LLP, as per applicable Indian laws."
-        },
-        {
-          "heading": "4. Document Responsibility",
-          "points": [
-            "Clients are solely responsible for the accuracy and completeness of the documents provided.",
-            "We reserve the right to reject incomplete or invalid documentation."
-          ]
-        },
-        {
-          "heading": "5. Payment & Refunds",
-          "points": [
-            "Full payment is required before application submission.",
-            "Payments once made are non-refundable unless the service cannot be delivered due to our fault."
-          ]
-        },
-        {
-          "heading": "6. Turnaround Time",
-          "description": "Estimated timelines are indicative and may vary due to external factors such as government portal delays or document issues."
-        },
-        {
-          "heading": "7. Data Privacy",
-          "description": "Your personal and business data will be handled in accordance with our Privacy Policy. We do not share client data without consent."
-        },
-        {
-          "heading": "8. Limitation of Liability",
-          "description": "We are not responsible for delays or rejections caused by incorrect client information, technical errors on government portals, or force majeure events."
-        },
-        {
-          "heading": "9. Amendments",
-          "description": "We reserve the right to update these Terms of Use at any time. Continued use of the service after changes implies acceptance of the new terms."
-        },
-        {
-          "heading": "10. Contact Us",
-          "description": "If you have any questions or concerns regarding these Terms of Use, please contact us at info@maha-pranalika.com."
-        }
-      ],
-      "firmGuidelines": {
-        
-        "title": "Firm Registration Guidelines",
-        "intro": "Follow these steps to register your business with ease",
-        "note": "These guidelines apply to Partnership Firms, Proprietorships, and LLPs in India.",
-        "stepTitle": "Step-by-Step Process",
-        "steps": [
-          {
-            "label": "Choose the Type of Firm",
-            "description": "Decide between Proprietorship, Partnership, or LLP depending on your business goals."
-          },
-          {
-            "label": "Select a Unique Name",
-            "description": "Ensure your firm name is unique and adheres to naming conventions."
-          },
-          {
-            "label": "Prepare Required Documents",
-            "description": "",
-            "subpoints": [
-              "Owner/Partner PAN Card",
-              "Aadhaar Card / Address Proof",
-              "Passport-sized Photographs",
-              "Rental Agreement or Utility Bill of Business Premises"
-            ]
-          },
-          {
-            "label": "Draft the Firm Deed or Agreement",
-            "description": "For partnership firms, draft a proper deed including roles, capital, profit-sharing, etc."
-          },
-          {
-            "label": "Apply for Registration",
-            "description": "Submit the documents to the Registrar of Firms or apply online via relevant state portals."
-          },
-          {
-            "label": "Obtain PAN & TAN",
-            "description": "Apply for business PAN and TAN numbers as required."
-          },
-          {
-            "label": "GST Registration (If applicable)",
-            "description": "Register for GST if turnover exceeds the threshold or you sell online."
-          },
-          {
-            "label": "Open a Current Bank Account",
-            "description": "Use firm documents to open a business bank account."
-          }
-        ],
-        "timelinesTitle": "Estimated Timelines",
-        "timelines": [
-          "Document Preparation – 1 to 2 days",
-          "Application Filing – Same day",
-          "Approval from Authorities – 5 to 7 working days"
-        ],
-        "assistanceTitle": "Need Assistance?",
-        "assistanceText": "Our team can help you through the complete process.",
-        "contactNote": "Contact us on WhatsApp or fill our registration form."
-      }
-    },
-    "terms-telugu": {
-      "title": "వినియోగ నిబంధనలు",
-      "subtitle": "మహా ప్రణాలిక ప్రైవేట్ లిమిటెడ్ అందించే సంస్థ నమోదు సేవలకు వర్తిస్తుంది",
-      "terms": [
-        {
-          "heading": "1. నిబంధనలు అంగీకరించడం",
-          "description": "మా సంస్థ నమోదు సేవలను ఉపయోగించడం ద్వారా, మీరు ఈ నిబంధనలు మరియు షరతులకు చట్టపరంగా కట్టుబడతారని అంగీకరిస్తారు. దయచేసి కొనసాగించడానికి ముందు వాటిని జాగ్రత్తగా చదవండి."
-        },
-        {
-          "heading": "2. అర్హత",
-          "description": "మీరు కనీసం 18 సంవత్సరాల వయస్సు కలిగి ఉండాలి మరియు మా సేవలను ఉపయోగించడానికి చట్టబద్ధమైన ఒప్పందాన్ని కుదుర్చుకునే సామర్థ్యం కలిగి ఉండాలి."
-        },
-        {
-          "heading": "3. సేవల పరిధి",
-          "description": "మేము క్లయింట్లకు వివిధ రకాల వ్యాపార నమోదు కోసం దరఖాస్తులు సిద్ధం చేయడం మరియు సమర్పించడంలో సహాయపడతాము, వీటిలో ఒంటరి యజమాని, భాగస్వామ్యం, మరియు LLP లు ఉంటాయి."
-        },
-        {
-          "heading": "4. పత్రాల బాధ్యత",
-          "points": [
-            "క్లయింట్లు అందించిన పత్రాల ఖచ్చితత్వం మరియు సంపూర్ణతకు పూర్తి బాధ్యత వహించాలి.",
-            "అసంపూర్తి లేదా చెల్లని పత్రాలను మేము తిరస్కరించే హక్కును కలిగి ఉన్నాము."
-          ]
-        },
-        {
-          "heading": "5. చెల్లింపు & తిరస్కరణ",
-          "points": [
-            "దరఖాస్తు సమర్పణకు ముందు పూర్తిగా చెల్లించాలి.",
-            "ఒకసారి చెల్లించిన డబ్బులు మా తప్పు కారణంగా సేవ అందించలేనప్పుడు తప్ప తిరిగి ఇవ్వబడవు."
-          ]
-        },
-        {
-          "heading": "6. సమయసాపేక్షత",
-          "description": "అంచనా వేయబడిన టైమ్‌లైన్‌లు సూచనల కోసం మాత్రమే ఉంటాయి మరియు ప్రభుత్వం పోర్టల్ ఆలస్యాలు లేదా పత్రాల సమస్యల వల్ల మారవచ్చు."
-        },
-        {
-          "heading": "7. డేటా గోప్యత",
-          "description": "మీ వ్యక్తిగత మరియు వ్యాపార డేటా మా గోప్యతా విధానానికి అనుగుణంగా నిర్వహించబడుతుంది. మీ అనుమతి లేకుండా మేము మీ డేటాను పంచుకోము."
-        },
-        {
-          "heading": "8. బాధ్యత పరిమితి",
-          "description": "తప్పు సమాచారం, సాంకేతిక లోపాలు లేదా ప్రభుత్వ పోర్టల్‌లలో జాప్యం వల్ల తలెత్తే ఆటంకాలకు మేము బాధ్యులు కాదు."
-        },
-        {
-          "heading": "9. సవరణలు",
-          "description": "ఈ నిబంధనలను ఎప్పుడైనా మేము నవీకరించే హక్కును కలిగి ఉన్నాము. కొత్త నిబంధనల అమలుతో సేవను కొనసాగించటం అంగీకారంగా పరిగణించబడుతుంది."
-        },
-        {
-          "heading": "10. సంప్రదించండి",
-          "description": "ఈ నిబంధనల గురించి మీకు ఏవైనా ప్రశ్నలు లేదా ఆందోళనలు ఉంటే, దయచేసి info@maha-pranalika.com లో మమ్మల్ని సంప్రదించండి."
-        }
-      ],
-      "firmGuidelines": {
-        "title": "ఫర్మ్ నమోదు మార్గదర్శకాలు",
-        "intro": "మీ వ్యాపారాన్ని సులభంగా నమోదు చేసుకునే విధంగా ఈ దశలను అనుసరించండి",
-        "note": "ఈ మార్గదర్శకాలు భాగస్వామ్య సంస్థలు, ఒంటరి యజమానులు, మరియు LLP లకు వర్తిస్తాయి.",
-        "stepTitle": "దశల వారీగా ప్రక్రియ",
-        "steps": [
-          {
-            "label": "ఫర్మ్ రకం ఎంచుకోండి",
-            "description": "మీ వ్యాపార లక్ష్యాల ఆధారంగా ఒంటరి యజమాని, భాగస్వామ్యం, లేదా LLP ను ఎంచుకోండి."
-          },
-          {
-            "label": "వింత పేరు ఎంచుకోండి",
-            "description": "మీ సంస్థ పేరు ప్రత్యేకంగా ఉండి నిబంధనలకు అనుగుణంగా ఉండేలా చూసుకోండి."
-          },
-          {
-            "label": "అవశ్యక పత్రాలను సిద్ధం చేయండి",
-            "description": "",
-            "subpoints": [
-              "యజమాని/భాగస్వామి PAN కార్డ్",
-              "ఆధార్ కార్డ్ / చిరునామా ఆధారం",
-              "పాస్‌పోర్ట్ ఫోటోలు",
-              "బిజినెస్ ప్రాంగణాల కోసం అద్దె ఒప్పందం లేదా విద్యుత్ బిల్"
-            ]
-          },
-          {
-            "label": "ఫర్మ్ ఒప్పందాన్ని రూపొందించండి",
-            "description": "భాగస్వామ్య సంస్థల కోసం, పాత్రలు, మూలధనం, లాభం పంచకం తదితర వివరాలతో సరైన ఒప్పందాన్ని రూపొందించండి."
-          },
-          {
-            "label": "నమోదు కోసం దరఖాస్తు చేయండి",
-            "description": "పత్రాలను రిజిస్ట్రార్ కు సమర్పించండి లేదా సంబంధిత రాష్ట్ర పోర్టల్ ద్వారా ఆన్‌లైన్‌లో దరఖాస్తు చేయండి."
-          },
-          {
-            "label": "PAN & TAN పొందండి",
-            "description": "వ్యాపార PAN మరియు TAN నంబర్లను అవసరంగా పొందండి."
-          },
-          {
-            "label": "GST నమోదు (అవసరమైతే)",
-            "description": "మీ వ్యాపార టర్నోవర్ పరిమితిని మించినప్పుడు లేదా ఆన్‌లైన్‌లో అమ్మకాలుంటే GST కు నమోదు చేయండి."
-          },
-          {
-            "label": "ప్రస్తుత ఖాతా తెరవండి",
-            "description": "వ్యాపార బ్యాంక్ ఖాతా తెరవడానికి సంస్థ పత్రాలను ఉపయోగించండి."
-          }
-        ],
-        "timelinesTitle": "అంచనా వేయబడిన టైమ్‌లైన్‌లు",
-        "timelines": [
-          "పత్రాల సిద్ధత – 1 నుండి 2 రోజులు",
-          "దరఖాస్తు సమర్పణ – అదే రోజు",
-          "అధికారుల నుండి ఆమోదం – 5 నుండి 7 పని రోజులు"
-        ],
-        "assistanceTitle": "సహాయం కావాలా?",
-        "assistanceText": "మా బృందం పూర్తిగా మిమ్మల్ని దిశానిర్దేశించగలదు.",
-        "contactNote": "WhatsAppలో మమ్మల్ని సంప్రదించండి లేదా మా నమోదు ఫారమ్‌ను పూరించండి."
-      }
-    },
-    
-      "home-english": {
-        "bannerHeading1": "UNITED IN PURPOSE,",
-        "bannerHeading2": "TOGETHER IN ACTION",
-        "companyName": "MAHA PRANALIKA PRIVATE LIMITED",
-        "missionTitle": "Mission",
-        "missionText": "To empower aspiring entrepreneurs with the knowledge, skills, and resources they need to build thriving businesses.",
-        "visionTitle": "Vision",
-        "visionText": "To create and nurture 1,000 successful entrepreneurs across agriculture, manufacturing, and service sectors, driving sustainable economic growth and innovation.",
-        "introText": "We Specialize in Proving expert consultancy and real-time tracing for CIBIL score repair, Firm registration, MSME cluster approvals, and visa & overseas consultation. Whether you're an individual aiming to improve your credit or a business looking to expand locally or internal, we simplify complex processes and empower your success",
-        "blueBanner": "We are a team of dedicated\nprofessionals with extensive\nindustry experience",
-        "envisions": "What we envision for our clients",
-        "whyChooseUs": "Why To Choose Us?",
-        "howItWorks": "HOW IT WORKS?",
-        "services": [
-          {
-            "title": "FIRM REGISTRATION",
-            "description": "Whether you are starting a new business or expanding an existing one, we assist you with seamless firm registration services — including company incorporation, LLP registration, and other business structures. We handle all compliance requirements to get your business up and running quickly."
-          },
-          {
-            "title": "MSME CDP",
-            "description": "We facilitate the formation and approval of MSME clusters by guiding you through documentation, government regulations, and submission processes. Our service ensures you receive all available benefits and incentives smoothly and efficiently."
-          },
-          {
-            "title": "CIBIL REPAIR & TRAINING",
-            "description": "Improve your creditworthiness with our thorough CIBIL score repair services. We identify discrepancies, resolve issues, and guide you on maintaining a healthy credit profile. Additionally, our CIBIL training programs empower you with knowledge to manage and improve your credit effectively."
-          },
-          {
-            "title": "VISA & OVERSEAS CONSULTATION",
-            "description": "Planning to work, study, or expand your business overseas? Our visa and overseas consultation services offer tailored advice on visa applications, documentation, immigration policies, and global opportunities — making your international journey hassle-free."
-          }
-        ],
-        "team": [
-          { "name": "S Pavan Kumar", "title": "Managing Director" },
-          { "name": "A Ashok Kumar", "title": "AP CDP Head" },
-          { "name": "A Sai Kumar", "title": "TS CDP Head" },
-          { "name": "P Neethu", "title": "CIBIL Analyst" },
-          { "name": "Suresh Babu", "title": "Hierarchy Head" },
-          { "name": "V S Charan", "title": "Taxation Analyst" }
-        ],
-        "features": [
-          {
-            "title": "Expertise You Can Trust",
-            "description": "Years of experience in regulatory and financial consultancy."
-          },
-          {
-            "title": "Transparent Real-Time Tracking",
-            "description": "Stay updated at every step with our easy-to-use tracking system."
-          },
-          {
-            "title": "Personalized Support",
-            "description": "Our team provides tailored solutions based on your unique needs."
-          },
-          {
-            "title": "End-To-End Service",
-            "description": "From documentation to submission and follow-ups, we handle it all."
-          }
-        ],
-        "steps": [
-          "INQUIRY",
-          "DOCUMENT COLLECTION",
-          "PROCESSING",
-          "APPROVAL",
-          "FEEDBACK & CLOSURE"
+  "privacy-english": {
+    "title": "Privacy Policy",
+    "intro": "At Maha Pranalika Pvt Ltd, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you use our website and services.",
+    "section1Title": "1. Information We Collect",
+    "section1": [
+      "Full name and contact information (email, phone number, address)",
+      "Business details for firm registration or MSME approvals",
+      "Identification documents for CIBIL score repair or visa consultation",
+      "Usage data and browsing behavior on our website"
+    ],
+    "section2Title": "2. How We Use Your Information",
+    "section2": [
+      "Provide and manage consultancy services such as CIBIL repair, firm registration, MSME cluster assistance, and visa consultation",
+      "Communicate with you regarding your application or service status",
+      "Improve our services and customer support experience",
+      "Comply with legal and regulatory requirements"
+    ],
+    "section3Title": "3. Sharing of Information",
+    "section3": "We do not sell or rent your personal information to third parties. We may share your data only with trusted partners or government agencies required to fulfill our services (e.g., MCA, MSME authorities, immigration departments).",
+    "section4Title": "4. Data Security",
+    "section4": "We implement appropriate technical and organizational measures to secure your data against unauthorized access, loss, misuse, or alteration. Access to sensitive data is limited to authorized personnel only.",
+    "section5Title": "5. Cookies and Tracking",
+    "section5": "Our website may use cookies to enhance your browsing experience and track website performance. You may choose to disable cookies via your browser settings.",
+    "section6Title": "6. Your Rights",
+    "section6": [
+      "Access the personal data we hold about you",
+      "Request correction or deletion of your data",
+      "Withdraw consent to our use of your data"
+    ],
+    "section7Title": "7. Updates to This Policy",
+    "section7": "We may update this Privacy Policy from time to time to reflect legal or operational changes. Updates will be posted on this page with a revised effective date.",
+    "section8Title": "8. Contact Us",
+    "section8": {
+      "emailLabel": "Email",
+      "email": "info@mahapranalika.com",
+      "phoneLabel": "Phone",
+      "phone": "+91-789-388-1269",
+      "addressLabel": "Address",
+      "address": "MIG 416, KPHB, Kukatpally"
+    }
+  },
+  "privacy-telugu": {
+    "title": "ప్రైవసీ పాలసీ",
+    "intro": "మహా ప్రణాలిక ప్రైవేట్ లిమిటెడ్ వద్ద, మేము మీ గోప్యతను విలువగా భావిస్తాము మరియు మీ వ్యక్తిగత సమాచారం రక్షించబడేలా కట్టుబడి ఉన్నాము. ఈ ప్రైవసీ పాలసీలో మేము మీ డేటాను ఎలా సేకరిస్తాము, ఉపయోగిస్తాము మరియు రక్షిస్తామో వివరించబడింది.",
+    "section1Title": "1. మేము సేకరించే సమాచారం",
+    "section1": [
+      "పూర్తి పేరు మరియు సంప్రదింపు వివరాలు (ఇమెయిల్, ఫోన్ నంబర్, చిరునామా)",
+      "ఫిర్మ్ రిజిస్ట్రేషన్ లేదా MSME ఆమోదాల కోసం వ్యాపార సమాచారం",
+      "సిబిల్ స్కోర్ రిపేర్ లేదా వీసా కన్సల్టేషన్ కోసం గుర్తింపు డాక్యుమెంట్లు",
+      "మా వెబ్‌సైట్‌పై వినియోగ డేటా మరియు బ్రౌజింగ్ ప్రవర్తన"
+    ],
+    "section2Title": "2. మేము మీ సమాచారాన్ని ఎలా ఉపయోగిస్తాము",
+    "section2": [
+      "సిబిల్ రిపేర్, ఫిర్మ్ రిజిస్ట్రేషన్, MSME క్లస్టర్ సహాయం మరియు వీసా కన్సల్టేషన్ వంటి కన్సల్టెన్సీ సేవలను అందించడానికి మరియు నిర్వహించడానికి",
+      "మీ అప్లికేషన్ లేదా సేవా స్థితి గురించి మీతో కమ్యూనికేట్ చేయడానికి",
+      "మా సేవలు మరియు కస్టమర్ సపోర్ట్ అనుభవాన్ని మెరుగుపరచడానికి",
+      "చట్టపరమైన మరియు రెగ్యులేటరీ అవసరాలను పాటించడానికి"
+    ],
+    "section3Title": "3. సమాచారం భాగస్వామ్యం",
+    "section3": "మేము మీ వ్యక్తిగత సమాచారాన్ని మూడవ పక్షాలకు అమ్మము లేదా అద్దెకు ఇవ్వము. మా సేవలను అమలు చేయడానికి అవసరమైన విశ్వసనీయ భాగస్వాములతో లేదా ప్రభుత్వ సంస్థలతో మాత్రమే మీ డేటాను భాగస్వామ్యం చేస్తాము (ఉదాహరణకు: MCA, MSME అధికారులు, ఇమ్మిగ్రేషన్ విభాగాలు).",
+    "section4Title": "4. డేటా భద్రత",
+    "section4": "అనధికార ప్రాప్తి, డేటా నష్టం, దుర్వినియోగం లేదా మార్పును నివారించడానికి మేము తగిన సాంకేతిక మరియు సంస్థాగత చర్యలను అమలు చేస్తాము. సున్నితమైన డేటాకు ప్రాప్యత కేవలం అధీకృత సిబ్బందికే పరిమితం ఉంటుంది.",
+    "section5Title": "5. కుకీలు మరియు ట్రాకింగ్",
+    "section5": "మా వెబ్‌సైట్ మీ బ్రౌజింగ్ అనుభవాన్ని మెరుగుపరచడానికి మరియు వెబ్‌సైట్ పనితీరును ట్రాక్ చేయడానికి కుకీలను ఉపయోగించవచ్చు. మీరు మీ బ్రౌజర్ సెట్టింగ్‌లలో కుకీలను నిలిపివేయవచ్చు.",
+    "section6Title": "6. మీ హక్కులు",
+    "section6": [
+      "మేము మీ గురించి కలిగి ఉన్న వ్యక్తిగత డేటాను యాక్సెస్ చేసుకునే హక్కు",
+      "మీ డేటాలో సవరణ లేదా తొలగింపును అభ్యర్థించే హక్కు",
+      "మేము మీ డేటాను ఉపయోగించే విషయంలో మీ సమ్మతిని వెనక్కి తీసుకునే హక్కు"
+    ],
+    "section7Title": "7. ఈ పాలసీలో నవీకరణలు",
+    "section7": "చట్టపరమైన లేదా ఆపరేషన్ మార్పులను ప్రతిబింబించేందుకు మేము ఈ ప్రైవసీ పాలసీని కాలానుగుణంగా నవీకరించవచ్చు. నవీకరణల వివరాలు ఈ పేజీలో తాజా తేదీతో పోస్ట్ చేయబడతాయి.",
+    "section8Title": "8. మమ్మల్ని సంప్రదించండి",
+    "section8": {
+      "emailLabel": "ఇమెయిల్",
+      "email": "info@mahapranalika.com",
+      "phoneLabel": "ఫోన్",
+      "phone": "+91-789-388-1269",
+      "addressLabel": "చిరునామా",
+      "address": "ఎంఐజి 416, కేఫ్‌పీహెచ్‌బీ, కూకట్‌పల్లి"
+    }
+  },
+  "terms-english": {
+    "title": "Terms of Use",
+    "subtitle": "Applicable to Firm Registration Services provided by Maha Pranalika Private Limited",
+    "terms": [
+      {
+        "heading": "1. Acceptance of Terms",
+        "description": "By using our firm registration services, you agree to be legally bound by these terms and conditions. Please read them carefully before proceeding."
+      },
+      {
+        "heading": "2. Eligibility",
+        "description": "You must be at least 18 years old and legally capable of forming a binding contract to use our services."
+      },
+      {
+        "heading": "3. Scope of Services",
+        "description": "We assist clients in preparing and submitting applications for various types of business registrations, including Proprietorship, Partnership, and LLP, as per applicable Indian laws."
+      },
+      {
+        "heading": "4. Document Responsibility",
+        "points": [
+          "Clients are solely responsible for the accuracy and completeness of the documents provided.",
+          "We reserve the right to reject incomplete or invalid documentation."
         ]
       },
-      
-        "home-telugu": {
-          "bannerHeading1": "ఒక్కటిగా లక్ష్యంతో,",
-          "bannerHeading2": "కలిసి కార్యాచరణలో",
-          "companyName": "మహా ప్రణాళిక ప్రైవేట్ లిమిటెడ్",
-          "missionTitle": "మిషన్",
-          "missionText": "ఉద్యమించాలనుకునే యువ పారిశ్రామికవేత్తలకు అవసరమైన జ్ఞానం, నైపుణ్యం మరియు వనరులను అందించి విజయవంతమైన వ్యాపారాలను నిర్మించేందుకు శక్తినివ్వడం మా లక్ష్యం.",
-          "visionTitle": "విజన్",
-          "visionText": "వ్యవసాయం, తయారీ మరియు సేవా రంగాలలో 1,000 విజయవంతమైన పారిశ్రామికవేత్తలను తయారు చేసి, స్థిరమైన ఆర్థిక వృద్ధి మరియు ఆవిష్కరణకు దోహదపడటం.",
-          "introText": "మేము CIBIL స్కోర్ రిపేర్, ఫర్మ్ రిజిస్ట్రేషన్, MSME క్లస్టర్ ఆమోదాలు మరియు వీసా & ఓవర్సీస్ కన్సల్టేషన్ వంటి సేవలలో నిపుణులం. మీరు వ్యక్తిగతంగా క్రెడిట్ మెరుగుపరచాలనుకుంటున్నా లేదా వ్యాపారాన్ని విస్తరించాలనుకుంటున్నా, మేము సంక్లిష్ట ప్రక్రియలను సరళతరం చేసి మీ విజయాన్ని సాధించేందుకు తోడ్పడతాము.",
-          "blueBanner": "మేము విస్తృత పరిశ్రమ అనుభవం కలిగిన\nనిబద్ధత గల నిపుణుల బృందం",
-          "envisions": "మా క్లయింట్ల కోసం మేము ఊహించేది",
-          "whyChooseUs": "మమ్మల్ని ఎందుకు ఎంచుకోవాలి?",
-          "howItWorks": "ఇది ఎలా పనిచేస్తుంది?",
-          "services": [
-            {
-              "title": "ఫర్మ్ రిజిస్ట్రేషన్",
-              "description": "మీరు కొత్త వ్యాపారాన్ని ప్రారంభించాలనుకుంటున్నా లేదా ఇప్పటికే ఉన్నదాన్ని విస్తరించాలనుకుంటున్నా, మేము కంపెనీ నమోదు, LLP రిజిస్ట్రేషన్ మరియు ఇతర వ్యాపార నిర్మాణాలతో సహా అన్ని అవసరాలను తీర్చే సేవలను అందిస్తాము."
-            },
-            {
-              "title": "MSME CDP",
-              "description": "MSME క్లస్టర్ల ఏర్పాటుకు అవసరమైన డాక్యుమెంటేషన్, ప్రభుత్వ నిబంధనలు మరియు సమర్పణ ప్రక్రియలలో మేము మీకు మార్గనిర్దేశం చేస్తాము. అందుబాటులో ఉన్న ప్రయోజనాలు మరియు ప్రోత్సాహకాలను సులభంగా పొందేలా చేస్తాము."
-            },
-            {
-              "title": "CIBIL రిపేర్ & శిక్షణ",
-              "description": "మీ క్రెడిట్ స్కోర్ మెరుగుపరచడానికి మేము లోతైన విశ్లేషణ, సమస్యల పరిష్కారం మరియు క్రెడిట్ నిర్వహణపై శిక్షణను అందిస్తాము. దీని ద్వారా మీరు మీ క్రెడిట్ ప్రొఫైల్‌ను బలోపేతం చేసుకోవచ్చు."
-            },
-            {
-              "title": "వీసా & ఓవర్సీస్ కన్సల్టేషన్",
-              "description": "విదేశాల్లో పని చేయాలనుకుంటున్నారా? చదవాలనుకుంటున్నారా? మేము వీసా దరఖాస్తులు, డాక్యుమెంటేషన్ మరియు ఇమ్మిగ్రేషన్ విధానాలపై వ్యక్తిగత సలహాలను అందిస్తాము."
-            }
-          ],
-          "team": [
-            { "name": "ఎస్ పవన్ కుమార్", "title": "మ్యానేజింగ్ డైరెక్టర్" },
-            { "name": "ఏ అశోక్ కుమార్", "title": "ఏపీ CDP హెడ్" },
-            { "name": "ఏ సాయి కుమార్", "title": "తెలంగాణ CDP హెడ్" },
-            { "name": "పీ నీతూ", "title": "CIBIL విశ్లేషకురాలు" },
-            { "name": "సురేష్ బాబు", "title": "హెయిరార్కీ హెడ్" },
-            { "name": "వి ఎస్ చరణ్", "title": "పన్నుల విశ్లేషకుడు" }
-          ],
-          "features": [
-            {
-              "title": "నమ్మదగిన నిపుణులు",
-              "description": "నియంత్రణ మరియు ఆర్థిక కన్సల్టెన్సీలో అనుభవం కలిగిన బృందం."
-            },
-            {
-              "title": "స్పష్టమైన ట్రాకింగ్",
-              "description": "ప్రతి దశలో మీకు సమాచారం అందేలా ట్రాకింగ్ సిస్టమ్."
-            },
-            {
-              "title": "వ్యక్తిగత మద్దతు",
-              "description": "మీ అవసరాలకు అనుగుణంగా ప్రత్యేక పరిష్కారాలు."
-            },
-            {
-              "title": "పూర్తి సేవలు",
-              "description": "డాక్యుమెంటేషన్ నుండి సమర్పణ వరకు మేమే చూసుకుంటాము."
-            }
-          ],
-          "steps": [
-            "విచారణ",
-            "డాక్యుమెంట్ సేకరణ",
-            "ప్రాసెసింగ్",
-            "ఆమోదం",
-            "ఫీడ్‌బ్యాక్ & ముగింపు"
+      {
+        "heading": "5. Payment & Refunds",
+        "points": [
+          "Full payment is required before application submission.",
+          "Payments once made are non-refundable unless the service cannot be delivered due to our fault."
+        ]
+      },
+      {
+        "heading": "6. Turnaround Time",
+        "description": "Estimated timelines are indicative and may vary due to external factors such as government portal delays or document issues."
+      },
+      {
+        "heading": "7. Data Privacy",
+        "description": "Your personal and business data will be handled in accordance with our Privacy Policy. We do not share client data without consent."
+      },
+      {
+        "heading": "8. Limitation of Liability",
+        "description": "We are not responsible for delays or rejections caused by incorrect client information, technical errors on government portals, or force majeure events."
+      },
+      {
+        "heading": "9. Amendments",
+        "description": "We reserve the right to update these Terms of Use at any time. Continued use of the service after changes implies acceptance of the new terms."
+      },
+      {
+        "heading": "10. Contact Us",
+        "description": "If you have any questions or concerns regarding these Terms of Use, please contact us at info@maha-pranalika.com."
+      }
+    ],
+    "firmGuidelines": {
+      "title": "Firm Registration Guidelines",
+      "intro": "Follow these steps to register your business with ease",
+      "note": "These guidelines apply to Partnership Firms, Proprietorships, and LLPs in India.",
+      "stepTitle": "Step-by-Step Process",
+      "steps": [
+        {
+          "label": "Choose the Type of Firm",
+          "description": "Decide between Proprietorship, Partnership, or LLP depending on your business goals."
+        },
+        {
+          "label": "Select a Unique Name",
+          "description": "Ensure your firm name is unique and adheres to naming conventions."
+        },
+        {
+          "label": "Prepare Required Documents",
+          "description": "",
+          "subpoints": [
+            "Owner/Partner PAN Card",
+            "Aadhaar Card / Address Proof",
+            "Passport-sized Photographs",
+            "Rental Agreement or Utility Bill of Business Premises"
           ]
+        },
+        {
+          "label": "Draft the Firm Deed or Agreement",
+          "description": "For partnership firms, draft a proper deed including roles, capital, profit-sharing, etc."
+        },
+        {
+          "label": "Apply for Registration",
+          "description": "Submit the documents to the Registrar of Firms or apply online via relevant state portals."
+        },
+        {
+          "label": "Obtain PAN & TAN",
+          "description": "Apply for business PAN and TAN numbers as required."
+        },
+        {
+          "label": "GST Registration (If applicable)",
+          "description": "Register for GST if turnover exceeds the threshold or you sell online."
+        },
+        {
+          "label": "Open a Current Bank Account",
+          "description": "Use firm documents to open a business bank account."
         }
-    
-  
+      ],
+      "timelinesTitle": "Estimated Timelines",
+      "timelines": [
+        "Document Preparation – 1 to 2 days",
+        "Application Filing – Same day",
+        "Approval from Authorities – 5 to 7 working days"
+      ],
+      "assistanceTitle": "Need Assistance?",
+      "assistanceText": "Our team can help you through the complete process.",
+      "contactNote": "Contact us on WhatsApp or fill our registration form."
+    }
+  },
+  "terms-telugu": {
+    "title": "వినియోగ నిబంధనలు",
+    "subtitle": "మహా ప్రణాలిక ప్రైవేట్ లిమిటెడ్ అందించే సంస్థ నమోదు సేవలకు వర్తిస్తుంది",
+    "terms": [
+      {
+        "heading": "1. నిబంధనలు అంగీకరించడం",
+        "description": "మా సంస్థ నమోదు సేవలను ఉపయోగించడం ద్వారా, మీరు ఈ నిబంధనలు మరియు షరతులకు చట్టపరంగా కట్టుబడతారని అంగీకరిస్తారు. దయచేసి కొనసాగించడానికి ముందు వాటిని జాగ్రత్తగా చదవండి."
+      },
+      {
+        "heading": "2. అర్హత",
+        "description": "మీరు కనీసం 18 సంవత్సరాల వయస్సు కలిగి ఉండాలి మరియు మా సేవలను ఉపయోగించడానికి చట్టబద్ధమైన ఒప్పందాన్ని కుదుర్చుకునే సామర్థ్యం కలిగి ఉండాలి."
+      },
+      {
+        "heading": "3. సేవల పరిధి",
+        "description": "మేము క్లయింట్లకు వివిధ రకాల వ్యాపార నమోదు కోసం దరఖాస్తులు సిద్ధం చేయడం మరియు సమర్పించడంలో సహాయపడతాము, వీటిలో ఒంటరి యజమాని, భాగస్వామ్యం, మరియు LLP లు ఉంటాయి."
+      },
+      {
+        "heading": "4. పత్రాల బాధ్యత",
+        "points": [
+          "క్లయింట్లు అందించిన పత్రాల ఖచ్చితత్వం మరియు సంపూర్ణతకు పూర్తి బాధ్యత వహించాలి.",
+          "అసంపూర్తి లేదా చెల్లని పత్రాలను మేము తిరస్కరించే హక్కును కలిగి ఉన్నాము."
+        ]
+      },
+      {
+        "heading": "5. చెల్లింపు & తిరస్కరణ",
+        "points": [
+          "దరఖాస్తు సమర్పణకు ముందు పూర్తిగా చెల్లించాలి.",
+          "ఒకసారి చెల్లించిన డబ్బులు మా తప్పు కారణంగా సేవ అందించలేనప్పుడు తప్ప తిరిగి ఇవ్వబడవు."
+        ]
+      },
+      {
+        "heading": "6. సమయసాపేక్షత",
+        "description": "అంచనా వేయబడిన టైమ్‌లైన్‌లు సూచనల కోసం మాత్రమే ఉంటాయి మరియు ప్రభుత్వం పోర్టల్ ఆలస్యాలు లేదా పత్రాల సమస్యల వల్ల మారవచ్చు."
+      },
+      {
+        "heading": "7. డేటా గోప్యత",
+        "description": "మీ వ్యక్తిగత మరియు వ్యాపార డేటా మా గోప్యతా విధానానికి అనుగుణంగా నిర్వహించబడుతుంది. మీ అనుమతి లేకుండా మేము మీ డేటాను పంచుకోము."
+      },
+      {
+        "heading": "8. బాధ్యత పరిమితి",
+        "description": "తప్పు సమాచారం, సాంకేతిక లోపాలు లేదా ప్రభుత్వ పోర్టల్‌లలో జాప్యం వల్ల తలెత్తే ఆటంకాలకు మేము బాధ్యులు కాదు."
+      },
+      {
+        "heading": "9. సవరణలు",
+        "description": "ఈ నిబంధనలను ఎప్పుడైనా మేము నవీకరించే హక్కును కలిగి ఉన్నాము. కొత్త నిబంధనల అమలుతో సేవను కొనసాగించటం అంగీకారంగా పరిగణించబడుతుంది."
+      },
+      {
+        "heading": "10. సంప్రదించండి",
+        "description": "ఈ నిబంధనల గురించి మీకు ఏవైనా ప్రశ్నలు లేదా ఆందోళనలు ఉంటే, దయచేసి info@maha-pranalika.com లో మమ్మల్ని సంప్రదించండి."
+      }
+    ],
+    "firmGuidelines": {
+      "title": "ఫర్మ్ నమోదు మార్గదర్శకాలు",
+      "intro": "మీ వ్యాపారాన్ని సులభంగా నమోదు చేసుకునే విధంగా ఈ దశలను అనుసరించండి",
+      "note": "ఈ మార్గదర్శకాలు భాగస్వామ్య సంస్థలు, ఒంటరి యజమానులు, మరియు LLP లకు వర్తిస్తాయి.",
+      "stepTitle": "దశల వారీగా ప్రక్రియ",
+      "steps": [
+        {
+          "label": "ఫర్మ్ రకం ఎంచుకోండి",
+          "description": "మీ వ్యాపార లక్ష్యాల ఆధారంగా ఒంటరి యజమాని, భాగస్వామ్యం, లేదా LLP ను ఎంచుకోండి."
+        },
+        {
+          "label": "వింత పేరు ఎంచుకోండి",
+          "description": "మీ సంస్థ పేరు ప్రత్యేకంగా ఉండి నిబంధనలకు అనుగుణంగా ఉండేలా చూసుకోండి."
+        },
+        {
+          "label": "అవశ్యక పత్రాలను సిద్ధం చేయండి",
+          "description": "",
+          "subpoints": [
+            "యజమాని/భాగస్వామి PAN కార్డ్",
+            "ఆధార్ కార్డ్ / చిరునామా ఆధారం",
+            "పాస్‌పోర్ట్ ఫోటోలు",
+            "బిజినెస్ ప్రాంగణాల కోసం అద్దె ఒప్పందం లేదా విద్యుత్ బిల్"
+          ]
+        },
+        {
+          "label": "ఫర్మ్ ఒప్పందాన్ని రూపొందించండి",
+          "description": "భాగస్వామ్య సంస్థల కోసం, పాత్రలు, మూలధనం, లాభం పంచకం తదితర వివరాలతో సరైన ఒప్పందాన్ని రూపొందించండి."
+        },
+        {
+          "label": "నమోదు కోసం దరఖాస్తు చేయండి",
+          "description": "పత్రాలను రిజిస్ట్రార్ కు సమర్పించండి లేదా సంబంధిత రాష్ట్ర పోర్టల్ ద్వారా ఆన్‌లైన్‌లో దరఖాస్తు చేయండి."
+        },
+        {
+          "label": "PAN & TAN పొందండి",
+          "description": "వ్యాపార PAN మరియు TAN నంబర్లను అవసరంగా పొందండి."
+        },
+        {
+          "label": "GST నమోదు (అవసరమైతే)",
+          "description": "మీ వ్యాపార టర్నోవర్ పరిమితిని మించినప్పుడు లేదా ఆన్‌లైన్‌లో అమ్మకాలుంటే GST కు నమోదు చేయండి."
+        },
+        {
+          "label": "ప్రస్తుత ఖాతా తెరవండి",
+          "description": "వ్యాపార బ్యాంక్ ఖాతా తెరవడానికి సంస్థ పత్రాలను ఉపయోగించండి."
+        }
+      ],
+      "timelinesTitle": "అంచనా వేయబడిన టైమ్‌లైన్‌లు",
+      "timelines": [
+        "పత్రాల సిద్ధత – 1 నుండి 2 రోజులు",
+        "దరఖాస్తు సమర్పణ – అదే రోజు",
+        "అధికారుల నుండి ఆమోదం – 5 నుండి 7 పని రోజులు"
+      ],
+      "assistanceTitle": "సహాయం కావాలా?",
+      "assistanceText": "మా బృందం పూర్తిగా మిమ్మల్ని దిశానిర్దేశించగలదు.",
+      "contactNote": "WhatsAppలో మమ్మల్ని సంప్రదించండి లేదా మా నమోదు ఫారమ్‌ను పూరించండి."
+    }
+  },
+  "home-english": {
+    "bannerHeading1": "UNITED IN PURPOSE,",
+    "bannerHeading2": "TOGETHER IN ACTION",
+    "companyName": "MAHA PRANALIKA PRIVATE LIMITED",
+    "missionTitle": "Mission",
+    "missionText": "To empower aspiring entrepreneurs with the knowledge, skills, and resources they need to build thriving businesses.",
+    "visionTitle": "Vision",
+    "visionText": "To create and nurture 1,000 successful entrepreneurs across agriculture, manufacturing, and service sectors, driving sustainable economic growth and innovation.",
+    "introText": "We Specialize in Proving expert consultancy and real-time tracing for CIBIL score repair, Firm registration, MSME cluster approvals, and visa & overseas consultation. Whether you're an individual aiming to improve your credit or a business looking to expand locally or internal, we simplify complex processes and empower your success",
+    "blueBanner": "We are a team of dedicated\nprofessionals with extensive\nindustry experience",
+    "envisions": "What we envision for our clients",
+    "whyChooseUs": "Why To Choose Us?",
+    "howItWorks": "HOW IT WORKS?",
+    "services": [
+      {
+        "title": "FIRM REGISTRATION",
+        "description": "Whether you are starting a new business or expanding an existing one, we assist you with seamless firm registration services — including company incorporation, LLP registration, and other business structures. We handle all compliance requirements to get your business up and running quickly."
+      },
+      {
+        "title": "MSME CDP",
+        "description": "We facilitate the formation and approval of MSME clusters by guiding you through documentation, government regulations, and submission processes. Our service ensures you receive all available benefits and incentives smoothly and efficiently."
+      },
+      {
+        "title": "CIBIL REPAIR & TRAINING",
+        "description": "Improve your creditworthiness with our thorough CIBIL score repair services. We identify discrepancies, resolve issues, and guide you on maintaining a healthy credit profile. Additionally, our CIBIL training programs empower you with knowledge to manage and improve your credit effectively."
+      },
+      {
+        "title": "VISA & OVERSEAS CONSULTATION",
+        "description": "Planning to work, study, or expand your business overseas? Our visa and overseas consultation services offer tailored advice on visa applications, documentation, immigration policies, and global opportunities — making your international journey hassle-free."
+      }
+    ],
+    "team": [
+      {
+        "name": "A Ashok Kumar",
+        "title": "AP CDP Head"
+      },
+      {
+        "name": "A Sai Kumar",
+        "title": "TS CDP Head"
+      },
+      {
+        "name": "P Neethu",
+        "title": "CIBIL Analyst"
+      },
+      {
+        "name": "Suresh Babu",
+        "title": "Hierarchy Head"
+      },
+      {
+        "name": "V S Charan",
+        "title": "Taxation Analyst"
+      }
+    ],
+    "features": [
+      {
+        "title": "Expertise You Can Trust",
+        "description": "Years of experience in regulatory and financial consultancy."
+      },
+      {
+        "title": "Transparent Real-Time Tracking",
+        "description": "Stay updated at every step with our easy-to-use tracking system."
+      },
+      {
+        "title": "Personalized Support",
+        "description": "Our team provides tailored solutions based on your unique needs."
+      },
+      {
+        "title": "End-To-End Service",
+        "description": "From documentation to submission and follow-ups, we handle it all."
+      }
+    ],
+    "steps": [
+      "INQUIRY",
+      "DOCUMENT COLLECTION",
+      "PROCESSING",
+      "APPROVAL",
+      "FEEDBACK & CLOSURE"
+    ]
+  },
+  "home-telugu": {
+    "bannerHeading1": "ఒక్కటిగా లక్ష్యంతో,",
+    "bannerHeading2": "కలిసి కార్యాచరణలో",
+    "companyName": "మహా ప్రణాళిక ప్రైవేట్ లిమిటెడ్",
+    "missionTitle": "మిషన్",
+    "missionText": "ఉద్యమించాలనుకునే యువ పారిశ్రామికవేత్తలకు అవసరమైన జ్ఞానం, నైపుణ్యం మరియు వనరులను అందించి విజయవంతమైన వ్యాపారాలను నిర్మించేందుకు శక్తినివ్వడం మా లక్ష్యం.",
+    "visionTitle": "విజన్",
+    "visionText": "వ్యవసాయం, తయారీ మరియు సేవా రంగాలలో 1,000 విజయవంతమైన పారిశ్రామికవేత్తలను తయారు చేసి, స్థిరమైన ఆర్థిక వృద్ధి మరియు ఆవిష్కరణకు దోహదపడటం.",
+    "introText": "మేము CIBIL స్కోర్ రిపేర్, ఫర్మ్ రిజిస్ట్రేషన్, MSME క్లస్టర్ ఆమోదాలు మరియు వీసా & ఓవర్సీస్ కన్సల్టేషన్ వంటి సేవలలో నిపుణులం. మీరు వ్యక్తిగతంగా క్రెడిట్ మెరుగుపరచాలనుకుంటున్నా లేదా వ్యాపారాన్ని విస్తరించాలనుకుంటున్నా, మేము సంక్లిష్ట ప్రక్రియలను సరళతరం చేసి మీ విజయాన్ని సాధించేందుకు తోడ్పడతాము.",
+    "blueBanner": "మేము విస్తృత పరిశ్రమ అనుభవం కలిగిన\nనిబద్ధత గల నిపుణుల బృందం",
+    "envisions": "మా క్లయింట్ల కోసం మేము ఊహించేది",
+    "whyChooseUs": "మమ్మల్ని ఎందుకు ఎంచుకోవాలి?",
+    "howItWorks": "ఇది ఎలా పనిచేస్తుంది?",
+    "services": [
+      {
+        "title": "ఫర్మ్ రిజిస్ట్రేషన్",
+        "description": "మీరు కొత్త వ్యాపారాన్ని ప్రారంభించాలనుకుంటున్నా లేదా ఇప్పటికే ఉన్నదాన్ని విస్తరించాలనుకుంటున్నా, మేము కంపెనీ నమోదు, LLP రిజిస్ట్రేషన్ మరియు ఇతర వ్యాపార నిర్మాణాలతో సహా అన్ని అవసరాలను తీర్చే సేవలను అందిస్తాము."
+      },
+      {
+        "title": "MSME CDP",
+        "description": "MSME క్లస్టర్ల ఏర్పాటుకు అవసరమైన డాక్యుమెంటేషన్, ప్రభుత్వ నిబంధనలు మరియు సమర్పణ ప్రక్రియలలో మేము మీకు మార్గనిర్దేశం చేస్తాము. అందుబాటులో ఉన్న ప్రయోజనాలు మరియు ప్రోత్సాహకాలను సులభంగా పొందేలా చేస్తాము."
+      },
+      {
+        "title": "CIBIL రిపేర్ & శిక్షణ",
+        "description": "మీ క్రెడిట్ స్కోర్ మెరుగుపరచడానికి మేము లోతైన విశ్లేషణ, సమస్యల పరిష్కారం మరియు క్రెడిట్ నిర్వహణపై శిక్షణను అందిస్తాము. దీని ద్వారా మీరు మీ క్రెడిట్ ప్రొఫైల్‌ను బలోపేతం చేసుకోవచ్చు."
+      },
+      {
+        "title": "వీసా & ఓవర్సీస్ కన్సల్టేషన్",
+        "description": "విదేశాల్లో పని చేయాలనుకుంటున్నారా? చదవాలనుకుంటున్నారా? మేము వీసా దరఖాస్తులు, డాక్యుమెంటేషన్ మరియు ఇమ్మిగ్రేషన్ విధానాలపై వ్యక్తిగత సలహాలను అందిస్తాము."
+      }
+    ],
+    "team": [
+      {
+        "name": "ఏ అశోక్ కుమార్",
+        "title": "ఏపీ CDP హెడ్"
+      },
+      {
+        "name": "ఏ సాయి కుమార్",
+        "title": "తెలంగాణ CDP హెడ్"
+      },
+      {
+        "name": "పీ నీతూ",
+        "title": "CIBIL విశ్లేషకురాలు"
+      },
+      {
+        "name": "సురేష్ బాబు",
+        "title": "హెయిరార్కీ హెడ్"
+      },
+      {
+        "name": "వి ఎస్ చరణ్",
+        "title": "పన్నుల విశ్లేషకుడు"
+      }
+    ],
+    "features": [
+      {
+        "title": "నమ్మదగిన నిపుణులు",
+        "description": "నియంత్రణ మరియు ఆర్థిక కన్సల్టెన్సీలో అనుభవం కలిగిన బృందం."
+      },
+      {
+        "title": "స్పష్టమైన ట్రాకింగ్",
+        "description": "ప్రతి దశలో మీకు సమాచారం అందేలా ట్రాకింగ్ సిస్టమ్."
+      },
+      {
+        "title": "వ్యక్తిగత మద్దతు",
+        "description": "మీ అవసరాలకు అనుగుణంగా ప్రత్యేక పరిష్కారాలు."
+      },
+      {
+        "title": "పూర్తి సేవలు",
+        "description": "డాక్యుమెంటేషన్ నుండి సమర్పణ వరకు మేమే చూసుకుంటాము."
+      }
+    ],
+    "steps": [
+      "విచారణ",
+      "డాక్యుమెంట్ సేకరణ",
+      "ప్రాసెసింగ్",
+      "ఆమోదం",
+      "ఫీడ్‌బ్యాక్ & ముగింపు"
+    ]
+  }
 }

@@ -1,48 +1,49 @@
-/* Common Styles */
+/* Logo Container - Top Row */
+.nav-header {
+  width: 100%;
+  background-color: white;
+}
+
 .logo-container {
-  display: flex;
-  align-items: center;
+  white-space: nowrap; 
   cursor: pointer;
+  background-color: white;
+ 
 }
 
 .logo-container img {
   height: 60px;
   width: auto;
+  vertical-align: middle;
+  display: inline-block;
+  padding:5px;
 }
 
 .logo-text {
-  font-size: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 12px;
+  font-size: 22px;
   font-weight: bold;
   color: #000;
-  margin-left: 12px;
 }
 
-/* Desktop Navbar */
+
+/* Navigation Bar - Bottom Row */
 .nav-bar {
-  font-family: 'Arial', sans-serif;
-  background-color: white;
-  border-bottom: 2px solid #ccc;
-}
-
-.nav-header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-}
-
-.nav {
+  width: 100%;
   background-color: #f26522;
+  font-family: 'Roboto', sans-serif;
 }
 
 .navbar-menu {
   display: flex;
   list-style: none;
   margin: 0;
-  padding: 6px 10px;
   gap: 25px;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .navbar-menu > li {
@@ -52,8 +53,9 @@
 .navbar-menu span {
   color: white;
   font-weight: bold;
-  font-size: 14.5px;
+  font-size: 15px;
   cursor: pointer;
+  padding: 6px 12px;
   transition: background-color 0.3s;
 }
 
@@ -61,6 +63,7 @@
   background-color: #d8561f;
 }
 
+/* Dropdown */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -72,13 +75,8 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.dropdown-content li {
-  border-bottom: 1px solid #ccc;
-}
-
 .dropdown-content li span {
   display: block;
-  padding: 10px 16px;
   font-weight: normal;
   font-size: 14px;
   color: white;
@@ -91,7 +89,6 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 /* Mobile Navbar */
 .mobile-nav {
   background-color: white;
@@ -150,4 +147,11 @@
 
 li{
   list-style: none;
+}
+
+.nav-header-container{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
