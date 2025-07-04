@@ -2,6 +2,8 @@ import React, { useState, useEffect} from "react";
 import '../styles/cibilrepair.css';
 import YesNo from "../components/YesNo";
 import axios from "axios";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function CibilRepairForm() {
   const [userId, setUserId] = useState(null);
 
@@ -13,7 +15,7 @@ export default function CibilRepairForm() {
         }
         else{
           axios 
-          .get("http://localhost:5000/api/auth/verify", {
+          .get(`${apiUrl}`+"/auth/verify", {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -180,7 +182,7 @@ export default function CibilRepairForm() {
     });
     
     axios
-    .post("http://localhost:5000/api/cibil-repair/register-cibil",fd,{
+    .post(`${apiUrl}`+"/cibil-repair/register-cibil",fd,{
       headers: { "Content-Type": "multipart/form-data" },
     }).then((response)=>{
       console.log("Cibil repair response:", response.data);

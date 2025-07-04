@@ -3,6 +3,8 @@ import "../styles/signup.css";
 import axios from "axios";
 import { useLanguage } from "../components/LanguageContext";
 import LanguageSwitcher from "../components/LanguageSwitcher"; // ✅ Import switcher
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 export default function Signup() {
   const { translations } = useLanguage();
@@ -91,7 +93,7 @@ export default function Signup() {
     const hasErrors = Object.values(newErrors).some((msg) => msg);
     if (!hasErrors) {
       axios
-        .post("http://localhost:5000/api/auth/signup", form)
+        .post(`${apiUrl}`+"/auth/signup", form)
         .then((response) => {
           console.log("Signup successful:", response.data);
           window.location.href = "/login";

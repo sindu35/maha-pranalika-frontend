@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../styles/msme.css";
 import YesNo from "../components/YesNo";
 import axios from "axios";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 export default function CibilRepairForm() {
   const [userId, setUserId] = useState(null);
@@ -54,7 +56,7 @@ export default function CibilRepairForm() {
       window.location.href = "/";
     } else {
       axios
-        .get("http://localhost:5000/api/auth/verify", {
+        .get(`${apiUrl}`+"/auth/verify", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -284,7 +286,7 @@ export default function CibilRepairForm() {
 
       // Send as JSON instead of FormData
       axios
-        .post("http://localhost:5000/api/msme/register-msme", submitData, {
+        .post(`${apiUrl}`+"/msme/register-msme", submitData, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -303,7 +305,7 @@ export default function CibilRepairForm() {
             handler: async function (response) {
               try {
                 const verify = await axios.post(
-                  "http://localhost:5000/api/msme/verify-payment",
+                  `${apiUrl}`+"/msme/verify-payment",
                   {
                     orderId: data.orderId,
                     paymentId: response.razorpay_payment_id,
