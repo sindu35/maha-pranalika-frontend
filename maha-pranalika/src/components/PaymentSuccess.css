@@ -1,0 +1,96 @@
+/* Base styles */
+/* Ensure full-page gradient background */
+.payment {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+  }
+  
+.payment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+   
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .payment-card {
+    background-color: #fff;
+    color: #333;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    max-width: 350px;
+    width: 100%;
+  }
+  
+  .checkmark {
+    font-size: 60px;
+    color: #2ecc71;
+    margin-bottom: 20px;
+  }
+  
+  .payment-card h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  
+  .payment-card p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666;
+  }
+  
+  .payment-card h3 {
+    font-size: 30px;
+    color: #27ae60;
+    margin-bottom: 15px;
+  }
+  
+  .transaction-id {
+    font-size: 14px;
+    color: #999;
+    background: #f6f6f6;
+    padding: 8px;
+    border-radius: 8px;
+    word-break: break-word;
+  }
+  
+  /* ============================== */
+  /* Mobile Responsive Adjustments */
+  /* ============================== */
+  
+  @media (max-width: 480px) {
+    .payment-card {
+      padding: 25px 20px;
+      max-width: 100%;
+    }
+  
+    .checkmark {
+      font-size: 48px;
+    }
+  
+    .payment-card h2 {
+      font-size: 22px;
+    }
+  
+    .payment-card p {
+      font-size: 14px;
+    }
+  
+    .payment-card h3 {
+      font-size: 24px;
+    }
+  
+    .transaction-id {
+      font-size: 12px;
+    }
+  }
+  
