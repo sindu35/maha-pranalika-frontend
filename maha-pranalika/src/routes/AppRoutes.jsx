@@ -8,7 +8,7 @@ import Firmregistration from '../components/Firmregistration'
 import Cibiltraining from '../components/Cibiltraining'
 import CibilRepairForm from '../pages/CibilRepairForm'
 import VisaOverseas from '../pages/VisaOverseas'
-
+import PaymentSuccess from '../components/PaymentSuccess'
 import Privacy from '../pages/Privacy'
 import TermsAndGuidelines from '../pages/TermsAndGuidelines'
 import MSME from '../pages/MSME'
@@ -33,6 +33,7 @@ const AppRoutes = () => {
         <Route path="/msme" element ={<MSME/>}/>
         {/* Add more routes as needed */}
         <Route path="/admin" element={<Admin />} />
+        <Route path="/payment-success" element={<PaymentSuccess/>}/>
       </Routes>
   )
 }

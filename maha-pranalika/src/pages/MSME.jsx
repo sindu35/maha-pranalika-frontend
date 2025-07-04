@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import "../styles/msme.css";
 import YesNo from "../components/YesNo";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function CibilRepairForm() {
+  const navigate = useNavigate(); 
   const [userId, setUserId] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [otherValue, setOtherValue] = useState("");
@@ -312,10 +314,15 @@ export default function CibilRepairForm() {
                 );
 
                 if (verify.data.success) {
-                  alert(
-                    " Payment successful! You are registered for CIBIL training."
-                  );
-                  window.location.reload();
+                  alert("Payment successful! You are registered for CIBIL training.");
+                  // Redirect to success page with props
+                  navigate("/payment-success", {
+                    state: {
+                      fullName: formData.basic_info.cluster_name,
+                      transactionId: response.razorpay_payment_id,
+                      amount:options.amount,
+                    },
+                  });
                 } else {
                   alert(
                     " Payment verification failed. Please contact support."

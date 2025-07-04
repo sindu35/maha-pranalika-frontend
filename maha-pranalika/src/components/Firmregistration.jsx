@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../styles/firmform.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Firmregistration() {
+  const navigate = useNavigate(); 
   const [userId, setUserId] = useState("");
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -329,10 +332,10 @@ export default function Firmregistration() {
 
           const options = {
             key: data.key, // Replace with your Razorpay key ID
-            amount: 499900,
+            amount: 10000,
             currency: "INR",
-            name: "CIBIL Training",
-            description: "Training Fee Payment",
+            name: "Firm Registration",
+            description: "Registration Fee Payment",
             order_id: data.orderId,
             handler: async function (response) {
               try {
@@ -345,11 +348,18 @@ export default function Firmregistration() {
                   }
                 );
 
-                if (verify.data.success) {
-                  alert(
-                    " Payment successful! You are registered for CIBIL training."
-                  );
-                } else {
+               
+    if (verify.data.success) {
+      alert("Payment successful! You are registered for CIBIL training.");
+      // Redirect to success page with props
+      navigate("/payment-success", {
+        state: {
+          fullName: formData.basic_details.fullName,
+          transactionId: response.razorpay_payment_id,
+          amount:options.amount,
+        },
+      });
+    }  else {
                   alert(
                     " Payment verification failed. Please contact support."
                   );
