@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/Cibiltraining.css";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 export default function Cibiltraining() {
   const [cibilData, setCibilData] = useState({
@@ -26,7 +28,7 @@ export default function Cibiltraining() {
     }
     else {
       axios
-      .get("http://localhost:5000/api/auth/verify" ,  {
+      .get(`${apiUrl}`+"/auth/verify" ,  {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -114,7 +116,7 @@ export default function Cibiltraining() {
         ...cibilData,    
         userId: userId    
       };
-      const response = await axios.post("http://localhost:5000/api/cibil/register", payload);
+      const response = await axios.post(`${apiUrl}`+"/cibil/register", payload);
       const data = response.data;
       console.log(data);
       console.log("Registration response:", data);
@@ -132,7 +134,7 @@ export default function Cibiltraining() {
         handler: async function (response) {
           try {
             const verify = await axios.post(
-              "http://localhost:5000/api/cibil/verify-payment",
+              `${apiUrl}`+"/cibil/verify-payment",
               {
                 orderId: data.orderId,
                 paymentId: response.razorpay_payment_id,

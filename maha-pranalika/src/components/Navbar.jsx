@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "./Navbar.css";
 import { useLanguage } from "./LanguageContext";
+import swayamkrush from "../assets/swayamkrush.png";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -144,11 +145,17 @@ export default function Navbar() {
     <div className="nav">
       <div className="nav-header">
         <div className="logo-container">
-          <img src={logo} alt="logo" />
-          <span className="logo-text" onClick={() => goTo("/")}>
-            {navLabels.logotext}
-          </span>
-          <div></div>
+          <div>
+            <div>
+              <img src={logo} alt="logo" />
+              <span className="logo-text" onClick={() => goTo("/")}>
+                {navLabels.logotext}
+              </span>
+            </div>
+            <div className="swayamkrush-center">
+              <img src={swayamkrush} alt="swayamkrush" />
+            </div>
+          </div>
           <div className="nav-bar">
             <ul className="navbar-menu">
               <li>
@@ -233,8 +240,6 @@ export default function Navbar() {
                   </li>
                 </ul>
               </li>
-
-              
 
               <li>
                 <span onClick={() => goTo("/privacy-policy")}>

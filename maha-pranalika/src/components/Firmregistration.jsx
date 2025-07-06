@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../styles/firmform.css";
 import axios from "axios";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 import { useNavigate } from "react-router-dom";
 
 
@@ -14,7 +16,7 @@ export default function Firmregistration() {
       window.location.href = "/";
     } else {
       axios
-        .get("http://localhost:5000/api/auth/verify", {
+        .get(`${apiUrl}`+"/auth/verify", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -324,7 +326,7 @@ export default function Firmregistration() {
         return;
       }
       axios
-        .post("http://localhost:5000/api/firm/register-firm", fd, {
+        .post(`${apiUrl}`+"/firm/register-firm", fd, {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((response) => {
@@ -340,7 +342,7 @@ export default function Firmregistration() {
             handler: async function (response) {
               try {
                 const verify = await axios.post(
-                  "http://localhost:5000/api/firm/verify-payment",
+                  `${apiUrl}`+"/firm/verify-payment",
                   {
                     orderId: data.orderId,
                     paymentId: response.razorpay_payment_id,
