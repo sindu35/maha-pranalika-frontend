@@ -1,0 +1,88 @@
+/* Container for the reset password form */
+.reset-container {
+  max-width: 500px;
+  margin: 4rem auto;
+  padding: 3rem 2rem;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Form layout */
+.reset-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Label styling */
+.reset-form label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* Password field layout */
+.password-field {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Input styling */
+.reset-form input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.reset-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Submit button styling */
+.reset-form button[type="submit"] {
+  padding: 0.85rem 1.2rem;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reset-form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Error message styling */
+.error-message {
+  color: #d9534f;
+  font-size: 0.95rem;
+  margin-top: -1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .reset-container {
+    margin: 2rem 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .password-field {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .reset-form button[type="submit"] {
+    font-size: 0.95rem;
+  }
+}
