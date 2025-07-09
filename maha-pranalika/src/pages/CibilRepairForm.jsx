@@ -106,72 +106,7 @@ export default function CibilRepairForm() {
     
     Object.entries(formData.documents).forEach(([key, file]) => {
       if (file) {
-        fd.append(key, file); const validate = () => {
-          const newErrors = {};
-          const today = new Date();
-        
-          const b = formData.basic_info;
-          const c = formData.contact_info;
-          const cl = formData.cluster_details;
-          const d = formData.documents;
-        
-          // Section A: Basic Info
-          if (!b.client_name) newErrors.client_name = "Cluster name is required";
-          if (!b.primary_product) newErrors.primary_product = "Primary product is required";
-          if (!b.total_no_of_leads) newErrors.total_no_of_leads = "Total number of firms is required";
-          if (!b.name_of_lead) newErrors.name_of_lead = "Name of lead organization is required";
-          if (b.type_of_organisation.length === 0)
-            newErrors.type_of_organisation = "Select at least one type of organization";
-          if (!b.lead_entity) newErrors.lead_entity = "Registration number is required";
-          if (!b.doe) {
-            newErrors.doe = "Date of establishment is required";
-          } else {
-            const doe = new Date(b.doe);
-            if (isNaN(doe.getTime()) || doe > today)
-              newErrors.doe = "Enter a valid date of establishment";
-          }
-          if (!b.address) newErrors.address = "Cluster office address is required";
-          if (!b.city) newErrors.city = "City is required";
-          if (!b.district) newErrors.district = "District is required";
-          if (!b.pincode || !/^\d{6}$/.test(b.pincode))
-            newErrors.pincode = "Valid 6-digit pincode is required";
-          if (!b.state) newErrors.state = "State is required";
-        
-          // Section B: Contact Info
-          if (!c.contact_person) newErrors.contact_person = "Contact person name is required";
-          if (!c.designation) newErrors.designation = "Designation is required";
-          if (!c.phone || !/^[6-9]\d{9}$/.test(c.phone))
-            newErrors.phone = "Valid 10-digit phone number required";
-          if (!c.email || !c.email.includes("@"))
-            newErrors.email = "Valid email is required";
-        
-          // Section C: Cluster Details
-          if (!cl.no_of_participating) newErrors.no_of_participating = "Number of SMEs is required";
-          if (!cl.average_years) newErrors.average_years = "Average years of operation is required";
-          if (!cl.total_employment) newErrors.total_employment = "Total employment is required";
-          if (!cl.common_challenges) newErrors.common_challenges = "Select at least one challenge";
-          if (!cl.key_interventions) newErrors.key_interventions = "Key interventions are required";
-        
-          // Section D: Documents
-          if (!d.issues || d.issues.length === 0)
-            newErrors.issues = "Please select at least one document";
-        
-          // Declaration section (if applicable)
-          if (!formData.signatureDate) {
-            newErrors.signatureDate = "Signature date is required";
-          } else {
-            const date = new Date(formData.signatureDate);
-            if (isNaN(date.getTime()) || date > today)
-              newErrors.signatureDate = "Please enter a valid date";
-          }
-        
-          if (!formData.declaration)
-            newErrors.declaration = "You must declare that the information provided is true";
-        
-          setErrors(newErrors);
-          return Object.keys(newErrors).length === 0;
-        };
-        
+        fd.append(key, file);  
     }});
     fd.append("userId", userId);
     console.log("fd",fd);

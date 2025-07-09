@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/visa.css";
-
+import axios from "axios";
 export default function VisaOverseas() {
   const [formData, setFormData] = useState({
     personal_information: {
@@ -48,6 +48,36 @@ export default function VisaOverseas() {
       declared: false,
     },
   });
+  const [userId, setUserId] = useState("");
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("login to access this service");
+      window.location.href = "/";
+    } else {
+      axios
+        .get("http://localhost:5000/api/auth/verify", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          console.log("User verification response:", response.data);
+          if (response.status === 200) {
+            setUserId(response.data.user.id);
+          } else {
+            alert("Session expired. Please login again.");
+            localStorage.removeItem("token");
+            window.location.href = "/";
+          }
+        })
+        .catch((error) => {
+          alert("Error fetching user data. Please try again.");
+          localStorage.removeItem("token");
+          window.location.href = "/";
+        });
+    }
+  }, []);
 
   const [errors, setErrors] = useState({});
 
@@ -310,16 +340,37 @@ export default function VisaOverseas() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log("Form submitted successfully:", formData);
-      alert("Form submitted successfully!");
-      // Here you would typically send the data to your backend
-    } else {
-      alert("Please fix the errors in the form before submitting.");
-    }
+    if (!validateForm()) return;
+    const fd = new FormData();
+    fd.append("userId", userId);
+    fd.append("personal_information", JSON.stringify(formData.personal_information));
+    fd.append("consultation_details", JSON.stringify(formData.consultation_details));
+    fd.append("education_experience", JSON.stringify(formData.education_experience));
+    fd.append("languageProficiency", JSON.stringify(formData.languageProficiency));
+    fd.append("addtionalDetails", JSON.stringify(formData.addtionalDetails));
+    fd.append("documentedChecklist", JSON.stringify(formData.documentedChecklist));
+    fd.append("declaration", JSON.stringify(formData.declaration));
+    
+    fd.forEach((value, key) => {
+      console.log(`${key}:`, value);
+    });
+    await
+    axios
+    .post("http://localhost:5000/api/visa/register-visa",fd,{
+      headers: { "Content-Type": "multipart/form-data" },
+    }).then((response)=>{
+      console.log("Visa Assistance response:", response.data);
+      alert("Visa Assistancw registered successfully!");
+    })
+    .catch((error) => {
+      console.error("Error Visa assistance:", error);
+      alert("Error Visa assistance. Please try again.");
+    });
+    alert("Visa Assistance  form submitted!");
   };
+    
 
   return (
     <div className="visa-form">
@@ -898,10 +949,10 @@ export default function VisaOverseas() {
           )}
         </section>
 
-        <button type="submit" style={{ padding: "10px 20px", fontSize: "16px", marginTop: "20px" }}>
+        <button type="submit" style={{ padding: "10px 20px", fontSize: "16px", marginTop: "20px" }} onClick={handleSubmit}>
           Submit Application
         </button>
       </form>
     </div>
   );
-}
+          }
