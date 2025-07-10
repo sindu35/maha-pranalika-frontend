@@ -5,9 +5,8 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 import { useNavigate } from "react-router-dom";
 
-
 export default function Firmregistration() {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -16,7 +15,7 @@ export default function Firmregistration() {
       window.location.href = "/";
     } else {
       axios
-        .get(`${apiUrl}`+"/auth/verify", {
+        .get(`${apiUrl}` + "/auth/verify", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -326,7 +325,7 @@ export default function Firmregistration() {
         return;
       }
       axios
-        .post(`${apiUrl}`+"/firm/register-firm", fd, {
+        .post(`${apiUrl}` + "/firm/register-firm", fd, {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((response) => {
@@ -342,7 +341,7 @@ export default function Firmregistration() {
             handler: async function (response) {
               try {
                 const verify = await axios.post(
-                  `${apiUrl}`+"/firm/verify-payment",
+                  `${apiUrl}` + "/firm/verify-payment",
                   {
                     orderId: data.orderId,
                     paymentId: response.razorpay_payment_id,
@@ -350,18 +349,16 @@ export default function Firmregistration() {
                   }
                 );
 
-               
-    if (verify.data.success) {
-      alert("Payment successful! You are registered for CIBIL training.");
-      // Redirect to success page with props
-      navigate("/payment-success", {
-        state: {
-          fullName: formData.basic_details.fullName,
-          transactionId: response.razorpay_payment_id,
-          amount:options.amount,
-        },
-      });
-    }  else {
+                if (verify.data.success) {
+                  
+                  navigate("/payment-success", {
+                    state: {
+                      fullName: formData.basic_details.fullName,
+                      transactionId: response.razorpay_payment_id,
+                      amount: options.amount,
+                    },
+                  });
+                } else {
                   alert(
                     " Payment verification failed. Please contact support."
                   );
@@ -377,7 +374,6 @@ export default function Firmregistration() {
             },
             modal: {
               ondismiss: function () {
-                console.log("Payment modal closed by user");
                 setIsSubmitting(false);
               },
             },

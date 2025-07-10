@@ -4,10 +4,11 @@ import axios from "axios";
 import { useLanguage } from "../components/LanguageContext";
 import LanguageSwitcher from "../components/LanguageSwitcher"; // ✅ Import switcher
 const apiUrl = import.meta.env.VITE_API_URL;
-
+import { useToast } from "../utils/ToastContext";
 
 export default function Signup() {
   const { translations } = useLanguage();
+  const { addToast } = useToast();
 
   const [form, setForm] = useState({
     email: "",
@@ -41,7 +42,8 @@ export default function Signup() {
           newErrors.password =
             value.length >= 6
               ? ""
-              : translations?.passwordLength || "Password must be at least 6 characters";
+              : translations?.passwordLength ||
+                "Password must be at least 6 characters";
           break;
         case "confirmPassword":
           newErrors.confirmPassword =
@@ -76,7 +78,8 @@ export default function Signup() {
             newErrors.password =
               value.length >= 6
                 ? ""
-                : translations?.passwordLength || "Password must be at least 6 characters";
+                : translations?.passwordLength ||
+                  "Password must be at least 6 characters";
             break;
           case "confirmPassword":
             newErrors.confirmPassword =
@@ -93,20 +96,23 @@ export default function Signup() {
     const hasErrors = Object.values(newErrors).some((msg) => msg);
     if (!hasErrors) {
       axios
-        .post(`${apiUrl}`+"/auth/signup", form)
+        .post(`${apiUrl}` + "/auth/signup", form)
         .then((response) => {
-          console.log("Signup successful:", response.data);
-          window.location.href = "/login";
+          addToast("Signup Successfull", "success");
+          setTimeout(()=>{
+            window.location.href = "/login";
+          },3000)
         })
         .catch((error) => {
-          console.error(
-            "Signup error:",
-            error.response ? error.response.data : error.message
-          );
+          const message =
+            error.response?.data?.message ||
+            "Signup failed. Please try again later.";
+
+          addToast(message, "error");
+
           setErrors({
             ...errors,
-            server:
-              translations?.signupFailed || "Signup failed. Please try again later.",
+            server: translations?.signupFailed || message,
           });
         });
     }
@@ -114,7 +120,6 @@ export default function Signup() {
 
   return (
     <div className="signup-container">
-
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">{translations?.name || "Name"}</label>
@@ -124,7 +129,7 @@ export default function Signup() {
             value={form.name}
             onChange={handleChange}
           />
-          {errors.name && (<span className="error">{errors.name || " "}</span>)}
+          {errors.name && <span className="error">{errors.name || " "}</span>}
         </div>
 
         <div className="form-group">
@@ -135,18 +140,22 @@ export default function Signup() {
             value={form.email}
             onChange={handleChange}
           />
-          {errors.email && (<span className="error">{errors.email || " "}</span>)}
+          {errors.email && <span className="error">{errors.email || " "}</span>}
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">{translations?.password || "Password"}</label>
+          <label htmlFor="password">
+            {translations?.password || "Password"}
+          </label>
           <input
             type="password"
             id="password"
             value={form.password}
             onChange={handleChange}
           />
-          {errors.password && (<span className="error">{errors.password || " "}</span>)}
+          {errors.password && (
+            <span className="error">{errors.password || " "}</span>
+          )}
         </div>
 
         <div className="form-group">
@@ -159,7 +168,9 @@ export default function Signup() {
             value={form.confirmPassword}
             onChange={handleChange}
           />
-          {errors.confirmPassword && (<span className="error">{errors.confirmPassword || " "}</span>)}
+          {errors.confirmPassword && (
+            <span className="error">{errors.confirmPassword || " "}</span>
+          )}
         </div>
 
         <button type="submit">{translations?.signup || "SIGN UP"}</button>

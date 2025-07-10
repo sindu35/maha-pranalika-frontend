@@ -13,6 +13,7 @@ import Privacy from '../pages/Privacy'
 import TermsAndGuidelines from '../pages/TermsAndGuidelines'
 import MSME from '../pages/MSME'
 import Admin from '../components/Admin'
+import Userpage from '../components/Userpage'
 
 
 const AppRoutes = () => {
@@ -34,6 +35,8 @@ const AppRoutes = () => {
         {/* Add more routes as needed */}
         <Route path="/admin" element={<Admin />} />
         <Route path="/payment-success" element={<PaymentSuccess/>}/>
+        <Route path="/admin/user/:id" element={<Userpage />} />
+
       </Routes>
   )
 }

@@ -1,7 +1,13 @@
 import React from 'react'
 import './Footer.css';
 import { useLanguage } from './LanguageContext';
+import { useLocation } from "react-router-dom";
+
 export default function Footer() {
+  const location = useLocation();
+    if (location.pathname.includes("/admin")) {
+      return null; // Don't render navbar on admin pages
+    }
   const { lang } = useLanguage();
   return (
     <footer className="footer">

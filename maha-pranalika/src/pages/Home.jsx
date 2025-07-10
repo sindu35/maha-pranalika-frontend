@@ -1,30 +1,40 @@
-import React, { useEffect, useRef, useState } from 'react';
-import '../styles/home.css';
-import firmImage from '../assets/firm.jpg';
-import msmeImage from '../assets/MSME.jpg';
-import cibilImage from '../assets/cibil.jpg';
-import visaImage from '../assets/visa.jpg';
-import { FaPaperPlane, FaDesktop, FaFlag } from 'react-icons/fa';
-import CurvedArrow from '../components/CurvedArrow';
-import { useLanguage } from '../components/LanguageContext';
+import React, { useEffect, useRef, useState } from "react";
+import "../styles/home.css";
+import firmImage from "../assets/firm.jpg";
+import msmeImage from "../assets/MSME.jpg";
+import cibilImage from "../assets/cibil.jpg";
+import visaImage from "../assets/visa.jpg";
+import { FaPaperPlane, FaDesktop, FaFlag } from "react-icons/fa";
+import CurvedArrow from "../components/CurvedArrow";
+import { useLanguage } from "../components/LanguageContext";
+import ashokImg from "../assets/ashok.jpg";
+import charanImg from "../assets/charan.jpg";
+import deshwanthImg from "../assets/deshwanth.jpg";
+import pavanImg from "../assets/pavan.jpg";
+import saikumarImg from "../assets/saikumar.jpg";
 
 export default function Home() {
   const { lang, translations } = useLanguage();
   const content = translations[`home-${lang}`];
- console.log("trans:",translations['home-english']);
+  console.log("trans:", translations["home-english"]);
 
   const missionRef = useRef(null);
   const visionRef = useRef(null);
   const [showMission, setShowMission] = useState(false);
   const [showVision, setShowVision] = useState(false);
 
-  const iconComponents = [<FaPaperPlane />, <FaDesktop />, <FaFlag />, <FaFlag />];
+  const iconComponents = [
+    <FaPaperPlane />,
+    <FaDesktop />,
+    <FaFlag />,
+    <FaFlag />,
+  ];
   const serviceImages = [firmImage, msmeImage, cibilImage, visaImage];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.target === missionRef.current && entry.isIntersecting) {
             setShowMission(true);
           }
@@ -45,6 +55,14 @@ export default function Home() {
     };
   }, []);
 
+  const teamImages = {
+    "A Ashok Kumar": ashokImg,
+    "A Sai Kumar": saikumarImg,
+    "S Pavan Kumar": pavanImg,
+    "Deshwanth Raj": deshwanthImg,
+    "V S Charan": charanImg,
+  };
+
   return (
     <>
       <div className="home-banner">
@@ -61,14 +79,14 @@ export default function Home() {
       <div className="mission-vision">
         <div
           ref={missionRef}
-          className={`mission scroll-fade ${showMission ? 'visible' : ''}`}
+          className={`mission scroll-fade ${showMission ? "visible" : ""}`}
         >
           <h1>{content.missionTitle}</h1>
           <p>{content.missionText}</p>
         </div>
         <div
           ref={visionRef}
-          className={`vision scroll-fade ${showVision ? 'visible' : ''}`}
+          className={`vision scroll-fade ${showVision ? "visible" : ""}`}
         >
           <h1>{content.visionTitle}</h1>
           <p>{content.visionText}</p>
@@ -98,7 +116,13 @@ export default function Home() {
         <div className="team-members">
           {content.team.map((member, index) => (
             <div key={index} className="team-member">
-              <div className="member-photo" />
+              <div className="member-photo">
+                <img
+                  src={teamImages[member.name]}
+                  alt={member.name}
+                  className="team-img"
+                />
+              </div>
               <h3>{member.name}</h3>
               <p>{member.title}</p>
             </div>
@@ -129,8 +153,10 @@ export default function Home() {
                 <p>{step}</p>
               </div>
               {index < content.steps.length - 1 && (
-                <div className={`arrow-wrapper ${index % 2 === 0 ? 'up' : 'down'}`}>
-                  <CurvedArrow direction={index % 2 === 0 ? 'up' : 'down'} />
+                <div
+                  className={`arrow-wrapper ${index % 2 === 0 ? "up" : "down"}`}
+                >
+                  <CurvedArrow direction={index % 2 === 0 ? "up" : "down"} />
                 </div>
               )}
             </React.Fragment>

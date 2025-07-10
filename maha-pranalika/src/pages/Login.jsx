@@ -4,16 +4,18 @@ import axios from "axios";
 import { useLanguage } from "../components/LanguageContext";
 import LanguageSwitcher from "../components/LanguageSwitcher"; // ✅ Import this
 const apiUrl = import.meta.env.VITE_API_URL;
-
+import { useToast } from "../utils/ToastContext";
 
 export default function Login() {
+
+  const { addToast } = useToast();
+
   const { translations } = useLanguage();
 
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -89,21 +91,32 @@ export default function Login() {
     const hasErrors = Object.values(newErrors).some((msg) => msg);
     if (!hasErrors) {
       axios
-        .post(`${apiUrl}`+"/auth/login", form)
+        .post(`${apiUrl}` + "/auth/login", form)
         .then((response) => {
           console.log("Login successful:", response.data);
           if (response.status === 200) {
             localStorage.setItem("token", response.data.token);
-            window.location.href = "/";
+            addToast("Login Successful","success");
+            setTimeout(()=>{
+              window.location.href = "/";
+            },3000)
           } else {
             console.error("Login failed:", response.data.message);
+            addToast("Login failed", "error"); // ✅ fixed here
           }
         })
+
         .catch((error) => {
-          console.error(
-            "Login error:",
-            error.response ? error.response.data : error.message
-          );
+          const message =
+            error.response?.data?.message || "Login failed. Please try again.";
+
+          if (error.response?.status === 404) {
+            addToast("User not found", "error");
+          } else if (error.response?.status === 401) {
+            addToast("Invalid credentials", "error");
+          } else {
+            addToast("Login failed", "error");
+          }
           setErrors({
             ...errors,
             server:
