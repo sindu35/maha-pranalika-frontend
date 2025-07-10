@@ -4,9 +4,14 @@ import logo from "../assets/logo.png";
 import "./Navbar.css";
 import { useLanguage } from "./LanguageContext";
 import swayamkrush from "../assets/swayamkrush.png";
+import { useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
+  if (location.pathname.includes("/admin")) {
+    return null; // Don't render navbar on admin pages
+  }
 
   const { lang: currentLang, translations } = useLanguage();
   const navLabels = translations[`nav-${currentLang}`];
@@ -146,11 +151,9 @@ export default function Navbar() {
       <div className="nav-header">
         <div className="logo-container">
           <div>
-            <div>
-              <img src={logo} alt="logo" />
-              <span className="logo-text" onClick={() => goTo("/")}>
-                {navLabels.logotext}
-              </span>
+            <div >
+              <img src={logo} alt="logo" style={{cursor:"pointer"}} onClick={() => goTo("/")}/>
+              <span className="logo-text" style={{cursor:"pointer"}} onClick={() => goTo("/")}>{navLabels.logotext}</span>
             </div>
             <div className="swayamkrush-center">
               <img src={swayamkrush} alt="swayamkrush" />

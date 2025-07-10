@@ -1,0 +1,263 @@
+/* User Page Styles */
+.user-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #495057;
+  margin-top: 50px;
+}
+
+/* User Header */
+.user-header {
+  background-color: #fff;
+  color: #343a40;
+  padding: 15px 20px;
+  margin: 0;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.user-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.user-header p {
+  margin: 0;
+  font-size: 14px;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.user-header strong {
+  font-weight: 600;
+}
+
+/* Section Divider */
+hr {
+  display: none;
+}
+
+/* Form Section */
+.form-section {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 15px;
+  align-items: start;
+}
+
+.form-section h3 {
+  grid-column: 1 / -1;
+  color: #343a40;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  padding: 8px 12px;
+  background-color: white;
+  border-radius: 4px;
+  border-left: 4px solid #007bff;
+  box-shadow: #343a40;
+}
+
+/* Base Card Styles */
+.form-card {
+  background-color: white;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  transition: box-shadow 0.3s ease;
+}
+
+.form-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.form-card p {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #495057;
+}
+
+.form-card strong {
+  font-weight: 600;
+  color: #343a40;
+  margin-right: 8px;
+  min-width: 100px;
+  display: inline-block;
+}
+
+/* Different Section Borders */
+.form-section .form-card {
+  border-left: 4px solid #007bff;
+}
+
+.cibilrepairs-section .form-card {
+  border-left: 4px solid #28a745;
+}
+
+.cibiltrainings-section .form-card {
+  border-left: 4px solid #6f42c1;
+}
+
+.msmeclusters-section .form-card {
+  border-left: 4px solid #fd7e14;
+}
+
+.visa-assistance-section .form-card {
+  border-left: 4px solid #17a2b8;
+}
+
+/* Section Headers */
+.cibilrepairs-section h3 {
+  border-left-color: #28a745;
+}
+
+.cibiltrainings-section h3 {
+  border-left-color: #6f42c1;
+}
+
+.msmeclusters-section h3 {
+  border-left-color: #fd7e14;
+}
+
+.visa-assistance-section h3 {
+  border-left-color: #17a2b8;
+}
+
+/* Status Indicators */
+.form-card p:last-child {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #dee2e6;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .form-section {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-header {
+    padding: 10px 15px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-header h2 {
+    font-size: 18px;
+  }
+
+  .user-header p {
+    margin-right: 15px;
+    font-size: 13px;
+  }
+
+  .form-section {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .form-section h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .form-card {
+    padding: 12px;
+  }
+
+  .form-card p {
+    font-size: 13px;
+  }
+
+  .form-card strong {
+    min-width: 80px;
+    display: block;
+    margin-bottom: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-header {
+    padding: 8px 12px;
+  }
+
+  .form-section {
+    padding: 12px;
+  }
+
+  .form-card {
+    padding: 10px;
+  }
+
+  .form-section h3 {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .form-card p {
+    font-size: 12px;
+    margin: 6px 0;
+  }
+}
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* Resolve Button */
+.resolve-btn {
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.resolve-btn:hover {
+  background-color: #5a32a3;
+}
+
+/* Delete Button */
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #b02a37;
+}

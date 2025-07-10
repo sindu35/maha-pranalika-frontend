@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/Cibiltraining.css";
-const apiUrl = import.meta.env.VITE_API_URL;
 
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function Cibiltraining() {
   const [cibilData, setCibilData] = useState({
@@ -10,44 +10,39 @@ export default function Cibiltraining() {
     email: "",
     phone: "",
     education: "",
-    preferedTrainingMode: "", 
+    preferedTrainingMode: "",
     city: "",
     experience: "",
     remarks: "",
   });
-  const [userId, setUserId]=useState("");
+  const [userId, setUserId] = useState("");
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
       alert("Please login to access this service. Redirecting to login page.");
       window.location.href = "/login";
-    }
-    else {
+    } else {
       axios
-      .get(`${apiUrl}`+"/auth/verify" ,  {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-    })
-    .then((response) =>{
-      if(response.status === 200){
-        setUserId(response.data.user.id);
-        
-      }
-      else {
-        alert("Session expired. Please login again.");
-        localStorage.removeItem("token");
-        window.location.href = "/login";
-      }
-    } )
-    .catch((error) => {
-      alert("Error fetching user data. Please try again.");
-    });
-  }
+        .get(`${apiUrl}/auth/verify`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            setUserId(response.data.user.id);
+          } else {
+            alert("Session expired. Please login again.");
+            localStorage.removeItem("token");
+            window.location.href = "/login";
+          }
+        })
+        .catch(() => {
+          alert("Error fetching user data. Please try again.");
+        });
+    }
   }, []);
 
   const validateField = (field, value) => {
@@ -71,29 +66,13 @@ export default function Cibiltraining() {
     if (submitted) validateField(field, value);
   };
 
-  const loadRazorpayScript = () => {
-    return new Promise((resolve) => {
-      if (window.Razorpay) {
-        resolve(true);
-        return;
-      }
-
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-      script.onload = () => resolve(true);
-      script.onerror = () => resolve(false);
-      document.body.appendChild(script);
-    });
-  };
-
   const handleSubmit = async () => {
     if (isSubmitting) return;
-    
+
     setSubmitted(true);
     setIsSubmitting(true);
+
     let allValid = true;
-    
-  
     Object.entries(cibilData).forEach(([field, value]) => {
       const valid = validateField(field, value);
       if (!valid) allValid = false;
@@ -106,80 +85,10 @@ export default function Cibiltraining() {
     }
 
     try {
-      const isScriptLoaded = await loadRazorpayScript();
-      if (!isScriptLoaded) {
-        alert("Razorpay SDK failed to load. Please try again.");
-        setIsSubmitting(false);
-        return;
-      }
-      const payload = {
-        ...cibilData,    
-        userId: userId    
-      };
-      const response = await axios.post(`${apiUrl}`+"/cibil/register", payload);
-      const data = response.data;
-      console.log(data);
-      console.log("Registration response:", data);
-      console.log(payload);
-      
-
-
-      const options = {
-        key: data.key, // Replace with your Razorpay key ID
-        amount: 499900,
-        currency: "INR",
-        name: "CIBIL Training",
-        description: "Training Fee Payment",
-        order_id: data.orderId,
-        handler: async function (response) {
-          try {
-            const verify = await axios.post(
-              `${apiUrl}`+"/cibil/verify-payment",
-              {
-                orderId: data.orderId,
-                paymentId: response.razorpay_payment_id,
-                signature: response.razorpay_signature,
-              }
-            );
-
-            if (verify.data.success) {
-              alert(" Payment successful! You are registered for CIBIL training.");
-
-            } else {
-              alert(" Payment verification failed. Please contact support.");
-            }
-          } catch (verifyError) {
-            console.error("Verification error:", verifyError);
-            alert("Server error during payment verification. Please contact support.");
-          } finally {
-            setIsSubmitting(false);
-          }
-        },
-        modal: {
-          ondismiss: function() {
-            console.log("Payment modal closed by user");
-            setIsSubmitting(false);
-          }
-        },
-        prefill: {
-          name: cibilData.fullName,
-          email: cibilData.email,
-          contact: cibilData.phone,
-        },
-        theme: {
-          color: "#3399cc",
-        },
-      };
-
-      const paymentObject = new window.Razorpay(options);
-      paymentObject.open();
-
-      paymentObject.on('payment.failed', function (response) {
-        console.error('Payment failed:', response.error);
-        alert(`Payment failed: ${response.error.description}`);
-        setIsSubmitting(false);
-      });
-
+      const payload = { ...cibilData, userId };
+      const response = await axios.post(`${apiUrl}/cibil/register`, payload);
+      console.log("Registration response:", response.data);
+      alert("Successfully registered for CIBIL training.");
     } catch (error) {
       console.error("Error during registration:", error);
       if (error.response) {
@@ -190,6 +99,7 @@ export default function Cibiltraining() {
       } else {
         alert("Registration failed. Please try again later.");
       }
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -197,29 +107,24 @@ export default function Cibiltraining() {
   return (
     <div className="cibil-container">
       <h2>CIBIL Training Registration</h2>
-
       {[
         ["Full Name", "fullName"],
         ["Email", "email"],
         ["Phone", "phone"],
         ["Education", "education"],
-        ["Preferred Training Mode", "preferedTrainingMode"], 
+        ["Preferred Training Mode", "preferedTrainingMode"],
         ["City", "city"],
         ["Experience", "experience"],
       ].map(([label, field]) => (
         <label key={field}>
           {label}:
           <input
-            type={
-              field === "email" ? "email" : field === "phone" ? "tel" : "text"
-            }
+            type={field === "email" ? "email" : field === "phone" ? "tel" : "text"}
             value={cibilData[field]}
             onChange={(e) => handleChange(field, e.target.value)}
             disabled={isSubmitting}
           />
-          {errors.field && (
-            <span className="error-space">{errors[field]}</span>
-          )}
+          {errors[field] && <span className="error-space">{errors[field]}</span>}
         </label>
       ))}
 
@@ -230,18 +135,18 @@ export default function Cibiltraining() {
           onChange={(e) => handleChange("remarks", e.target.value)}
           disabled={isSubmitting}
         />
-        {errors.remarks && (<span className="error-space">{errors.remarks}</span>)}
+        {errors.remarks && <span className="error-space">{errors.remarks}</span>}
       </label>
 
-      <button 
-        onClick={handleSubmit} 
+      <button
+        onClick={handleSubmit}
         disabled={isSubmitting}
-        style={{ 
+        style={{
           opacity: isSubmitting ? 0.6 : 1,
-          cursor: isSubmitting ? 'not-allowed' : 'pointer'
+          cursor: isSubmitting ? "not-allowed" : "pointer",
         }}
       >
-        {isSubmitting ? "Processing..." : "Pay ₹4999 & Register Now"}
+        {isSubmitting ? "Submitting..." : "Register Now"}
       </button>
     </div>
   );
