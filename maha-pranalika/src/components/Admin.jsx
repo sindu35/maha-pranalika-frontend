@@ -1,9 +1,13 @@
 import React , {useState,useEffect} from 'react'
 import axios from 'axios';
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
+
 export default function Admin() {
 
     const [isAdmin, setIsAdmin] = useState(false);
+    console.log(apiUrl);
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -12,7 +16,7 @@ export default function Admin() {
           window.location.href = "/";
         } else {
           axios
-            .get("http://localhost:5000/api/auth/verify", {
+            .get(`${apiUrl}`+"/auth/verify", {
               headers: {
                 Authorization: `Bearer ${token}`,
               },

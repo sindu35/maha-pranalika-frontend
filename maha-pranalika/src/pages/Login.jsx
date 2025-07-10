@@ -3,6 +3,8 @@ import "../styles/login.css";
 import axios from "axios";
 import { useLanguage } from "../components/LanguageContext";
 import LanguageSwitcher from "../components/LanguageSwitcher"; // ✅ Import this
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 import { useNavigate } from "react-router-dom";
 export default function Login() {
@@ -91,7 +93,7 @@ export default function Login() {
     const hasErrors = Object.values(newErrors).some((msg) => msg);
     if (!hasErrors) {
       axios
-        .post("http://localhost:5000/api/auth/login", form)
+        .post(`${apiUrl}`+"/auth/login", form)
         .then((response) => {
           console.log("Login successful:", response.data);
           if (response.status === 200) {
