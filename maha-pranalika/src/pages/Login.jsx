@@ -6,12 +6,13 @@ import LanguageSwitcher from "../components/LanguageSwitcher"; // ✅ Import thi
 const apiUrl = import.meta.env.VITE_API_URL;
 import { useToast } from "../utils/ToastContext";
 
+import { useNavigate } from "react-router-dom";
 export default function Login() {
 
   const { addToast } = useToast();
 
   const { translations } = useLanguage();
-
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -25,7 +26,10 @@ export default function Login() {
   }, []);
 
   const [errors, setErrors] = useState({});
-
+  const goTo = (path) => {
+    
+    navigate(path);
+  };
   const handleChange = (e) => {
     const { id, value } = e.target;
     const updatedForm = { ...form, [id]: value };
@@ -155,9 +159,12 @@ export default function Login() {
             <span className="error">{errors.password || " "}</span>
           )}
         </div>
-
+        <div >
+        <span  className="forgotpassword" onClick={() => goTo("/forgotpassword")}>
+                  Forgot Password?
+                </span>
         <button type="submit">{translations?.login || "LOGIN"}</button>
-
+        </div>
         <p
           className="login-text"
           style={{ cursor: "pointer", textAlign: "center" }}

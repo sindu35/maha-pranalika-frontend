@@ -14,7 +14,8 @@ import TermsAndGuidelines from '../pages/TermsAndGuidelines'
 import MSME from '../pages/MSME'
 import Admin from '../components/Admin'
 import Userpage from '../components/Userpage'
-
+import ForgotPassword from '../pages/ForgotPassword'
+import ResetPassword from '../pages/ResetPassword'
 
 const AppRoutes = () => {
   return (
@@ -37,6 +38,8 @@ const AppRoutes = () => {
         <Route path="/payment-success" element={<PaymentSuccess/>}/>
         <Route path="/admin/user/:id" element={<Userpage />} />
 
+        <Route path="/forgotpassword" element={<ForgotPassword/>}/>
+        <Route path='/resetpassword' element={<ResetPassword/>}/>
       </Routes>
   )
 }
