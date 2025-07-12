@@ -16,7 +16,7 @@ import Admin from '../components/Admin'
 import Userpage from '../components/Userpage'
 import ForgotPassword from '../pages/ForgotPassword'
 import ResetPassword from '../pages/ResetPassword'
-
+import GetUsers from '../pages/GetUsers'
 const AppRoutes = () => {
   return (
       <Routes>
@@ -40,6 +40,7 @@ const AppRoutes = () => {
 
         <Route path="/forgotpassword" element={<ForgotPassword/>}/>
         <Route path='/resetpassword' element={<ResetPassword/>}/>
+        
       </Routes>
   )
 }
