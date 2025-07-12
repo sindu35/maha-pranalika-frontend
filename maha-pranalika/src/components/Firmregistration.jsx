@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function Firmregistration() {
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
+  cosnt [isSubmitting, setIsSubmitting]
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
