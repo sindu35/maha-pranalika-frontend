@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Search from "./Search";
-
+import GetUsers from "../pages/GetUsers"
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function Admin() {
   const [isAdmin, setIsAdmin] = useState(false);
+  console.log("import.meta.env:", import.meta.env);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -38,6 +39,7 @@ export default function Admin() {
   return (
     <div>
       <Search />
+      <GetUsers/>
     </div>
   );
 }
