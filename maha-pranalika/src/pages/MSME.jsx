@@ -12,9 +12,11 @@ export default function CibilRepairForm() {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [otherValue, setOtherValue] = useState("");
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false); // Added loading state
 
-  const [formData, setFormData] = useState({
-    userId: "", // added here
+  // Initial form data structure
+  const initialFormData = {
+    userId: "",
     basic_info: {
       client_name: "",
       primary_product: "",
@@ -50,7 +52,11 @@ export default function CibilRepairForm() {
       declaration_date: "",
       declared: false,
     },
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+
+  
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -216,7 +222,14 @@ export default function CibilRepairForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Prevent multiple submissions
+    if (isSubmitting) return;
+    
     if (!validate()) return;
+
+    // Set loading state
+    setIsSubmitting(true);
 
     // Debug: Log the formData to see what's being sent
     console.log("Form Data before submit:", formData);
@@ -283,6 +296,7 @@ export default function CibilRepairForm() {
       const isScriptLoaded = await loadRazorpayScript();
       if (!isScriptLoaded) {
         alert("Razorpay SDK failed to load. Please try again.");
+        setIsSubmitting(false);
         return;
       }
 
@@ -296,7 +310,44 @@ export default function CibilRepairForm() {
         .then((response) => {
           console.log("Registration successful:", response.data);
           const data = response.data;
-
+          setFormData({
+            userId: "",
+      basic_info: {
+        client_name: "",
+        primary_product: "",
+        total_no_of_leads: "",
+        name_of_lead: "",
+        type_of_organisation: [],
+        lead_entity: "",
+        doe: "",
+        address: "",
+        city: "",
+        state: "",
+        district: "",
+        pincode: "",
+      },
+      contact_info: {
+        contact_person: "",
+        designation: "",
+        phone: "",
+        email: "",
+      },
+      cluster_details: {
+        no_of_participating: "",
+        average_years: "",
+        total_employment: "",
+        common_challenges: [],
+        key_interventions: "",
+      },
+      documents: {
+        issues: [],
+      },
+      declaration: {
+        signature: "",
+        declaration_date: "",
+        declared: false,
+      },
+         }     )
           const options = {
             key: data.key, // Replace with your Razorpay key ID
             amount: 9000000,
@@ -316,25 +367,23 @@ export default function CibilRepairForm() {
                 );
 
                 if (verify.data.success) {
-                  alert("Payment successful! You are registered for CIBIL training.");
-                  // Redirect to success page with props
+                  alert("Payment successful! You are registered for MSME training.");
+                
                   navigate("/payment-success", {
                     state: {
-                      fullName: formData.basic_info.cluster_name,
+                      fullName: submitData.basic_info.client_name,
                       transactionId: response.razorpay_payment_id,
-                      amount:options.amount,
+                      amount: options.amount,
                     },
                   });
                 } else {
-                  alert(
-                    " Payment verification failed. Please contact support."
-                  );
+                  alert("Payment verification failed. Please contact support.");
+                  setIsSubmitting(false);
                 }
               } catch (verifyError) {
                 console.error("Verification error:", verifyError);
-                alert(
-                  "Server error during payment verification. Please contact support."
-                );
+                alert("Server error during payment verification. Please contact support.");
+                setIsSubmitting(false);
               }
             },
             modal: {
@@ -352,7 +401,7 @@ export default function CibilRepairForm() {
               color: "#3399cc",
             },
           };
-
+         
           const paymentObject = new window.Razorpay(options);
           paymentObject.open();
 
@@ -366,8 +415,9 @@ export default function CibilRepairForm() {
           console.error("Submission error:", error);
           console.log("Error response:", error.response?.data);
           alert("Submission failed. Please try again.");
+          setIsSubmitting(false);
         });
-    } catch (err) {
+    } catch (error) {
       console.error("Error during registration:", error);
       if (error.response) {
         const errorMessage =
@@ -378,6 +428,7 @@ export default function CibilRepairForm() {
       } else {
         alert("Registration failed. Please try again later.");
       }
+      setIsSubmitting(false);
     }
   };
 
@@ -421,6 +472,7 @@ export default function CibilRepairForm() {
             name="basic_info.client_name"
             value={formData.basic_info.client_name}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.client_name && (
             <p className="error-message">{errors.client_name}</p>
@@ -432,6 +484,7 @@ export default function CibilRepairForm() {
             name="basic_info.primary_product"
             value={formData.basic_info.primary_product}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.primary_product && (
             <p className="error-message">{errors.primary_product}</p>
@@ -443,6 +496,7 @@ export default function CibilRepairForm() {
             name="basic_info.total_no_of_leads"
             value={formData.basic_info.total_no_of_leads}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.total_no_of_leads && (
             <p className="error-message">{errors.total_no_of_leads}</p>
@@ -454,6 +508,7 @@ export default function CibilRepairForm() {
             name="basic_info.name_of_lead"
             value={formData.basic_info.name_of_lead}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.name_of_lead && (
             <p className="error-message">{errors.name_of_lead}</p>
@@ -481,6 +536,7 @@ export default function CibilRepairForm() {
                       "type_of_organisation"
                     )
                   }
+                  disabled={isSubmitting}
                 />
                 {type}
               </label>
@@ -498,6 +554,7 @@ export default function CibilRepairForm() {
                     "type_of_organisation"
                   )
                 }
+                disabled={isSubmitting}
               />
               Other:
             </label>
@@ -515,6 +572,7 @@ export default function CibilRepairForm() {
                   )
                 }
                 className="border border-gray-300 px-2 py-1 rounded-md"
+                disabled={isSubmitting}
               />
             )}
           </div>
@@ -528,6 +586,7 @@ export default function CibilRepairForm() {
             name="basic_info.lead_entity"
             value={formData.basic_info.lead_entity}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.lead_entity && (
             <p className="error-message">{errors.lead_entity}</p>
@@ -539,6 +598,7 @@ export default function CibilRepairForm() {
             name="basic_info.doe"
             value={formData.basic_info.doe}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.doe && <p className="error-message">{errors.doe}</p>}
 
@@ -547,6 +607,7 @@ export default function CibilRepairForm() {
             name="basic_info.address"
             value={formData.basic_info.address}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.address && <p className="error-message">{errors.address}</p>}
 
@@ -558,6 +619,7 @@ export default function CibilRepairForm() {
                 name="basic_info.city"
                 value={formData.basic_info.city}
                 onChange={handleChange}
+                disabled={isSubmitting}
               />
               {errors.city && <p className="error-message">{errors.city}</p>}
             </div>
@@ -568,6 +630,7 @@ export default function CibilRepairForm() {
                 name="basic_info.district"
                 value={formData.basic_info.district}
                 onChange={handleChange}
+                disabled={isSubmitting}
               />
               {errors.district && (
                 <p className="error-message">{errors.district}</p>
@@ -582,6 +645,7 @@ export default function CibilRepairForm() {
                 name="basic_info.state"
                 value={formData.basic_info.state}
                 onChange={handleChange}
+                disabled={isSubmitting}
               />
               {errors.state && <p className="error-message">{errors.state}</p>}
             </div>
@@ -592,6 +656,7 @@ export default function CibilRepairForm() {
                 name="basic_info.pincode"
                 value={formData.basic_info.pincode}
                 onChange={handleChange}
+                disabled={isSubmitting}
               />
               {errors.pincode && (
                 <p className="error-message">{errors.pincode}</p>
@@ -607,6 +672,7 @@ export default function CibilRepairForm() {
             name="contact_info.contact_person"
             value={formData.contact_info.contact_person}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.contact_person && (
             <p className="error-message">{errors.contact_person}</p>
@@ -618,6 +684,7 @@ export default function CibilRepairForm() {
             name="contact_info.designation"
             value={formData.contact_info.designation}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.designation && (
             <p className="error-message">{errors.designation}</p>
@@ -629,6 +696,7 @@ export default function CibilRepairForm() {
             name="contact_info.phone"
             value={formData.contact_info.phone}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.phone && <p className="error-message">{errors.phone}</p>}
 
@@ -638,6 +706,7 @@ export default function CibilRepairForm() {
             name="contact_info.email"
             value={formData.contact_info.email}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.email && <p className="error-message">{errors.email}</p>}
         </section>
@@ -649,6 +718,7 @@ export default function CibilRepairForm() {
             name="cluster_details.no_of_participating"
             value={formData.cluster_details.no_of_participating}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.no_of_participating && (
             <p className="error-message">{errors.no_of_participating}</p>
@@ -660,6 +730,7 @@ export default function CibilRepairForm() {
             name="cluster_details.average_years"
             value={formData.cluster_details.average_years}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.average_years && (
             <p className="error-message">{errors.average_years}</p>
@@ -671,6 +742,7 @@ export default function CibilRepairForm() {
             name="cluster_details.total_employment"
             value={formData.cluster_details.total_employment}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.total_employment && (
             <p className="error-message">{errors.total_employment}</p>
@@ -699,6 +771,7 @@ export default function CibilRepairForm() {
                       "common_challenges"
                     )
                   }
+                  disabled={isSubmitting}
                 />
                 {challenge}
               </label>
@@ -716,6 +789,7 @@ export default function CibilRepairForm() {
                     "common_challenges"
                   )
                 }
+                disabled={isSubmitting}
               />
               Other:
             </label>
@@ -733,6 +807,7 @@ export default function CibilRepairForm() {
                   )
                 }
                 className="border border-gray-300 px-2 py-1 rounded-md"
+                disabled={isSubmitting}
               />
             )}
           </div>
@@ -745,6 +820,7 @@ export default function CibilRepairForm() {
             name="cluster_details.key_interventions"
             value={formData.cluster_details.key_interventions}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.key_interventions && (
             <p className="error-message">{errors.key_interventions}</p>
@@ -770,6 +846,7 @@ export default function CibilRepairForm() {
                   onChange={(e) =>
                     handleCheckboxArrayChange(e, "documents", "issues")
                   }
+                  disabled={isSubmitting}
                 />
                 {doc}
               </label>
@@ -786,6 +863,7 @@ export default function CibilRepairForm() {
             value={formData.declaration.signature}
             onChange={handleChange}
             placeholder="Enter your full name as signature"
+            disabled={isSubmitting}
           />
           {errors.signature && (
             <p className="error-message">{errors.signature}</p>
@@ -797,6 +875,7 @@ export default function CibilRepairForm() {
             name="declaration.declaration_date"
             value={formData.declaration.declaration_date}
             onChange={handleChange}
+            disabled={isSubmitting}
           />
           {errors.declaration_date && (
             <p className="error-message">{errors.declaration_date}</p>
@@ -809,6 +888,7 @@ export default function CibilRepairForm() {
               checked={formData.declaration.declared}
               onChange={handleChange}
               style={{ width: "20px", height: "20px", marginRight: "10px" }}
+              disabled={isSubmitting}
             />
             <span>
               I declare that the information provided above is true and correct
@@ -822,9 +902,21 @@ export default function CibilRepairForm() {
         </section>
         <button
           type="submit"
-          style={{ padding: "10px 20px", fontSize: "16px", marginTop: "20px" }}
+          disabled={isSubmitting}
+          style={{ 
+            padding: "10px 20px", 
+            fontSize: "16px", 
+            marginTop: "20px",
+            opacity: isSubmitting ? 0.6 : 1,
+            cursor: isSubmitting ? "not-allowed" : "pointer",
+            backgroundColor: isSubmitting ? "#ccc" : "#3399cc",
+            color: "white",
+            border: "none",
+            borderRadius: "4px"
+          }}
+         
         >
-          Submit Application
+          {isSubmitting ? "Submitting..." : "Submit Application"}
         </button>
       </form>
     </div>

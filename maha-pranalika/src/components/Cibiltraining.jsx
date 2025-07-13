@@ -89,6 +89,16 @@ export default function Cibiltraining() {
       const response = await axios.post(`${apiUrl}/cibil/register`, payload);
       console.log("Registration response:", response.data);
       alert("Successfully registered for CIBIL training.");
+      setCibilData({  
+      fullName: "",
+      email: "",
+      phone: "",
+      education: "",
+      preferedTrainingMode: "",
+      city: "",
+      experience: "",
+      remarks: "",
+    });
     } catch (error) {
       console.error("Error during registration:", error);
       if (error.response) {
