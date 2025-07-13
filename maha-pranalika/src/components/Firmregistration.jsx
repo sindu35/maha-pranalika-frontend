@@ -295,8 +295,13 @@ export default function Firmregistration() {
   };
 
   const handleSubmit = async (e) => {
+    
+    setIsSubmitting(true);
     e.preventDefault();
-    if (!validate()) return;
+    if (!validate()) {
+      setIsSubmitting(false);
+      return;
+    }
 
     const fd = new FormData();
     fd.append("basic_details", JSON.stringify(formData.basic_details));
@@ -330,7 +335,45 @@ export default function Firmregistration() {
         })
         .then((response) => {
           const data = response.data;
-
+           setFormData({
+            basic_details: {
+              fullName: "",
+              fatherSpouseName: "",
+              dob: "",
+              email: "",
+              mobile: "",
+              altContact: "",
+              address: "",
+            },
+            firm_details: {
+              firmName: "",
+              registrationType: "",
+              businessNature: "",
+              officeAddress: "",
+            },
+            partner_details: {
+              director2Name: "",
+              director2Email: "",
+              pan: "",
+              aadhaar: "",
+              addressProof: "",
+            },
+            documents: {
+              panCard: null,
+              aadhaarCard: null,
+              photos: null,
+              addressProofDoc: null,
+              dsc: null,
+              noc: null,
+            },
+            declaration: {
+              signature: null,
+              name: "",
+              date: "",
+              declared: false,
+            },
+          }
+           );
           const options = {
             key: data.key, // Replace with your Razorpay key ID
             amount: 10000,
@@ -338,6 +381,7 @@ export default function Firmregistration() {
             name: "Firm Registration",
             description: "Registration Fee Payment",
             order_id: data.orderId,
+            
             handler: async function (response) {
               try {
                 const verify = await axios.post(
@@ -399,7 +443,8 @@ export default function Firmregistration() {
         .catch((error) => {
           console.error("Error registering firm:", error);
           alert("Error registering firm. Please try again.");
-        });
+        })
+       
     } catch (error) {
       console.error("Error during registration:", error);
       if (error.response) {
@@ -413,6 +458,7 @@ export default function Firmregistration() {
       }
       setIsSubmitting(false);
     }
+      
   };
 
   return (
@@ -760,8 +806,18 @@ export default function Firmregistration() {
 
           {errors.declared && <span className="error">{errors.declared}</span>}
         </section>
+        <button
+        onClick={handleSubmit}
+        disabled={isSubmitting}
+        style={{
+          opacity: isSubmitting ? 0.6 : 1,
+          cursor: isSubmitting ? "not-allowed" : "pointer",
+        }}
+      >
+        {isSubmitting ? "Submitting..." : "Submit Application"}
+      </button>
 
-        <button type="submit">Submit</button>
+
       </form>
     </div>
   );

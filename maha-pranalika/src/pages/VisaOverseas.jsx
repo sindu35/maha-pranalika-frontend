@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/visa.css";
 import axios from "axios";
 export default function VisaOverseas() {
+  const [isSubmitting, setIsSubmitting]=useState(false);
   const [formData, setFormData] = useState({
     personal_information: {
       fullName: "",
@@ -342,7 +343,12 @@ export default function VisaOverseas() {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    setIsSubmitting(true);
+    if (!validateForm())
+    {
+      setIsSubmitting(false);
+      return;
+    } 
     const fd = new FormData();
     fd.append("userId", userId);
     fd.append("personal_information", JSON.stringify(formData.personal_information));
@@ -362,13 +368,64 @@ export default function VisaOverseas() {
       headers: { "Content-Type": "multipart/form-data" },
     }).then((response)=>{
       console.log("Visa Assistance response:", response.data);
+      alert("Visa Assistance  form submitted!");
+      setFormData({
+        personal_information: {
+          fullName: "",
+          dob: "",
+          gender: "",
+          passportNumber: "",
+          passportExpiry: "",
+          phoneNumber: "",
+          email: "",
+          address: "",
+        },
+        consultation_details: {
+          visaTypes: [],
+          otherVisaType: "",
+          preferredCountries: [],
+          otherPreferredCountry: "",
+          referrerName: "",
+        },
+        education_experience: {
+          qualification: [{ qualification: "", institute: "", year: "" }],
+          currentOccupation: "",
+          yearsOfExperience: "",
+        },
+        languageProficiency: {
+          languages: [
+            {
+              language: "",
+              speaking: false,
+              reading: false,
+              writing: false,
+              examsTaken: "",
+            },
+          ],
+        },
+        addtionalDetails: {
+          previouslyappliedforvisa: "",
+          anyvisarejections: "",
+          anylegailissues: "",
+        },
+        documentedChecklist: [],
+        declaration: {
+          signature: "",
+          date: "",
+          declared: false,
+        },
+      }
+      );
       alert("Visa Assistancw registered successfully!");
     })
     .catch((error) => {
       console.error("Error Visa assistance:", error);
       alert("Error Visa assistance. Please try again.");
-    });
-    alert("Visa Assistance  form submitted!");
+    }).
+    finally(()=> {
+      setIsSubmitting(false);
+    }
+    );
   };
     
 
@@ -949,8 +1006,23 @@ export default function VisaOverseas() {
           )}
         </section>
 
-        <button type="submit" style={{ padding: "10px 20px", fontSize: "16px", marginTop: "20px" }} onClick={handleSubmit}>
-          Submit Application
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          style={{ 
+            padding: "10px 20px", 
+            fontSize: "16px", 
+            marginTop: "20px",
+            opacity: isSubmitting ? 0.6 : 1,
+            cursor: isSubmitting ? "not-allowed" : "pointer",
+            backgroundColor: isSubmitting ? "#ccc" : "#3399cc",
+            color: "white",
+            border: "none",
+            borderRadius: "4px"
+          }}
+          
+        >
+          {isSubmitting ? "Submitting..." : "Submit Application"}
         </button>
       </form>
     </div>

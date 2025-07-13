@@ -241,7 +241,7 @@ export default function UserPage() {
                     className="resolve-btn"
                     onClick={() => handleResolvedCibilRepair(entry._id)}
                   >
-                    Resolve
+                    Resolved
                   </button>
                 )}
                 <button
@@ -424,7 +424,7 @@ export default function UserPage() {
                     className="resolve-btn"
                     onClick={() => handleResolvedVisa(entry._id)}
                   >
-                    Resolve
+                    Resolved
                   </button>
                 )}
                 <button className="delete-btn">Delete</button>
@@ -545,14 +545,7 @@ export default function UserPage() {
 
               {/* Actions */}
               <div className="action-buttons">
-                {!isresolvedMSME && (
-                  <button
-                    className="resolve-btn"
-                    onClick={() => handleResolvedMSME(entry._id)}
-                  >
-                    Resolve
-                  </button>
-                )}
+                
                 {isresolvedMSME ? (
                   <button
                     className="resolve-btn"
@@ -565,7 +558,7 @@ export default function UserPage() {
                     className="resolve-btn"
                     onClick={() => handleResolvedMSME(entry._id)}
                   >
-                    Resolve
+                    Resolved
                   </button>
                 )}
                 <button className="delete-btn">Delete</button>
