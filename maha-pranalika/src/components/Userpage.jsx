@@ -67,28 +67,39 @@ export default function UserPage() {
           <h3>Firm Registrations</h3>
           {user.firm_registration.map((form) => (
             <div key={form._id} className="form-card">
-              <p>
-                <strong>Firm Name:</strong> {form.firm_details?.firmName}
+               <p><strong>Full Name:</strong> {form.basic_details?.fullName || "N/A"}</p>
+                <p><strong>Father/Spouse Name:</strong> {form.basic_details?.fatherSpouseName || "N/A"}</p>
+               <p><strong>Date of Birth:</strong> {form.basic_details?.dob || "N/A"}</p>
+               <p><strong>Email:</strong> {form.basic_details?.email || "N/A"}</p>
+               <p><strong>Mobile:</strong> {form.basic_details?.mobile || "N/A"}</p>
+              <p><strong>Alternate Contact:</strong> {form.basic_details?.altContact || "N/A"}</p>
+               <p><strong>Address:</strong> {form.basic_details?.address || "N/A"}</p>
+               <p><strong>Firm Name:</strong> {form.firm_details?.firmName || "N/A"}</p>
+              <p><strong>Registration Type:</strong> {form.firm_details?.registrationType || "N/A"}</p>
+            <p><strong>Nature of Business:</strong> {form.firm_details?.businessNature || "N/A"}</p>
+            <p><strong>Office Address:</strong> {form.firm_details?.officeAddress || "N/A"}</p>
+            <p><strong>Director 2 Name:</strong> {form.partner_details?.director2Name || "N/A"}</p>
+           <p><strong>Director 2 Email:</strong> {form.partner_details?.director2Email || "N/A"}</p>
+         <p><strong>PAN:</strong> {form.partner_details?.pan || "N/A"}</p>
+         <p><strong>Aadhaar:</strong> {form.partner_details?.aadhaar || "N/A"}</p>
+          <p><strong>Address Proof Type:</strong> {form.partner_details?.addressProof || "N/A"}</p>
+           <p>
+                <strong>Documents:</strong>
               </p>
-              <p>
-                <strong>Applicant:</strong> {form.basic_details?.fullName}
-              </p>
-              <p>
-                <strong>PAN:</strong> {form.partner_details?.pan}
-              </p>
-              <p>
-                <strong>Mobile:</strong> {form.basic_details?.mobile}
-              </p>
-              <p>
-                <strong>Reg. Type:</strong>{" "}
-                {form.firm_details?.registrationType}
-              </p>
-              <p>
-                <strong>Submitted On:</strong>{" "}
-                {form.declaration?.date
-                  ? new Date(form.declaration.date).toLocaleDateString()
-                  : "N/A"}
-              </p>
+              <ul style={{ paddingLeft: "20px", marginTop: "-10px" }}>
+                {form.documents &&
+                  Object.entries(form.documents).map(([key, url]) => (
+                    <li key={key}>
+                      <a href={url} target="_blank" rel="noreferrer">
+                        {key}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+         <p><strong>Declared By:</strong> {form.declaration?.name || "N/A"}</p>
+        <p><strong>Declaration Date:</strong> {form.declaration?.date ? new Date(form.declaration.date).toLocaleDateString() : "N/A"}</p>
+       <p><strong>Signature:</strong> {form.declaration?.signature ? "Provided" : "Not provided"}</p>
+      <p><strong>Agreed to Declaration:</strong> {form.declaration?.declared ? "Yes" : "No"}</p>
 
               <div className="action-buttons">
                 {isresolvedfirm ? (
