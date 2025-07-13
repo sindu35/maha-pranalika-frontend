@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Search from "./Search";
-
+import GetUsers from "../pages/GetUsers"
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function Admin() {
@@ -38,7 +38,7 @@ export default function Admin() {
   return (
     <div>
       <Search />
-      adsf
+      <GetUsers/>
     </div>
   );
 }

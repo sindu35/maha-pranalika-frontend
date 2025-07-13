@@ -8,7 +8,11 @@ const apiUrl = import.meta.env.VITE_API_URL;
 export default function UserPage() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
-
+  const [isresolvedfirm, setIsResolvedFirm] = useState(false);
+  const [isresolvedcibilrepair, setIsResolvedCibilRepair] = useState(false);
+  const [isresolvedcibiltraining, setIsResolvedCibilTraining] = useState(false);
+  const [isresolvedvisa, setIsResolvedVisa] = useState(false);
+  const [isresolvedMSME, setIsResolvedMSME] = useState(false);
   useEffect(() => {
     axios
       .get(`${apiUrl}/user/getUserById/${id}`)
@@ -23,7 +27,26 @@ export default function UserPage() {
   }, [id]);
 
   if (!user) return <p className="loading">Loading user data...</p>;
-
+  const handleResolvedFirm = (id) => {
+    setIsResolvedFirm(true);
+    alert(`Firm entry ${id} resolved.`);
+  };
+  const handleResolvedCibilTraining = (id) => {
+    setIsResolvedCibilTraining(true);
+    alert(`cibil training ${id} resolved.`);
+  };
+  const handleResolvedCibilRepair = (id) => {
+    setIsResolvedCibilRepair(true);
+    alert(`cibil repair entry ${id} resolved.`);
+  };
+  const handleResolvedVisa = (id) => {
+    setIsResolvedVisa(true);
+    alert(`visa entry ${id} resolved.`);
+  };
+  const handleResolvedMSME = (id) => {
+    setIsResolvedMSME(true);
+    alert(`MSME entry ${id} resolved.`);
+  };
   return (
     <div className="user-page">
       <div className="user-header">
@@ -68,12 +91,21 @@ export default function UserPage() {
               </p>
 
               <div className="action-buttons">
-                <button
-                  className="resolve-btn"
-                  onClick={() => alert(`Firm entry ${form._id} resolved.`)}
-                >
-                  Resolve
-                </button>
+                {isresolvedfirm ? (
+                  <button
+                    className="resolve-btn"
+                    onClick={() => handleResolvedFirm(form._id)}
+                  >
+                    Undo
+                  </button>
+                ) : (
+                  <button
+                    className="resolve-btn"
+                    onClick={() => handleResolvedFirm(form._id)}
+                  >
+                    Resolved
+                  </button>
+                )}
                 <button className="delete-btn">Delete</button>
               </div>
             </div>
@@ -117,12 +149,21 @@ export default function UserPage() {
               </p>
 
               <div className="action-buttons">
-                <button
-                  className="resolve-btn"
-                  onClick={() => alert(`CIBIL entry ${entry._id} resolved.`)}
-                >
-                  Resolve
-                </button>
+                {isresolvedcibiltraining ? (
+                  <button
+                    className="resolve-btn"
+                    onClick={() => handleResolvedCibilTraining(entry._id)}
+                  >
+                    Undo
+                  </button>
+                ) : (
+                  <button
+                    className="resolve-btn"
+                    onClick={() => handleResolvedCibilTraining(entry._id)}
+                  >
+                    Resolved
+                  </button>
+                )}
                 <button className="delete-btn">Delete</button>
               </div>
             </div>
@@ -188,14 +229,21 @@ export default function UserPage() {
               </ul>
 
               <div className="action-buttons">
-                <button
-                  className="resolve-btn"
-                  onClick={() =>
-                    alert(`Resolved CIBIL Restoration ID: ${entry._id}`)
-                  }
-                >
-                  Resolve
-                </button>
+                {isresolvedcibilrepair ? (
+                  <button
+                    className="resolve-btn"
+                    onClick={() => handleResolvedCibilRepair(entry._id)}
+                  >
+                    Undo
+                  </button>
+                ) : (
+                  <button
+                    className="resolve-btn"
+                    onClick={() => handleResolvedCibilRepair(entry._id)}
+                  >
+                    Resolve
+                  </button>
+                )}
                 <button
                   className="delete-btn"
                   onClick={async () => {
@@ -224,6 +272,303 @@ export default function UserPage() {
                 >
                   Delete
                 </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      {/*Visa - Assistance */}
+      {user.visa_assistance?.length > 0 && (
+        <div className="form-section visa-assistance-section">
+          <h3>Visa Assistance</h3>
+          {user.visa_assistance.map((entry) => (
+            <div key={entry._id} className="form-card">
+              {/* Personal Info */}
+              <p>
+                <strong>Full Name:</strong>{" "}
+                {entry.personal_information?.fullName}
+              </p>
+              <p>
+                <strong>Date of Birth:</strong>{" "}
+                {entry.personal_information?.dob}
+              </p>
+              <p>
+                <strong>Gender:</strong> {entry.personal_information?.gender}
+              </p>
+              <p>
+                <strong>Passport Number:</strong>{" "}
+                {entry.personal_information?.passportNumber}
+              </p>
+              <p>
+                <strong>Passport Expiry:</strong>{" "}
+                {entry.personal_information?.passportExpiry}
+              </p>
+              <p>
+                <strong>Phone Number:</strong>{" "}
+                {entry.personal_information?.phoneNumber}
+              </p>
+              <p>
+                <strong>Email:</strong> {entry.personal_information?.email}
+              </p>
+              <p>
+                <strong>Address:</strong> {entry.personal_information?.address}
+              </p>
+
+              {/* Consultation Details */}
+              <p>
+                <strong>Visa Types:</strong>{" "}
+                {entry.consultation_details?.visaTypes?.join(", ")}
+              </p>
+              {entry.consultation_details?.otherVisaType && (
+                <p>
+                  <strong>Other Visa Type:</strong>{" "}
+                  {entry.consultation_details?.otherVisaType}
+                </p>
+              )}
+              <p>
+                <strong>Preferred Countries:</strong>{" "}
+                {entry.consultation_details?.preferredCountries?.join(", ")}
+              </p>
+              {entry.consultation_details?.otherPreferredCountry && (
+                <p>
+                  <strong>Other Preferred Country:</strong>{" "}
+                  {entry.consultation_details?.otherPreferredCountry}
+                </p>
+              )}
+              <p>
+                <strong>Referrer Name:</strong>{" "}
+                {entry.consultation_details?.referrerName}
+              </p>
+
+              {/* Education & Experience */}
+              {entry.education_experience?.qualification?.map((q, idx) => (
+                <p key={idx}>
+                  <strong>Qualification:</strong> {q.qualification} from{" "}
+                  {q.institute} ({q.year})
+                </p>
+              ))}
+              <p>
+                <strong>Current Occupation:</strong>{" "}
+                {entry.education_experience?.currentOccupation}
+              </p>
+              <p>
+                <strong>Years of Experience:</strong>{" "}
+                {entry.education_experience?.yearsOfExperience}
+              </p>
+
+              {/* Language Proficiency */}
+              {entry.languageProficiency?.languages?.map((lang, idx) => (
+                <div key={idx}>
+                  <p>
+                    <strong>Language:</strong> {lang.language} | Speaking:{" "}
+                    {lang.speaking ? "Yes" : "No"} | Reading:{" "}
+                    {lang.reading ? "Yes" : "No"} | Writing:{" "}
+                    {lang.writing ? "Yes" : "No"}
+                  </p>
+                  <p>
+                    <strong>Exams Taken:</strong> {lang.examsTaken}
+                  </p>
+                </div>
+              ))}
+
+              {/* Additional Details */}
+              <p>
+                <strong>Applied Before:</strong>{" "}
+                {entry.addtionalDetails?.previouslyappliedforvisa}
+              </p>
+              <p>
+                <strong>Visa Rejections:</strong>{" "}
+                {entry.addtionalDetails?.anyvisarejections}
+              </p>
+              <p>
+                <strong>Legal Issues:</strong>{" "}
+                {entry.addtionalDetails?.anylegailissues}
+              </p>
+
+              {/* Documented Checklist */}
+              <p>
+                <strong>Documents:</strong>
+              </p>
+              <ul style={{ paddingLeft: "20px", marginTop: "-10px" }}>
+                {entry.documentedChecklist?.map((doc, idx) => (
+                  <li key={idx}>{doc}</li>
+                ))}
+              </ul>
+
+              {/* Declaration */}
+              <p>
+                <strong>Declaration Signed:</strong>{" "}
+                {entry.declaration?.declared ? "Yes" : "No"}
+              </p>
+              <p>
+                <strong>Signature:</strong> {entry.declaration?.signature}
+              </p>
+              <p>
+                <strong>Submitted On:</strong>{" "}
+                {entry.declaration?.date
+                  ? new Date(entry.declaration.date).toLocaleDateString()
+                  : "N/A"}
+              </p>
+
+              {/* Actions */}
+              <div className="action-buttons">
+                {isresolvedvisa ? (
+                  <button
+                    className="resolve-btn"
+                    onClick={() => handleResolvedVisa(entry._id)}
+                  >
+                    Undo
+                  </button>
+                ) : (
+                  <button
+                    className="resolve-btn"
+                    onClick={() => handleResolvedVisa(entry._id)}
+                  >
+                    Resolve
+                  </button>
+                )}
+                <button className="delete-btn">Delete</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      {user.msme?.length > 0 && (
+        <div className="form-section msmeclusters-section">
+          <h3>MSME Cluster Registrations</h3>
+          {user.msme.map((entry) => (
+            <div key={entry._id} className="form-card">
+              {/* Basic Info */}
+              <p>
+                <strong>Client Name:</strong> {entry.basic_info?.client_name}
+              </p>
+              <p>
+                <strong>Primary Product:</strong>{" "}
+                {entry.basic_info?.primary_product}
+              </p>
+              <p>
+                <strong>Total Leads:</strong>{" "}
+                {entry.basic_info?.total_no_of_leads}
+              </p>
+              <p>
+                <strong>Lead Name:</strong> {entry.basic_info?.name_of_lead}
+              </p>
+              <p>
+                <strong>Organisation Types:</strong>{" "}
+                {entry.basic_info?.type_of_organisation?.join(", ")}
+              </p>
+              <p>
+                <strong>Lead Entity:</strong> {entry.basic_info?.lead_entity}
+              </p>
+              <p>
+                <strong>Date of Establishment:</strong> {entry.basic_info?.doe}
+              </p>
+              <p>
+                <strong>Address:</strong> {entry.basic_info?.address}
+              </p>
+              <p>
+                <strong>City:</strong> {entry.basic_info?.city}
+              </p>
+              <p>
+                <strong>District:</strong> {entry.basic_info?.district}
+              </p>
+              <p>
+                <strong>State:</strong> {entry.basic_info?.state}
+              </p>
+              <p>
+                <strong>Pincode:</strong> {entry.basic_info?.pincode}
+              </p>
+
+              {/* Contact Info */}
+              <p>
+                <strong>Contact Person:</strong>{" "}
+                {entry.contact_info?.contact_person}
+              </p>
+              <p>
+                <strong>Designation:</strong> {entry.contact_info?.designation}
+              </p>
+              <p>
+                <strong>Phone:</strong> {entry.contact_info?.phone}
+              </p>
+              <p>
+                <strong>Email:</strong> {entry.contact_info?.email}
+              </p>
+
+              {/* Cluster Details */}
+              <p>
+                <strong>Participants:</strong>{" "}
+                {entry.cluster_details?.no_of_participating}
+              </p>
+              <p>
+                <strong>Avg. Years in Business:</strong>{" "}
+                {entry.cluster_details?.average_years}
+              </p>
+              <p>
+                <strong>Total Employment:</strong>{" "}
+                {entry.cluster_details?.total_employment}
+              </p>
+              <p>
+                <strong>Common Challenges:</strong>{" "}
+                {entry.cluster_details?.common_challenges?.join(", ")}
+              </p>
+              <p>
+                <strong>Key Interventions:</strong>{" "}
+                {entry.cluster_details?.key_interventions}
+              </p>
+
+              {/* Documented Issues */}
+              <p>
+                <strong>Issues:</strong>
+              </p>
+              <ul style={{ paddingLeft: "20px", marginTop: "-10px" }}>
+                {entry.documents?.issues?.map((issue, idx) => (
+                  <li key={idx}>{issue}</li>
+                ))}
+              </ul>
+
+              {/* Declaration */}
+              <p>
+                <strong>Declared:</strong>{" "}
+                {entry.declaration?.declared ? "Yes" : "No"}
+              </p>
+              <p>
+                <strong>Signature:</strong> {entry.declaration?.signature}
+              </p>
+              <p>
+                <strong>Declaration Date:</strong>{" "}
+                {entry.declaration?.declaration_date
+                  ? new Date(
+                      entry.declaration.declaration_date
+                    ).toLocaleDateString()
+                  : "N/A"}
+              </p>
+
+              {/* Actions */}
+              <div className="action-buttons">
+                {!isresolvedMSME && (
+                  <button
+                    className="resolve-btn"
+                    onClick={() => handleResolvedMSME(entry._id)}
+                  >
+                    Resolve
+                  </button>
+                )}
+                {isresolvedMSME ? (
+                  <button
+                    className="resolve-btn"
+                    onClick={() => handleResolvedMSME(entry._id)}
+                  >
+                    Undo
+                  </button>
+                ) : (
+                  <button
+                    className="resolve-btn"
+                    onClick={() => handleResolvedMSME(entry._id)}
+                  >
+                    Resolve
+                  </button>
+                )}
+                <button className="delete-btn">Delete</button>
               </div>
             </div>
           ))}
