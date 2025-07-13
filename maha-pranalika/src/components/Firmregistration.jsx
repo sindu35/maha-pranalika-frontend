@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function Firmregistration() {
   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
+  const [isSubmitting, setIsSubmitting]=useState(false);
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -21,7 +22,6 @@ export default function Firmregistration() {
           },
         })
         .then((response) => {
-          console.log("User verification response:", response.data);
           if (response.status === 200) {
             setUserId(response.data.user.id);
           } else {

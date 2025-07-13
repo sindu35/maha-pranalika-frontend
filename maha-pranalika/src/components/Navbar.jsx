@@ -5,13 +5,13 @@ import "./Navbar.css";
 import { useLanguage } from "./LanguageContext";
 import swayamkrush from "../assets/swayamkrush.png";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+const apiUrl = import.meta.env.VITE_API_URL;
+import { useToast } from "../utils/ToastContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  if (location.pathname.includes("/admin")) {
-    return null; // Don't render navbar on admin pages
-  }
 
   const { lang: currentLang, translations } = useLanguage();
   const navLabels = translations[`nav-${currentLang}`];
@@ -22,14 +22,45 @@ export default function Navbar() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const [showMobileDropdown, setShowMobileDropdown] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const { addToast } = useToast();
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener("resize", handleResize);
     const token = localStorage.getItem("token");
-    setIsLogin(!!token);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+
+    if (!token) {
+      setIsLogin(false);
+      setIsAdmin(false);
+    } else {
+      axios
+        .get(`${apiUrl}/auth/verify`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            setIsLogin(true);
+            setIsAdmin(response.data.user.role === "admin");
+          } else {
+            localStorage.removeItem("token");
+            setIsLogin(false);
+            setIsAdmin(false);
+            alert("Session expired. Please login again.");
+            window.location.href = "/";
+          }
+        })
+        .catch((error) => {
+          localStorage.removeItem("token");
+          setIsLogin(false);
+          setIsAdmin(false);
+          alert("Invalid session. Please login again.");
+          window.location.href = "/";
+        });
+    }
+
+    window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -41,8 +72,13 @@ export default function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setIsLogin(false);
-    goTo("/");
+
+    addToast("Session Logging out", "success");
+    setTimeout(() => {
+      setIsLogin(false);
+      setIsAdmin(false);
+      goTo("/");
+    }, 3000);
   };
 
   if (isMobile) {
@@ -138,6 +174,15 @@ export default function Navbar() {
                 <li onClick={() => goTo("/login")}>{navLabels.login}</li>
               )}
               {isLogin && <li onClick={handleLogout}>Logout</li>}
+              {isAdmin && (
+                <li
+                  onClick={() => {
+                    goTo("/admin");
+                  }}
+                >
+                  Admin
+                </li>
+              )}
             </ul>
           </div>
         )}
@@ -151,9 +196,20 @@ export default function Navbar() {
       <div className="nav-header">
         <div className="logo-container">
           <div>
-            <div >
-              <img src={logo} alt="logo" style={{cursor:"pointer"}} onClick={() => goTo("/")}/>
-              <span className="logo-text" style={{cursor:"pointer"}} onClick={() => goTo("/")}>{navLabels.logotext}</span>
+            <div>
+              <img
+                src={logo}
+                alt="logo"
+                style={{ cursor: "pointer" }}
+                onClick={() => goTo("/")}
+              />
+              <span
+                className="logo-text"
+                style={{ cursor: "pointer" }}
+                onClick={() => goTo("/")}
+              >
+                {navLabels.logotext}
+              </span>
             </div>
             <div className="swayamkrush-center">
               <img src={swayamkrush} alt="swayamkrush" />
@@ -274,6 +330,18 @@ export default function Navbar() {
               {isLogin && (
                 <li>
                   <span onClick={handleLogout}>Logout</span>
+                </li>
+              )}
+              {isAdmin && (
+                <li>
+                  <span
+                    onClick={() => {
+                      goTo("/admin");
+                    }}
+                  >
+                    {" "}
+                    Admin
+                  </span>
                 </li>
               )}
             </ul>

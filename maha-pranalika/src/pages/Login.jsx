@@ -5,12 +5,13 @@ import { useLanguage } from "../components/LanguageContext";
 import LanguageSwitcher from "../components/LanguageSwitcher"; // ✅ Import this
 const apiUrl = import.meta.env.VITE_API_URL;
 import { useToast } from "../utils/ToastContext";
-
 import { useNavigate } from "react-router-dom";
+import Spinner from "../utils/Spinner";
+
+
 export default function Login() {
-
   const { addToast } = useToast();
-
+  const [isSubmitting, setIsSubmitting] = useState();
   const { translations } = useLanguage();
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -27,7 +28,6 @@ export default function Login() {
 
   const [errors, setErrors] = useState({});
   const goTo = (path) => {
-    
     navigate(path);
   };
   const handleChange = (e) => {
@@ -65,6 +65,8 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    setIsSubmitting(true);
+
     const newErrors = {};
     Object.keys(form).forEach((field) => {
       const value = form[field];
@@ -97,16 +99,15 @@ export default function Login() {
       axios
         .post(`${apiUrl}` + "/auth/login", form)
         .then((response) => {
-          console.log("Login successful:", response.data);
           if (response.status === 200) {
             localStorage.setItem("token", response.data.token);
-            addToast("Login Successful","success");
-            setTimeout(()=>{
+            addToast("Login Successful", "success");
+            setTimeout(() => {
               window.location.href = "/";
-            },3000)
+            }, 3000);
           } else {
             console.error("Login failed:", response.data.message);
-            addToast("Login failed", "error"); // ✅ fixed here
+            addToast("Login failed", "error");
           }
         })
 
@@ -129,6 +130,8 @@ export default function Login() {
           });
         });
     }
+
+    setIsSubmitting(true);
   };
 
   return (
@@ -159,11 +162,16 @@ export default function Login() {
             <span className="error">{errors.password || " "}</span>
           )}
         </div>
-        <div >
-        <span  className="forgotpassword" onClick={() => goTo("/forgotpassword")}>
-                  Forgot Password?
-                </span>
-        <button type="submit">{translations?.login || "LOGIN"}</button>
+        <div>
+          <span
+            className="forgotpassword"
+            onClick={() => goTo("/forgotpassword")}
+          >
+            Forgot Password?
+          </span>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? <Spinner/> : translations?.login || "LOGIN"}
+          </button>
         </div>
         <p
           className="login-text"
