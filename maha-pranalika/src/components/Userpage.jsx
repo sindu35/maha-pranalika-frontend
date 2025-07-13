@@ -4,15 +4,14 @@ import axios from "axios";
 import "../styles/userpage.css";
 
 const apiUrl = import.meta.env.VITE_API_URL;
+import { useToast } from "../utils/ToastContext";
 
 export default function UserPage() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
-  const [isresolvedfirm, setIsResolvedFirm] = useState(false);
-  const [isresolvedcibilrepair, setIsResolvedCibilRepair] = useState(false);
-  const [isresolvedcibiltraining, setIsResolvedCibilTraining] = useState(false);
   const [isresolvedvisa, setIsResolvedVisa] = useState(false);
   const [isresolvedMSME, setIsResolvedMSME] = useState(false);
+  const { addToast } = useToast();
   useEffect(() => {
     axios
       .get(`${apiUrl}/user/getUserById/${id}`)
@@ -27,26 +26,121 @@ export default function UserPage() {
   }, [id]);
 
   if (!user) return <p className="loading">Loading user data...</p>;
-  const handleResolvedFirm = (id) => {
-    setIsResolvedFirm(true);
-    alert(`Firm entry ${id} resolved.`);
+  const handleToggleResolvedFirm = (id, isCurrentlyResolved) => {
+    const endpoint = isCurrentlyResolved ? "/undoResolveFirm" : "/resolveFirm";
+
+    axios
+      .post(`${apiUrl}/firm${endpoint}`, { firmId: id })
+      .then((res) => {
+        addToast(res.data.message || "Status updated", "success");
+
+        // Update local state
+        setUser((prev) => ({
+          ...prev,
+          firm_registration: prev.firm_registration.map((form) =>
+            form._id === id
+              ? { ...form, isResolved: !isCurrentlyResolved }
+              : form
+          ),
+        }));
+      })
+      .catch((err) => {
+        addToast("Resolve toggle failed", "error");
+        console.error(
+          "Toggle resolve firm error:",
+          err.response?.data || err.message
+        );
+      });
   };
-  const handleResolvedCibilTraining = (id) => {
-    setIsResolvedCibilTraining(true);
-    alert(`cibil training ${id} resolved.`);
+
+  const handleToggleResolvedCibilTraining = (
+    trainingId,
+    isCurrentlyResolved
+  ) => {
+    const endpoint = isCurrentlyResolved
+      ? "/undoResolveCibilTraining"
+      : "/resolveCibilTraining";
+
+    axios
+      .post(`${apiUrl}/cibil${endpoint}`, {
+        userId: user._id,
+        trainingId: trainingId,
+      })
+      .then((res) => {
+        addToast(res.data.message || "Status updated", "success");
+
+        setUser((prev) => ({
+          ...prev,
+          cibil_training: prev.cibil_training.map((entry) =>
+            entry._id === trainingId
+              ? { ...entry, isResolved: !isCurrentlyResolved }
+              : entry
+          ),
+        }));
+      })
+      .catch((err) => {
+        console.error(
+          "Toggle resolve CIBIL Training error:",
+          err.response?.data || err.message
+        );
+        addToast("Failed to update resolve status", "error");
+      });
   };
-  const handleResolvedCibilRepair = (id) => {
-    setIsResolvedCibilRepair(true);
-    alert(`cibil repair entry ${id} resolved.`);
+
+  const handleToggleResolvedCibilRepair = (repairId, isCurrentlyResolved) => {
+    const endpoint = isCurrentlyResolved
+      ? "/undoResolveCibilRepair"
+      : "/resolveCibilRepair";
+
+    axios
+      .post(`${apiUrl}/cibil-repair${endpoint}`, {
+        userId: user._id,
+        repairId,
+      })
+      .then((res) => {
+        addToast(res.data.message || "Status updated", "success");
+
+        setUser((prev) => ({
+          ...prev,
+          cibil_score_restoration: prev.cibil_score_restoration.map((entry) =>
+            entry._id === repairId
+              ? { ...entry, isResolved: !isCurrentlyResolved }
+              : entry
+          ),
+        }));
+      })
+      .catch((err) => {
+        console.error(
+          "Toggle resolve CIBIL Repair error:",
+          err.response?.data || err.message
+        );
+        addToast("Failed to update resolve status", "error");
+      });
   };
+
   const handleResolvedVisa = (id) => {
     setIsResolvedVisa(true);
     alert(`visa entry ${id} resolved.`);
   };
-  const handleResolvedMSME = (id) => {
-    setIsResolvedMSME(true);
-    alert(`MSME entry ${id} resolved.`);
+  const handleToggleResolvedMSME = (formId, isResolved) => {
+    const endpoint = isResolved ? "/undoResolveMsme" : "/resolveMsme";
+    axios
+      .post(`${apiUrl}/msme${endpoint}`, { userId: user._id, msmeId: formId })
+      .then((res) => {
+        addToast(res.data.message, "success");
+        setUser((prev) => ({
+          ...prev,
+          msme: prev.msme.map((form) =>
+            form._id === formId ? { ...form, isResolved: !isResolved } : form
+          ),
+        }));
+      })
+      .catch((err) => {
+        console.error("MSME resolve error:", err);
+        addToast("Failed to toggle MSME status", "error");
+      });
   };
+
   return (
     <div className="user-page">
       <div className="user-header">
@@ -67,23 +161,67 @@ export default function UserPage() {
           <h3>Firm Registrations</h3>
           {user.firm_registration.map((form) => (
             <div key={form._id} className="form-card">
-               <p><strong>Full Name:</strong> {form.basic_details?.fullName || "N/A"}</p>
-                <p><strong>Father/Spouse Name:</strong> {form.basic_details?.fatherSpouseName || "N/A"}</p>
-               <p><strong>Date of Birth:</strong> {form.basic_details?.dob || "N/A"}</p>
-               <p><strong>Email:</strong> {form.basic_details?.email || "N/A"}</p>
-               <p><strong>Mobile:</strong> {form.basic_details?.mobile || "N/A"}</p>
-              <p><strong>Alternate Contact:</strong> {form.basic_details?.altContact || "N/A"}</p>
-               <p><strong>Address:</strong> {form.basic_details?.address || "N/A"}</p>
-               <p><strong>Firm Name:</strong> {form.firm_details?.firmName || "N/A"}</p>
-              <p><strong>Registration Type:</strong> {form.firm_details?.registrationType || "N/A"}</p>
-            <p><strong>Nature of Business:</strong> {form.firm_details?.businessNature || "N/A"}</p>
-            <p><strong>Office Address:</strong> {form.firm_details?.officeAddress || "N/A"}</p>
-            <p><strong>Director 2 Name:</strong> {form.partner_details?.director2Name || "N/A"}</p>
-           <p><strong>Director 2 Email:</strong> {form.partner_details?.director2Email || "N/A"}</p>
-         <p><strong>PAN:</strong> {form.partner_details?.pan || "N/A"}</p>
-         <p><strong>Aadhaar:</strong> {form.partner_details?.aadhaar || "N/A"}</p>
-          <p><strong>Address Proof Type:</strong> {form.partner_details?.addressProof || "N/A"}</p>
-           <p>
+              <p>
+                <strong>Full Name:</strong>{" "}
+                {form.basic_details?.fullName || "N/A"}
+              </p>
+              <p>
+                <strong>Father/Spouse Name:</strong>{" "}
+                {form.basic_details?.fatherSpouseName || "N/A"}
+              </p>
+              <p>
+                <strong>Date of Birth:</strong>{" "}
+                {form.basic_details?.dob || "N/A"}
+              </p>
+              <p>
+                <strong>Email:</strong> {form.basic_details?.email || "N/A"}
+              </p>
+              <p>
+                <strong>Mobile:</strong> {form.basic_details?.mobile || "N/A"}
+              </p>
+              <p>
+                <strong>Alternate Contact:</strong>{" "}
+                {form.basic_details?.altContact || "N/A"}
+              </p>
+              <p>
+                <strong>Address:</strong> {form.basic_details?.address || "N/A"}
+              </p>
+              <p>
+                <strong>Firm Name:</strong>{" "}
+                {form.firm_details?.firmName || "N/A"}
+              </p>
+              <p>
+                <strong>Registration Type:</strong>{" "}
+                {form.firm_details?.registrationType || "N/A"}
+              </p>
+              <p>
+                <strong>Nature of Business:</strong>{" "}
+                {form.firm_details?.businessNature || "N/A"}
+              </p>
+              <p>
+                <strong>Office Address:</strong>{" "}
+                {form.firm_details?.officeAddress || "N/A"}
+              </p>
+              <p>
+                <strong>Director 2 Name:</strong>{" "}
+                {form.partner_details?.director2Name || "N/A"}
+              </p>
+              <p>
+                <strong>Director 2 Email:</strong>{" "}
+                {form.partner_details?.director2Email || "N/A"}
+              </p>
+              <p>
+                <strong>PAN:</strong> {form.partner_details?.pan || "N/A"}
+              </p>
+              <p>
+                <strong>Aadhaar:</strong>{" "}
+                {form.partner_details?.aadhaar || "N/A"}
+              </p>
+              <p>
+                <strong>Address Proof Type:</strong>{" "}
+                {form.partner_details?.addressProof || "N/A"}
+              </p>
+              <p>
                 <strong>Documents:</strong>
               </p>
               <ul style={{ paddingLeft: "20px", marginTop: "-10px" }}>
@@ -96,28 +234,66 @@ export default function UserPage() {
                     </li>
                   ))}
               </ul>
-         <p><strong>Declared By:</strong> {form.declaration?.name || "N/A"}</p>
-        <p><strong>Declaration Date:</strong> {form.declaration?.date ? new Date(form.declaration.date).toLocaleDateString() : "N/A"}</p>
-       <p><strong>Signature:</strong> {form.declaration?.signature ? "Provided" : "Not provided"}</p>
-      <p><strong>Agreed to Declaration:</strong> {form.declaration?.declared ? "Yes" : "No"}</p>
+              <p>
+                <strong>Declared By:</strong> {form.declaration?.name || "N/A"}
+              </p>
+              <p>
+                <strong>Declaration Date:</strong>{" "}
+                {form.declaration?.date
+                  ? new Date(form.declaration.date).toLocaleDateString()
+                  : "N/A"}
+              </p>
+              <p>
+                <strong>Signature:</strong>{" "}
+                {form.declaration?.signature ? "Provided" : "Not provided"}
+              </p>
+              <p>
+                <strong>Agreed to Declaration:</strong>{" "}
+                {form.declaration?.declared ? "Yes" : "No"}
+              </p>
 
               <div className="action-buttons">
-                {isresolvedfirm ? (
-                  <button
-                    className="resolve-btn"
-                    onClick={() => handleResolvedFirm(form._id)}
-                  >
-                    Undo
-                  </button>
-                ) : (
-                  <button
-                    className="resolve-btn"
-                    onClick={() => handleResolvedFirm(form._id)}
-                  >
-                    Resolved
-                  </button>
-                )}
-                <button className="delete-btn">Delete</button>
+                <button
+                  className="resolve-btn"
+                  onClick={() =>
+                    handleToggleResolvedFirm(form._id, form.isResolved)
+                  }
+                >
+                  {form.isResolved ? "Undo" : "Resolved"}
+                </button>
+
+                <button
+                  className="delete-btn"
+                  onClick={async () => {
+                    const confirmDelete = window.confirm(
+                      "Are you sure you want to delete this firm?"
+                    );
+                    if (!confirmDelete) return;
+
+                    try {
+                      await axios.delete(`${apiUrl}/firm/deleteFirm`, {
+                        data: { userId: user._id, firmId: form._id },
+                      });
+
+                      setUser((prev) => ({
+                        ...prev,
+                        firm_registration: prev.firm_registration.filter(
+                          (entry) => entry._id !== form._id
+                        ),
+                      }));
+
+                      addToast("Firm deleted successfully", "success");
+                    } catch (err) {
+                      console.error(
+                        "Error deleting firm:",
+                        err.response?.data || err.message
+                      );
+                      addToast("Failed to delete firm", "error");
+                    }
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}
@@ -160,22 +336,62 @@ export default function UserPage() {
               </p>
 
               <div className="action-buttons">
-                {isresolvedcibiltraining ? (
-                  <button
-                    className="resolve-btn"
-                    onClick={() => handleResolvedCibilTraining(entry._id)}
-                  >
-                    Undo
-                  </button>
-                ) : (
-                  <button
-                    className="resolve-btn"
-                    onClick={() => handleResolvedCibilTraining(entry._id)}
-                  >
-                    Resolved
-                  </button>
-                )}
-                <button className="delete-btn">Delete</button>
+                <button
+                  className="resolve-btn"
+                  onClick={() =>
+                    handleToggleResolvedCibilTraining(
+                      entry._id,
+                      entry.isResolved
+                    )
+                  }
+                >
+                  {entry.isResolved ? "Undo" : "Resolve"}
+                </button>
+
+                <button
+                  className="delete-btn"
+                  onClick={async () => {
+                    const confirmDelete = window.confirm(
+                      "Are you sure you want to delete this CIBIL Training entry?"
+                    );
+                    if (!confirmDelete) return;
+
+                    try {
+                      await axios.delete(
+                        `${apiUrl}/cibil/deleteCibilTraining`,
+                        {
+                          data: {
+                            userId: user._id,
+                            trainingId: entry._id,
+                          },
+                        }
+                      );
+
+                      setUser((prev) => ({
+                        ...prev,
+                        cibil_training: prev.cibil_training.filter(
+                          (e) => e._id !== entry._id
+                        ),
+                      }));
+
+                      addToast(
+                        "CIBIL Training entry deleted successfully",
+                        "success"
+                      );
+                    } catch (err) {
+                      console.error(
+                        "Error deleting CIBIL Training entry:",
+                        err.response?.data || err.message
+                      );
+                      addToast(
+                        "Failed to delete CIBIL Training entry",
+                        "error"
+                      );
+                    }
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}
@@ -240,21 +456,15 @@ export default function UserPage() {
               </ul>
 
               <div className="action-buttons">
-                {isresolvedcibilrepair ? (
-                  <button
-                    className="resolve-btn"
-                    onClick={() => handleResolvedCibilRepair(entry._id)}
-                  >
-                    Undo
-                  </button>
-                ) : (
-                  <button
-                    className="resolve-btn"
-                    onClick={() => handleResolvedCibilRepair(entry._id)}
-                  >
-                    Resolved
-                  </button>
-                )}
+                <button
+                  className="resolve-btn"
+                  onClick={() =>
+                    handleToggleResolvedCibilRepair(entry._id, entry.isResolved)
+                  }
+                >
+                  {entry.isResolved ? "Undo" : "Resolved"}
+                </button>
+
                 <button
                   className="delete-btn"
                   onClick={async () => {
@@ -265,8 +475,15 @@ export default function UserPage() {
 
                     try {
                       await axios.delete(
-                        `${apiUrl}/cibilrestoration/delete/${entry._id}`
+                        `${apiUrl}/cibil-repair/deleteCibilRepair`,
+                        {
+                          data: {
+                            userId: user._id,
+                            repairId: entry._id,
+                          },
+                        }
                       );
+
                       setUser((prev) => ({
                         ...prev,
                         cibil_score_restoration:
@@ -274,10 +491,14 @@ export default function UserPage() {
                             (e) => e._id !== entry._id
                           ),
                       }));
-                      alert("Entry deleted successfully.");
+
+                      addToast(
+                        "CIBIL Repair entry deleted successfully",
+                        "success"
+                      );
                     } catch (err) {
                       console.error("Delete failed:", err);
-                      alert("Deletion failed.");
+                      addToast("Failed to delete CIBIL Repair entry", "error");
                     }
                   }}
                 >
@@ -288,6 +509,7 @@ export default function UserPage() {
           ))}
         </div>
       )}
+
       {/*Visa - Assistance */}
       {user.visa_assistance?.length > 0 && (
         <div className="form-section visa-assistance-section">
@@ -556,23 +778,47 @@ export default function UserPage() {
 
               {/* Actions */}
               <div className="action-buttons">
-                
-                {isresolvedMSME ? (
-                  <button
-                    className="resolve-btn"
-                    onClick={() => handleResolvedMSME(entry._id)}
-                  >
-                    Undo
-                  </button>
-                ) : (
-                  <button
-                    className="resolve-btn"
-                    onClick={() => handleResolvedMSME(entry._id)}
-                  >
-                    Resolved
-                  </button>
-                )}
-                <button className="delete-btn">Delete</button>
+                <button
+                  className="resolve-btn"
+                  onClick={() =>
+                    handleToggleResolvedMSME(entry._id, entry.isResolved)
+                  }
+                >
+                  {entry.isResolved ? "Undo" : "Resolved"}
+                </button>
+
+                <button
+                  className="delete-btn"
+                  onClick={async () => {
+                    const confirmDelete = window.confirm(
+                      "Are you sure you want to delete this MSME entry?"
+                    );
+                    if (!confirmDelete) return;
+
+                    try {
+                      await axios.delete(`${apiUrl}/msme/deleteMsme`, {
+                        data: { userId: user._id, msmeId: entry._id },
+                      });
+
+                      setUser((prev) => ({
+                        ...prev,
+                        msme: prev.msme.filter(
+                          (entry) => entry._id !== entry._id
+                        ),
+                      }));
+
+                      addToast("MSME form deleted successfully", "success");
+                    } catch (err) {
+                      console.error(
+                        "Error deleting MSME form:",
+                        err.response?.data || err.message
+                      );
+                      addToast("Failed to delete MSME form", "error");
+                    }
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}
