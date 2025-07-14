@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../styles/userpage.css";
+import { useRef } from "react";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 import { useToast } from "../utils/ToastContext";
@@ -10,22 +11,78 @@ export default function UserPage() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   const [isresolvedvisa, setIsResolvedVisa] = useState(false);
-  const [isresolvedMSME, setIsResolvedMSME] = useState(false);
   const { addToast } = useToast();
-  useEffect(() => {
-    axios
-      .get(`${apiUrl}/user/getUserById/${id}`)
-      .then((res) => {
-        setUser(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.error("Failed to fetch user:", err);
-        setUser(null);
-      });
-  }, [id]);
+  const alreadyRedirected = useRef(false);
+  const [isValidId, setIsValidId] = useState(true);
 
-  if (!user) return <p className="loading">Loading user data...</p>;
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token && !alreadyRedirected.current) {
+      alreadyRedirected.current = true;
+      addToast("Login to access this page", "error");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000);
+      return;
+    }
+
+    const validateToken = async () => {
+      try {
+        const res = await axios.get(`${apiUrl}/auth/verify`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!res.data.user || res.data.user.role !== "admin") {
+          if (!alreadyRedirected.current) {
+            alreadyRedirected.current = true;
+            addToast("You are not authorized to access this page", "error");
+            localStorage.removeItem("token");
+            setTimeout(() => {
+              window.location.href = "/";
+            }, 1000);
+          }
+          return;
+        }
+
+        fetchUsers();
+      } catch (err) {
+        if (!alreadyRedirected.current) {
+          alreadyRedirected.current = true;
+          addToast("Session expired. Please login again.", "error");
+          localStorage.removeItem("token");
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 1000);
+        }
+      }
+    };
+
+    const fetchUsers = async () => {
+      try {
+        const res = await axios.get(`${apiUrl}/user/getUserById/${id}`);
+        setUser(res.data);
+        setIsValidId(true); // ID was valid and user found
+      } catch (err) {
+        console.error("Failed to fetch user:", err);
+
+        if (err.response?.status === 400 || err.response?.status === 404) {
+          setIsValidId(false); // ID is invalid or user not found
+        }
+
+        setUser(null);
+      }
+    };
+
+    validateToken();
+  }, []);
+
+  if (!user && isValidId)
+    return <p className="loading">Loading user data...</p>;
+  if (!isValidId) return <p className="loading">No User Found</p>;
+
   const handleToggleResolvedFirm = (id, isCurrentlyResolved) => {
     const endpoint = isCurrentlyResolved ? "/undoResolveFirm" : "/resolveFirm";
 

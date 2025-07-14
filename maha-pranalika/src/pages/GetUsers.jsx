@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import "../styles/getusers.css";
+const apiUrl = import.meta.env.VITE_API_URL;
+import { useNavigate } from "react-router-dom";
+import { useToast } from "../utils/ToastContext";
 
 const GetUsers = () => {
   const [users, setUsers] = useState([]);
@@ -9,11 +12,51 @@ const GetUsers = () => {
   const [error, setError] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage, setUsersPerPage] = useState(5);
+  const navigate = useNavigate();
+  const { addToast } = useToast();
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      addToast("Login to access this page", "error");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000);
+      return;
+    }
+
+    const validateToken = async () => {
+      try {
+        const res = await axios.get(`${apiUrl}/auth/verify`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!res.data.user || res.data.user.role !== "admin") {
+          addToast("You are not authorized to access this page", "error");
+          localStorage.removeItem("token");
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 1000);
+          return;
+        }
+
+        // If valid and admin, fetch users
+        fetchUsers();
+      } catch (err) {
+        addToast("Session expired. Please login again.", "error");
+        localStorage.removeItem("token");
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1000);
+      }
+    };
+
     const fetchUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/user/getUsers");
+        const res = await axios.get(`${apiUrl}/user/getUsers`);
         setUsers(res.data);
       } catch (err) {
         console.error("Failed to fetch users:", err);
@@ -23,7 +66,7 @@ const GetUsers = () => {
       }
     };
 
-    fetchUsers();
+    validateToken();
   }, []);
 
   const indexOfLastUser = currentPage * usersPerPage;
@@ -37,7 +80,7 @@ const GetUsers = () => {
 
   const handleUsersPerPageChange = (e) => {
     setUsersPerPage(Number(e.target.value));
-    setCurrentPage(1); 
+    setCurrentPage(1);
   };
 
   const handlePrevious = () => {
@@ -70,7 +113,7 @@ const GetUsers = () => {
       if (startPage > 1) {
         pages.push(1);
         if (startPage > 2) {
-          pages.push('...');
+          pages.push("...");
         }
       }
 
@@ -80,7 +123,7 @@ const GetUsers = () => {
 
       if (endPage < totalPages) {
         if (endPage < totalPages - 1) {
-          pages.push('...');
+          pages.push("...");
         }
         pages.push(totalPages);
       }
@@ -115,9 +158,7 @@ const GetUsers = () => {
     <div className="user-list-container">
       <div className="header">
         <h2>User List</h2>
-        <div className="total-count">
-          Total Users: {users.length}
-        </div>
+        <div className="total-count">Total Users: {users.length}</div>
       </div>
 
       <div className="table-container">
@@ -144,7 +185,11 @@ const GetUsers = () => {
               if (user.msme?.length > 0) services.push("MSME");
 
               return (
-                <tr key={user._id}>
+                <tr
+                  key={user._id}
+                  onClick={() => navigate(`/admin/user/${user._id}`)}
+                  className="clickable-row"
+                >
                   <td className="name-cell">{user.name}</td>
                   <td className="email-cell">{user.email}</td>
                   <td className="services-cell">
@@ -179,9 +224,10 @@ const GetUsers = () => {
             </select>
             <span> per page</span>
           </div>
-          
+
           <div className="showing-info">
-            Showing {indexOfFirstUser + 1} to {Math.min(indexOfLastUser, users.length)} of {users.length} users
+            Showing {indexOfFirstUser + 1} to{" "}
+            {Math.min(indexOfLastUser, users.length)} of {users.length} users
           </div>
         </div>
 
@@ -197,11 +243,11 @@ const GetUsers = () => {
           {getPageNumbers().map((page, index) => (
             <button
               key={index}
-              onClick={() => typeof page === 'number' && handlePageChange(page)}
+              onClick={() => typeof page === "number" && handlePageChange(page)}
               className={`pagination-btn ${
                 page === currentPage ? "active" : ""
-              } ${typeof page !== 'number' ? "ellipsis" : ""}`}
-              disabled={typeof page !== 'number'}
+              } ${typeof page !== "number" ? "ellipsis" : ""}`}
+              disabled={typeof page !== "number"}
             >
               {page}
             </button>
