@@ -458,10 +458,10 @@ export default function CibilRepairForm() {
 
   return (
     <div className="msme-form">
-      <h1>
+      <h2>
         MSME Cluster Registration Form <br />
         (For use by associations/cluster groups)
-      </h1>
+      </h2>
       <form onSubmit={handleSubmit}>
         <section>
           <h2>Section A: Basic Information</h2>

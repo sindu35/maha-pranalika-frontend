@@ -463,7 +463,7 @@ export default function Firmregistration() {
         <section>
           <h3>Basic Details</h3>
           <label>
-            Full Name of Applicant / Director 1:
+            Full Name of Applicant / Director:
             <input
               type="text"
               value={formData.basic_details.fullName}
@@ -615,7 +615,7 @@ export default function Firmregistration() {
         <section>
           <h3>Partner/Director Details</h3>
           <label>
-            Full Name of Director 2:
+            Full Name of Director:
             <input
               type="text"
               value={formData.partner_details.director2Name}
@@ -628,7 +628,7 @@ export default function Firmregistration() {
             )}
           </label>
           <label>
-            Director 2 Email:
+            Director Email:
             <input
               type="email"
               value={formData.partner_details.director2Email}
