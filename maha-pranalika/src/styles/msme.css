@@ -10,10 +10,7 @@
   }
   .msme-form h1 {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: black;
-    font-weight: 400;
+
   }
   
   .msme-form section {
@@ -22,12 +19,7 @@
     border-bottom: 1px solid #ccc;
   }
   
-  .msme-form h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #005a9c;
-   
-  }
+
   
   .msme-form label {
     display: block;

@@ -431,7 +431,7 @@ export default function VisaOverseas() {
 
   return (
     <div className="visa-form">
-      <h1>Overseas Consultation – Client Registration Form</h1>
+      <h2>Overseas Consultation – Client Registration Form</h2>
       <form onSubmit={handleSubmit}>
         <section>
           <h2>Personal Information</h2>

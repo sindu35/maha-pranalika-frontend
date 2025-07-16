@@ -10,11 +10,9 @@
   background-color: #fff;
 }
 
-.visa-form h1 {
+.visa-form h2 {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #003366;
+
 }
 
 .visa-form section {
@@ -23,11 +21,7 @@
   border-bottom: 1px solid #ccc;
 }
 
-.visa-form h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #005a9c;
-}
+
 
 .visa-form label {
   display: block;

@@ -23,3 +23,18 @@
     font-weight: 500;
   }
   
+  .footer-contact a {
+  color: white;              /* match footer text */
+  text-decoration: none;     /* remove underline */
+  transition: color 0.3s ease, transform 0.2s ease; /* smooth hover effect */
+  display: inline-block;     /* so transform works smoothly */
+}
+
+.footer-contact a:hover {
+  color: #ffd700;            /* gold/yellow on hover */
+  transform: scale(1.05);    /* slight zoom effect */
+}
+
+.footer-contact p {
+  margin: 8px 0;
+}
