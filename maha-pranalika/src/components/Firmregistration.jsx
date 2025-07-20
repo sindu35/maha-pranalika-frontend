@@ -245,10 +245,6 @@ export default function Firmregistration() {
     if (!formData.documents.addressProofDoc)
       newErrors.addressProofDoc =
         "Electricity bill/rent agreement for address proof is required";
-    if (!formData.documents.dsc)
-      newErrors.dsc = "Digital Signature Certificate is required";
-    if (!formData.documents.noc)
-      newErrors.noc = "NOC from property owner is required";
 
     if (!formData.declaration.signature)
       newErrors.signature = "Signature is required";
@@ -734,7 +730,6 @@ export default function Firmregistration() {
               accept=".pdf"
               onChange={(e) => handleFileChange("dsc", e.target.files[0])}
             />
-            {errors.dsc && <span className="error">{errors.dsc}</span>}
           </label>
           <label>
             NOC from property owner:{" "}
@@ -743,7 +738,6 @@ export default function Firmregistration() {
               accept=".pdf"
               onChange={(e) => handleFileChange("noc", e.target.files[0])}
             />
-            {errors.noc && <span className="error">{errors.noc}</span>}
           </label>
         </section>
 
