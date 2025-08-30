@@ -38,3 +38,9 @@
 .footer-contact p {
   margin: 8px 0;
 }
+
+.FooterIcon {
+  margin-right: 8px;
+  color: white;
+  font-size: 18px;
+}

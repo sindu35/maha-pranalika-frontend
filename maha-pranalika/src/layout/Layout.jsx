@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
             <FontAwesomeIcon icon={faFacebookF} />
           </a>
           <a
-            href="https://www.instagram.com/mahapranalika_pvt_ltd?igsh=eWVqN2swNTY2Y2pq"
+            href="https://www.instagram.com/project_swayamkrush/"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "white", fontSize: "18px" }}
