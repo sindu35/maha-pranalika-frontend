@@ -2,6 +2,15 @@ import React from "react";
 import "./Footer.css";
 import { useLanguage } from "./LanguageContext";
 import { useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import {
+
+  faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
+
+import { faPhoneAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function Footer() {
   const location = useLocation();
@@ -55,16 +64,16 @@ export default function Footer() {
         {lang === "telugu" ? (
           <>
             <p>
-              📞 <a href={callLink}>సంప్రదించండి: {fullPhoneDisplay}</a>
+              <FontAwesomeIcon className="FooterIcon" icon={faPhoneAlt} /><a href={callLink}>సంప్రదించండి: {fullPhoneDisplay}</a>
             </p>
             <p>
-              💬{" "}
+              <FontAwesomeIcon className="FooterIcon" icon={faWhatsapp} />{" "}
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                 వాట్సాప్‌లో చాట్ చేయండి
               </a>
             </p>
             <p>
-              ఈమెయిల్:{" "}
+              <FontAwesomeIcon className="FooterIcon" icon={faEnvelope} />:{" "}
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=info@swayamkrush.com"
                 target="_blank"
@@ -77,16 +86,17 @@ export default function Footer() {
         ) : (
           <>
             <p>
-              📞 <a href={callLink}>Contact: {fullPhoneDisplay}</a>
+              <FontAwesomeIcon className="FooterIcon" icon={faPhoneAlt} />{" "}
+              <a href={callLink}>Contact: {fullPhoneDisplay}</a>
             </p>
             <p>
-              💬{" "}
+              <FontAwesomeIcon className="FooterIcon" icon={faWhatsapp} />{" "}
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                 Chat on WhatsApp
               </a>
             </p>
             <p>
-              Email:{" "}
+              <FontAwesomeIcon className="FooterIcon" icon={faEnvelope} />:{" "}
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=info@swayamkrush.com"
                 target="_blank"

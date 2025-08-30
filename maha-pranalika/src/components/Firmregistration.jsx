@@ -4,6 +4,8 @@ import axios from "axios";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 import { useNavigate } from "react-router-dom";
+const MAX_FILE_SIZE_MB = 4;
+const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024;
 
 export default function Firmregistration() {
   const navigate = useNavigate();
@@ -89,7 +91,21 @@ export default function Firmregistration() {
     }));
   };
 
-  const handleFileChange = (field, file) => {
+  const handleFileChange = (field, file, e) => {
+    if (!file) {
+      return;
+    }
+    if (file.size > MAX_FILE_SIZE) {
+      alert(
+        `File "${file.name}" is too large! Max allowed size is ${MAX_FILE_SIZE_MB} MB.`
+      );
+
+      // ✅ Clear the input field so invalid file is NOT retained
+      if (e && e.target) {
+        e.target.value = "";
+      }
+      return; // ❌ Do NOT save this file
+    }
     if (field === "signature") {
       setFormData((prev) => ({
         ...prev,
@@ -679,12 +695,23 @@ export default function Firmregistration() {
 
         <section>
           <h3>Documents Upload</h3>
+          <p
+            style={{
+              fontSize: "14px",
+              color: "red",
+              marginBottom: "10px",
+              textAlign: "center",
+            }}
+          >
+            <strong>Note:</strong> Maximum allowed file size is <b>4MB</b> per
+            document. Accepted formats: <b>.pdf, .jpg, .jpeg, .png</b>.
+          </p>
           <label>
             PAN Card of all partners/directors:{" "}
             <input
               type="file"
               accept=".pdf,.jpg,.jpeg,.png"
-              onChange={(e) => handleFileChange("panCard", e.target.files[0])}
+              onChange={(e) => handleFileChange("panCard", e.target.files[0],e)}
             />
             {errors.panCard && <span className="error">{errors.panCard}</span>}
           </label>
@@ -694,7 +721,7 @@ export default function Firmregistration() {
               type="file"
               accept=".pdf,.jpg,.jpeg,.png"
               onChange={(e) =>
-                handleFileChange("aadhaarCard", e.target.files[0])
+                handleFileChange("aadhaarCard", e.target.files[0],e)
               }
             />
             {errors.aadhaarCard && (
@@ -706,7 +733,7 @@ export default function Firmregistration() {
             <input
               type="file"
               accept=".jpg,.jpeg,.png"
-              onChange={(e) => handleFileChange("photos", e.target.files[0])}
+              onChange={(e) => handleFileChange("photos", e.target.files[0],e)}
             />
             {errors.photos && <span className="error">{errors.photos}</span>}
           </label>
@@ -716,7 +743,7 @@ export default function Firmregistration() {
               type="file"
               accept=".pdf,.jpg,.jpeg,.png"
               onChange={(e) =>
-                handleFileChange("addressProofDoc", e.target.files[0])
+                handleFileChange("addressProofDoc", e.target.files[0],e)
               }
             />
             {errors.addressProofDoc && (
@@ -728,7 +755,7 @@ export default function Firmregistration() {
             <input
               type="file"
               accept=".pdf"
-              onChange={(e) => handleFileChange("dsc", e.target.files[0])}
+              onChange={(e) => handleFileChange("dsc", e.target.files[0],e)}
             />
           </label>
           <label>
@@ -736,7 +763,7 @@ export default function Firmregistration() {
             <input
               type="file"
               accept=".pdf"
-              onChange={(e) => handleFileChange("noc", e.target.files[0])}
+              onChange={(e) => handleFileChange("noc", e.target.files[0],e)}
             />
           </label>
         </section>
@@ -748,7 +775,7 @@ export default function Firmregistration() {
             <input
               type="file"
               accept=".jpg,.jpeg,.png"
-              onChange={(e) => handleFileChange("signature", e.target.files[0])}
+              onChange={(e) => handleFileChange("signature", e.target.files[0],e)}
             />
             {errors.signature && (
               <span className="error">{errors.signature}</span>

@@ -31,7 +31,7 @@ const Layout = ({ children }) => {
       >
         <div className="social-icons" style={{ display: "flex", gap: "15px" }}>
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/share/19adosqB3t/"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "white", fontSize: "18px" }}
@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
             <FontAwesomeIcon icon={faFacebookF} />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/project_swayamkrush/"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "white", fontSize: "18px" }}
@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
             <FontAwesomeIcon icon={faInstagram} />
           </a>
           <a
-            href="https://whatsapp.com"
+            href="https://wa.me/7893881269"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "white", fontSize: "18px" }}
