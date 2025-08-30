@@ -11,7 +11,8 @@ import ashokImg from "../assets/ashok.jpg";
 import charanImg from "../assets/charan.jpg";
 import deshwanthImg from "../assets/deshwanth.jpg";
 import pavanImg from "../assets/pavan.jpg";
-import saikumarImg from "../assets/saikumar.jpg";
+import rajesh from "../assets/rajesh.jpg";
+import abhiram from "../assets/abhiram.jpg";
 
 export default function Home() {
   const { lang, translations } = useLanguage();
@@ -57,9 +58,9 @@ export default function Home() {
 
   const teamImages = {
     "A Ashok Kumar": ashokImg,
-    "A Sai Kumar": saikumarImg,
+    "P Guna Rajesh": rajesh,
     "S Pavan Kumar": pavanImg,
-    "Deshwanth Raj": deshwanthImg,
+    "Abhiram": abhiram,
     "V S Charan": charanImg,
   };
 

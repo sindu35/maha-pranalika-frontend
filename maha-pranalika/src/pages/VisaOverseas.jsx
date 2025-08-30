@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../styles/visa.css";
 import axios from "axios";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export default function VisaOverseas() {
   const [isSubmitting, setIsSubmitting]=useState(false);
   const [formData, setFormData] = useState({
@@ -57,7 +59,7 @@ export default function VisaOverseas() {
       window.location.href = "/";
     } else {
       axios
-        .get("http://localhost:5000/api/auth/verify", {
+        .get(`${apiUrl}/auth/verify`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -364,7 +366,7 @@ export default function VisaOverseas() {
     });
     await
     axios
-    .post("http://localhost:5000/api/visa/register-visa",fd,{
+    .post(`${apiUrl}/visa/register-visa`,fd,{
       headers: { "Content-Type": "multipart/form-data" },
     }).then((response)=>{
       console.log("Visa Assistance response:", response.data);

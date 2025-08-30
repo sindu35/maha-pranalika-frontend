@@ -99,6 +99,7 @@ export default function Login() {
       axios
         .post(`${apiUrl}` + "/auth/login", form)
         .then((response) => {
+          console.log("Login response:", response);
           if (response.status === 200) {
             localStorage.setItem("token", response.data.token);
             addToast("Login Successful", "success");

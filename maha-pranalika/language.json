@@ -10,7 +10,7 @@
       "firm": "Firm Registration",
       "cibilRepair": "CIBIL Repair",
       "cibilTraining": "CIBIL Training",
-      "visa": "Visa Assistance"
+      "visa": "Loan Services"
     },
     "email": "Email",
     "password": "Password",
@@ -38,7 +38,7 @@
       "firm": "ఫిర్మ్ రిజిస్ట్రేషన్",
       "cibilRepair": "సిబిల్ రిపేర్",
       "cibilTraining": "సిబిల్ ట్రైనింగ్",
-      "visa": "వీసా సహాయం"
+      "visa": "రుణ సేవలు"
     },
     "email": "ఇమెయిల్",
     "password": "పాస్‌వర్డ్",
@@ -422,8 +422,8 @@
         "description": "Improve your creditworthiness with our thorough CIBIL score repair services. We identify discrepancies, resolve issues, and guide you on maintaining a healthy credit profile. Additionally, our CIBIL training programs empower you with knowledge to manage and improve your credit effectively."
       },
       {
-        "title": "VISA & OVERSEAS CONSULTATION",
-        "description": "Planning to work, study, or expand your business overseas? Our visa and overseas consultation services offer tailored advice on visa applications, documentation, immigration policies, and global opportunities — making your international journey hassle-free."
+        "title": "Loan Services",
+        "description": "We provide customized loans for individuals, entrepreneurs, and businesses — with fast approvals and full transparency.Loan Types - Personal Loans,Business & MSME Loans,Home Loans,Loan Against Property,Vehicle Loans,Education Loans,Credit Card Debt Loans."
       }
     ],
     "team": [
@@ -432,7 +432,7 @@
         "title": "AP CDP Head"
       },
       {
-        "name": "A Sai Kumar",
+        "name": "P Guna Rajesh",
         "title": "TS CDP Head"
       },
       {
@@ -440,7 +440,7 @@
         "title": "Managing Director"
       },
       {
-        "name": "Deshwanth Raj",
+        "name": "Abhiram",
         "title": "Director"
       },
       {
@@ -501,30 +501,30 @@
         "description": "మీ క్రెడిట్ స్కోర్ మెరుగుపరచడానికి మేము లోతైన విశ్లేషణ, సమస్యల పరిష్కారం మరియు క్రెడిట్ నిర్వహణపై శిక్షణను అందిస్తాము. దీని ద్వారా మీరు మీ క్రెడిట్ ప్రొఫైల్‌ను బలోపేతం చేసుకోవచ్చు."
       },
       {
-        "title": "వీసా & ఓవర్సీస్ కన్సల్టేషన్",
-        "description": "విదేశాల్లో పని చేయాలనుకుంటున్నారా? చదవాలనుకుంటున్నారా? మేము వీసా దరఖాస్తులు, డాక్యుమెంటేషన్ మరియు ఇమ్మిగ్రేషన్ విధానాలపై వ్యక్తిగత సలహాలను అందిస్తాము."
+        "title": "రుణ సేవలు",
+        "description": "మేము వ్యక్తులు, వ్యాపారవేత్తలు మరియు వ్యాపారాల కోసం అనుకూలమైన రుణాలను అందిస్తున్నాము — వేగవంతమైన ఆమోదాలు మరియు సంపూర్ణ పారదర్శకతతో.రుణాల రకాలు - వ్యక్తిగత రుణాలు,వ్యాపార & MSME రుణాలు,గృహ రుణాలు,ఆస్తిపై రుణం,వాహన రుణాలు,విద్యా రుణాలు,క్రెడిట్ కార్డ్ అప్పు రుణాలు."
       }
     ],
     "team": [
       {
         "name": "ఏ అశోక్ కుమార్",
-        "title": "ఏపీ CDP హెడ్"
+        "title": "ఏపీ సీడీపీ హెడ్"
       },
       {
-        "name": "ఏ సాయి కుమార్",
-        "title": "తెలంగాణ CDP హెడ్"
+        "name": "పీ గుణ రాజేష్",
+        "title": "తెలంగాణ సీడీపీ హెడ్"
       },
       {
-        "name": "పీ నీతూ",
-        "title": "CIBIL విశ్లేషకురాలు"
+        "name": "ఎస్ పవన్ కుమార్",
+        "title": "మ్యానేజింగ్ డైరెక్టర్"
       },
       {
-        "name": "సురేష్ బాబు",
-        "title": "హెయిరార్కీ హెడ్"
+        "name": "అభిరామ్",
+        "title": "డైరెక్టర్"
       },
       {
         "name": "వి ఎస్ చరణ్",
-        "title": "పన్నుల విశ్లేషకుడు"
+        "title": "పన్ను విశ్లేషకుడు"
       }
     ],
     "features": [
