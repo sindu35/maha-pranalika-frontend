@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/home.css";
 import firmImage from "../assets/firm.jpg";
+
 import msmeImage from "../assets/MSME.jpg";
 import cibilImage from "../assets/cibil.jpg";
 import visaImage from "../assets/visa.jpg";
 import { FaPaperPlane, FaDesktop, FaFlag } from "react-icons/fa";
 import CurvedArrow from "../components/CurvedArrow";
 import { useLanguage } from "../components/LanguageContext";
-import ashokImg from "../assets/ashok.jpg";
-import charanImg from "../assets/charan.jpg";
-import deshwanthImg from "../assets/deshwanth.jpg";
+
+import veereshImg from "../assets/Veeresh.jpg";
+import shyamImg from "../assets/Shyam.jpg";
 import pavanImg from "../assets/pavan.jpg";
 import rajesh from "../assets/rajesh.jpg";
 import abhiram from "../assets/abhiram.jpg";
@@ -30,7 +31,7 @@ export default function Home() {
     <FaFlag />,
     <FaFlag />,
   ];
-  const serviceImages = [firmImage, msmeImage, cibilImage, visaImage];
+  const serviceImages = [firmImage, msmeImage, cibilImage, visaImage, ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -57,11 +58,11 @@ export default function Home() {
   }, []);
 
   const teamImages = {
-    "A Ashok Kumar": ashokImg,
+    "Veeresh": veereshImg,
     "P Guna Rajesh": rajesh,
     "S Pavan Kumar": pavanImg,
-    "Abhiram": abhiram,
-    "V S Charan": charanImg,
+    "P Abhiram": abhiram,
+    "Shyam": shyamImg,
   };
 
   return (

@@ -55,14 +55,14 @@
 /* Center - Swayamkrush image (centered to entire screen) */
 .swayamkrush-center {
   position: absolute;
-  left: 50%;
+  left: 20%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
 }
 
 .swayamkrush-center img {
-  height: 30px;
+  height: 40px;
   width: auto;
 }
 
@@ -167,7 +167,7 @@
 }
 
 .nav-header-container .logo-container img {
-  height: 50px;
+  height: 20px;
   width: auto;
   padding: 0;
 }

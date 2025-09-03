@@ -88,7 +88,8 @@ export default function Navbar() {
         <div className="nav-header-container">
           <div className="logo-container" onClick={() => goTo("/")}>
             <img src={logo} alt="logo" />
-            <span className="logo-text">{navLabels.logotext}</span>
+            {/* <span className="logo-text">{navLabels.logotext}</span> */}
+            <img src={swayamkrush}  alt="swayamkrush" className="swayamkrush-mobile" />
           </div>
           <button
             className="menu-button"
@@ -203,13 +204,13 @@ export default function Navbar() {
                 style={{ cursor: "pointer" }}
                 onClick={() => goTo("/")}
               />
-              <span
+              {/* <span
                 className="logo-text"
                 style={{ cursor: "pointer" }}
                 onClick={() => goTo("/")}
               >
                 {navLabels.logotext}
-              </span>
+              </span> */}
             </div>
             <div className="swayamkrush-center">
               <img src={swayamkrush} alt="swayamkrush" />
