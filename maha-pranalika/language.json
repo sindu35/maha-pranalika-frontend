@@ -1,10 +1,11 @@
 {
   "nav-english": {
-    "home": "Home",
+    "home": "Homes",
     "services": "Services",
     "signup": "Signup",
     "privacy": "Privacy Policy",
     "faq": "FAQ",
+    
     "terms": "Terms & Conditions",
     "servicesList": {
       "firm": "Firm Registration",

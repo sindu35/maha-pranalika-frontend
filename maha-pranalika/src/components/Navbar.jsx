@@ -104,10 +104,10 @@ export default function Navbar() {
             <ul>
               <li onClick={() => goTo("/")}>{navLabels.home}</li>
 
-              <li onClick={() => setShowMobileDropdown((prev) => !prev)}>
+              {/* <li onClick={() => setShowMobileDropdown((prev) => !prev)}>
                 {navLabels.services} ▾
-              </li>
-              {showMobileDropdown && (
+              </li> */}
+              {/* {showMobileDropdown && (
                 <ul className="mobile-dropdown">
                   <li
                     onClick={() => {
@@ -160,7 +160,11 @@ export default function Navbar() {
 
                   <li onClick={() => goTo("/services/msme")}>MSME</li>
                 </ul>
-              )}
+              )} */}
+              <li
+                onClick={() => window.open("https://www.swayamkrush.in/services", "_blank")}>
+                {navLabels.services}
+                </li>
               <li onClick={() => goTo("/privacy-policy")}>
                 {navLabels.privacy}
               </li>
@@ -222,7 +226,7 @@ export default function Navbar() {
                 <span onClick={() => goTo("/")}>{navLabels.home}</span>
               </li>
 
-              <li className="dropdown">
+              {/* <li className="dropdown">
                 <span>{navLabels.services} ▾</span>
                 <ul className="dropdown-content">
                   <li>
@@ -299,7 +303,17 @@ export default function Navbar() {
                     </span>
                   </li>
                 </ul>
+              </li> */}
+              <li>
+                <span 
+                  
+                  onClick={() => window.open("https://www.swayamkrush.in/services", "_blank")}
+                >
+                  {navLabels.services}
+                </span>
               </li>
+
+
 
               <li>
                 <span onClick={() => goTo("/privacy-policy")}>
